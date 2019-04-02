@@ -1,6 +1,7 @@
 ﻿using D328.Domain.Repository;
 using D328.WPF.Repository;
 using NAudio.CoreAudioApi;
+using Prism.Commands;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
 
@@ -24,11 +25,20 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _audioDevices, value);
         }
 
+        public DelegateCommand RecordingStartCommand { get; }
+
         public MainWindowViewModel()
         {
             IAudioDeviceRepository<MMDevice> audioDeviceRepository = new AudioDeviceWinRepository();
             var audioDevices = audioDeviceRepository.GetAudioDevices();
             AudioDevices = new ObservableCollection<MMDevice>(audioDevices);
+
+            RecordingStartCommand = new DelegateCommand(RecordingCommandExecute);
+        }
+
+        private void RecordingCommandExecute()
+        {
+            // todo 録音処理
         }
     }
 }
