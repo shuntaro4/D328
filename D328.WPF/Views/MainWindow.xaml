@@ -9,6 +9,10 @@
     Height="350"
     prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
-        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ComboBox ItemsSource="{Binding AudioDevices}" />
     </Grid>
 </views:D328Window>
