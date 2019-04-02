@@ -12,8 +12,8 @@ namespace D328.WPF.ViewModels
 
         public string Title
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            get => _title;
+            set => SetProperty(ref _title, value);
         }
 
         private ObservableCollection<MMDevice> _audioDevices;
