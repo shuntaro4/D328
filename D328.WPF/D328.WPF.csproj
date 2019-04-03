@@ -64,7 +64,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Repository\AudioDeviceWinRepository.cs" />
+    <Compile Include="Platform\AudioDeviceWinService.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\D328Window.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
@@ -105,9 +105,9 @@
     <PackageReference Include="Prism.Unity" Version="7.1.0.431&#xD;" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\D328.Domain\D328.Domain.csproj">
+    <ProjectReference Include="..\D328.Platform\D328.Platform.csproj">
       <Project>{b0b5e3c1-ce44-44d1-a891-88c565bfdacd}</Project>
-      <Name>D328.Domain</Name>
+      <Name>D328.Platform</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

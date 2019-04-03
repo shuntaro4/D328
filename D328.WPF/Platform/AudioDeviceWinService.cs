@@ -1,10 +1,11 @@
-﻿using NAudio.CoreAudioApi;
+﻿using D328.Platform;
+using NAudio.CoreAudioApi;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace D328.Domain.Win.Repository
+namespace D328.WPF.Repository
 {
-    public class AudioDeviceRepository : IAudioDeviceRepository<MMDevice>
+    public class AudioDeviceWinRepository : IAudioDeviceService<MMDevice>
     {
         public List<MMDevice> GetAudioDevices()
         {

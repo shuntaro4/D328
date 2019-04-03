@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D328.WPF", "D328.WPF\D328.WPF.csproj", "{D897BBF4-38FF-406C-8E00-B5088D3F6C9A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D328.Domain", "D328.Domain\D328.Domain.csproj", "{B0B5E3C1-CE44-44D1-A891-88C565BFDACD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D328.Platform", "D328.Platform\D328.Platform.csproj", "{B0B5E3C1-CE44-44D1-A891-88C565BFDACD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

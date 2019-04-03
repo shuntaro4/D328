@@ -1,4 +1,4 @@
-﻿using D328.Domain.Repository;
+﻿using D328.Platform;
 using D328.WPF.Repository;
 using NAudio.CoreAudioApi;
 using Prism.Commands;
@@ -29,7 +29,7 @@ namespace D328.WPF.ViewModels
 
         public MainWindowViewModel()
         {
-            IAudioDeviceRepository<MMDevice> audioDeviceRepository = new AudioDeviceWinRepository();
+            IAudioDeviceService<MMDevice> audioDeviceRepository = new AudioDeviceWinRepository();
             var audioDevices = audioDeviceRepository.GetAudioDevices();
             AudioDevices = new ObservableCollection<MMDevice>(audioDevices);
 
