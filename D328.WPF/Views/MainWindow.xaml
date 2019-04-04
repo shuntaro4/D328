@@ -12,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <ComboBox
@@ -23,6 +24,11 @@
             Grid.Row="1"
             Command="{Binding RecordingStartCommand}"
             Content="Recording Start" />
+
+        <Button
+            Grid.Row="2"
+            Command="{Binding RecordingStopCommand}"
+            Content="Recording Stop" />
 
     </Grid>
 </views:D328Window>

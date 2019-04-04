@@ -35,6 +35,8 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand RecordingStartCommand { get; }
 
+        public DelegateCommand RecordingStopCommand { get; }
+
         public MainWindowViewModel()
         {
             IAudioDeviceService<MMDevice> audioDeviceRepository = new AudioDeviceWinRepository();
@@ -42,11 +44,16 @@ namespace D328.WPF.ViewModels
             AudioDevices = new ObservableCollection<MMDevice>(audioDevices);
 
             RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);
+            RecordingStopCommand = new DelegateCommand(RecordingStopCommandExecute);
         }
 
         private void RecordingStartCommandExecute()
         {
             // todo 録音処理
+        }
+
+        private void RecordingStopCommandExecute()
+        {
         }
     }
 }
