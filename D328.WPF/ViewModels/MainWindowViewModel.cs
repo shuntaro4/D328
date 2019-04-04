@@ -25,6 +25,14 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _audioDevices, value);
         }
 
+        private MMDevice _selectedAudioDevice = null;
+
+        public MMDevice SelectedAudioDevice
+        {
+            get => _selectedAudioDevice;
+            set => SetProperty(ref _selectedAudioDevice, value);
+        }
+
         public DelegateCommand RecordingStartCommand { get; }
 
         public MainWindowViewModel()

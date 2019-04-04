@@ -14,7 +14,10 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ComboBox Grid.Row="0" ItemsSource="{Binding AudioDevices}" />
+        <ComboBox
+            Grid.Row="0"
+            ItemsSource="{Binding AudioDevices}"
+            SelectedValue="{Binding SelectedAudioDevice}" />
 
         <Button
             Grid.Row="1"
