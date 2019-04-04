@@ -41,10 +41,10 @@ namespace D328.WPF.ViewModels
             var audioDevices = audioDeviceRepository.GetAudioDevices();
             AudioDevices = new ObservableCollection<MMDevice>(audioDevices);
 
-            RecordingStartCommand = new DelegateCommand(RecordingCommandExecute);
+            RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);
         }
 
-        private void RecordingCommandExecute()
+        private void RecordingStartCommandExecute()
         {
             // todo 録音処理
         }
