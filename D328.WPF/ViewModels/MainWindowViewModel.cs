@@ -1,4 +1,5 @@
 ﻿using D328.Platform;
+using D328.WPF.Platform;
 using D328.WPF.Repository;
 using NAudio.CoreAudioApi;
 using Prism.Commands;
@@ -37,6 +38,8 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand RecordingStopCommand { get; }
 
+        private IAudioRecorder AudioRecorder;
+
         public MainWindowViewModel()
         {
             IAudioDeviceService<MMDevice> audioDeviceRepository = new AudioDeviceWinRepository();
@@ -49,11 +52,15 @@ namespace D328.WPF.ViewModels
 
         private void RecordingStartCommandExecute()
         {
-            // todo 録音処理
+            var fileName = @"test.wav";
+
+            AudioRecorder = new AudioRecorder(fileName);
+            AudioRecorder.Start();
         }
 
         private void RecordingStopCommandExecute()
         {
+            AudioRecorder.Stop();
         }
     }
 }
