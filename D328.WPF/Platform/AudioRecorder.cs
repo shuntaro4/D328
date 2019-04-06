@@ -12,7 +12,7 @@ namespace D328.WPF.Platform
 
         private WaveFileWriter _waveFileWriter;
 
-        public AudioRecorder(string outputFilePath)
+        public AudioRecorder(string outputFilePath, int deviceNumber)
         {
             _outputFilePath = outputFilePath;
 
@@ -23,7 +23,7 @@ namespace D328.WPF.Platform
 
             _waveInEvent = new WaveInEvent()
             {
-                DeviceNumber = 0
+                DeviceNumber = deviceNumber
             };
             _waveInEvent.DataAvailable += DataAvailable;
             _waveInEvent.RecordingStopped += RecordingStopped;

@@ -39,12 +39,17 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand RecordingStopCommand { get; }
 
+        private IAudioDeviceService<WaveInCapabilities> AudioDeviceService;
+
+        private AudioDeviceServiceHelper AudioDeviceServiceHelper;
+
         private IAudioRecorder AudioRecorder;
 
         public MainWindowViewModel()
         {
-            IAudioDeviceService<WaveInCapabilities> audioDeviceService = new AudioDeviceService();
-            var audioDevices = audioDeviceService.GetInputAudioDevices();
+            AudioDeviceService = new AudioDeviceService();
+            AudioDeviceServiceHelper = new AudioDeviceServiceHelper();
+            var audioDevices = AudioDeviceService.GetInputAudioDevices();
             AudioDevices = new ObservableCollection<WaveInCapabilities>(audioDevices);
             SelectedAudioDevice = audioDevices.FirstOrDefault();
 
@@ -56,7 +61,7 @@ namespace D328.WPF.ViewModels
         {
             var fileName = @"test.wav";
 
-            AudioRecorder = new AudioRecorder(fileName);
+            AudioRecorder = new AudioRecorder(fileName, AudioDeviceServiceHelper.GetInputAudioDeviceNumber(SelectedAudioDevice));
             AudioRecorder.Start();
         }
 
