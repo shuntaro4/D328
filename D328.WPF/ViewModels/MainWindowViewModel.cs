@@ -44,7 +44,7 @@ namespace D328.WPF.ViewModels
         public MainWindowViewModel()
         {
             IAudioDeviceService<WaveInCapabilities> audioDeviceService = new AudioDeviceService();
-            var audioDevices = audioDeviceService.GetAudioDevices();
+            var audioDevices = audioDeviceService.GetInputAudioDevices();
             AudioDevices = new ObservableCollection<WaveInCapabilities>(audioDevices);
             SelectedAudioDevice = audioDevices.FirstOrDefault();
 

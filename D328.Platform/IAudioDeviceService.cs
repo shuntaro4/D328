@@ -4,6 +4,6 @@ namespace D328.Platform
 {
     public interface IAudioDeviceService<T>
     {
-        List<T> GetAudioDevices();
+        List<T> GetInputAudioDevices();
     }
 }
