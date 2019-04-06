@@ -42,8 +42,8 @@ namespace D328.WPF.ViewModels
 
         public MainWindowViewModel()
         {
-            IAudioDeviceService<MMDevice> audioDeviceRepository = new AudioDeviceWinRepository();
-            var audioDevices = audioDeviceRepository.GetAudioDevices();
+            IAudioDeviceService<MMDevice> audioDeviceService = new AudioDeviceService();
+            var audioDevices = audioDeviceService.GetAudioDevices();
             AudioDevices = new ObservableCollection<MMDevice>(audioDevices);
 
             RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);

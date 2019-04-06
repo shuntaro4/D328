@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace D328.WPF.Repository
 {
-    public class AudioDeviceWinRepository : IAudioDeviceService<MMDevice>
+    public class AudioDeviceService : IAudioDeviceService<MMDevice>
     {
         public List<MMDevice> GetAudioDevices()
         {
