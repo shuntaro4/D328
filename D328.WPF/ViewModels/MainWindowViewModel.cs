@@ -1,10 +1,11 @@
 ﻿using D328.Platform;
 using D328.WPF.Platform;
 using D328.WPF.Repository;
-using NAudio.CoreAudioApi;
+using NAudio.Wave;
 using Prism.Commands;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace D328.WPF.ViewModels
 {
@@ -18,17 +19,17 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _title, value);
         }
 
-        private ObservableCollection<MMDevice> _audioDevices;
+        private ObservableCollection<WaveInCapabilities> _audioDevices;
 
-        public ObservableCollection<MMDevice> AudioDevices
+        public ObservableCollection<WaveInCapabilities> AudioDevices
         {
             get => _audioDevices;
             set => SetProperty(ref _audioDevices, value);
         }
 
-        private MMDevice _selectedAudioDevice = null;
+        private WaveInCapabilities _selectedAudioDevice;
 
-        public MMDevice SelectedAudioDevice
+        public WaveInCapabilities SelectedAudioDevice
         {
             get => _selectedAudioDevice;
             set => SetProperty(ref _selectedAudioDevice, value);
@@ -42,9 +43,10 @@ namespace D328.WPF.ViewModels
 
         public MainWindowViewModel()
         {
-            IAudioDeviceService<MMDevice> audioDeviceService = new AudioDeviceService();
+            IAudioDeviceService<WaveInCapabilities> audioDeviceService = new AudioDeviceService();
             var audioDevices = audioDeviceService.GetAudioDevices();
-            AudioDevices = new ObservableCollection<MMDevice>(audioDevices);
+            AudioDevices = new ObservableCollection<WaveInCapabilities>(audioDevices);
+            SelectedAudioDevice = audioDevices.FirstOrDefault();
 
             RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);
             RecordingStopCommand = new DelegateCommand(RecordingStopCommandExecute);

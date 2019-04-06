@@ -17,6 +17,7 @@
 
         <ComboBox
             Grid.Row="0"
+            DisplayMemberPath="ProductName"
             ItemsSource="{Binding AudioDevices}"
             SelectedValue="{Binding SelectedAudioDevice}" />
 
