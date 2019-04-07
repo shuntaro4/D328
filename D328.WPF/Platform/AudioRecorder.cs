@@ -4,7 +4,7 @@ using System;
 
 namespace D328.WPF.Platform
 {
-    public class AudioRecorder : IAudioRecorder, IDisposable
+    public class AudioRecorder : IAudioRecorder
     {
         private readonly string _outputFilePath;
 
@@ -38,7 +38,6 @@ namespace D328.WPF.Platform
 
         private void RecordingStopped(object sender, StoppedEventArgs e)
         {
-            _waveFileWriter.Flush();
             Dispose();
         }
 

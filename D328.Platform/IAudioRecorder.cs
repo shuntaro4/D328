@@ -1,6 +1,8 @@
-﻿namespace D328.Platform
+﻿using System;
+
+namespace D328.Platform
 {
-    public interface IAudioRecorder
+    public interface IAudioRecorder : IDisposable
     {
         void Start();
 
