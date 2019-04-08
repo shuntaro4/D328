@@ -1,7 +1,7 @@
 ﻿using D328.Platform;
 using D328.WPF.Platform;
 using D328.WPF.Repository;
-using NAudio.Wave;
+using NAudio.CoreAudioApi;
 using Prism.Commands;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
@@ -19,17 +19,17 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _title, value);
         }
 
-        private ObservableCollection<WaveInCapabilities> _audioDevices;
+        private ObservableCollection<MMDevice> _audioDevices;
 
-        public ObservableCollection<WaveInCapabilities> AudioDevices
+        public ObservableCollection<MMDevice> AudioDevices
         {
             get => _audioDevices;
             set => SetProperty(ref _audioDevices, value);
         }
 
-        private WaveInCapabilities _selectedAudioDevice;
+        private MMDevice _selectedAudioDevice;
 
-        public WaveInCapabilities SelectedAudioDevice
+        public MMDevice SelectedAudioDevice
         {
             get => _selectedAudioDevice;
             set => SetProperty(ref _selectedAudioDevice, value);
@@ -39,7 +39,7 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand RecordingStopCommand { get; }
 
-        private IAudioDeviceService<WaveInCapabilities> AudioDeviceService;
+        private IAudioDeviceService<MMDevice> AudioDeviceService;
 
         private AudioDeviceServiceHelper AudioDeviceServiceHelper;
 
@@ -50,7 +50,7 @@ namespace D328.WPF.ViewModels
             AudioDeviceService = new AudioDeviceService();
             AudioDeviceServiceHelper = new AudioDeviceServiceHelper();
             var audioDevices = AudioDeviceService.GetInputAudioDevices();
-            AudioDevices = new ObservableCollection<WaveInCapabilities>(audioDevices);
+            AudioDevices = new ObservableCollection<MMDevice>(audioDevices);
             SelectedAudioDevice = audioDevices.FirstOrDefault();
 
             RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);
@@ -61,7 +61,7 @@ namespace D328.WPF.ViewModels
         {
             var fileName = @"test.wav";
 
-            AudioRecorder = new AudioRecorder(fileName, AudioDeviceServiceHelper.GetInputAudioDeviceNumber(SelectedAudioDevice));
+            AudioRecorder = new AudioRecorder(fileName, 0);
             AudioRecorder.Start();
         }
 

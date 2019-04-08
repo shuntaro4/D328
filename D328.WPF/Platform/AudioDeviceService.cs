@@ -1,19 +1,16 @@
 ﻿using D328.Platform;
-using NAudio.Wave;
+using NAudio.CoreAudioApi;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace D328.WPF.Repository
 {
-    public class AudioDeviceService : IAudioDeviceService<WaveInCapabilities>
+    public class AudioDeviceService : IAudioDeviceService<MMDevice>
     {
-        public List<WaveInCapabilities> GetInputAudioDevices()
+        public List<MMDevice> GetInputAudioDevices()
         {
-            var devices = new List<WaveInCapabilities>();
-            for (var i = 0; i < WaveInEvent.DeviceCount; i++)
-            {
-                devices.Add(WaveInEvent.GetCapabilities(i));
-            }
-            return devices;
+            var enumerator = new MMDeviceEnumerator();
+            return enumerator.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active).ToList();
         }
     }
 }
