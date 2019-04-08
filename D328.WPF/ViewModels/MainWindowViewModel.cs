@@ -61,7 +61,7 @@ namespace D328.WPF.ViewModels
         {
             var fileName = @"test.wav";
 
-            AudioRecorder = new AudioRecorder(fileName, 0);
+            AudioRecorder = new AudioRecorder(fileName, SelectedAudioDevice);
             AudioRecorder.Start();
         }
 
