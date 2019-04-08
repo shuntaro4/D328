@@ -51,7 +51,7 @@ namespace D328.WPF.ViewModels
             AudioDeviceServiceHelper = new AudioDeviceServiceHelper();
             var audioDevices = AudioDeviceService.GetInputAudioDevices();
             AudioDevices = new ObservableCollection<MMDevice>(audioDevices);
-            SelectedAudioDevice = audioDevices.FirstOrDefault();
+            SelectedAudioDevice = AudioDevices.FirstOrDefault(c => c.ID == AudioDeviceService.GetDefaultInputAudioDevice()?.ID);
 
             RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);
             RecordingStopCommand = new DelegateCommand(RecordingStopCommandExecute);
