@@ -41,14 +41,11 @@ namespace D328.WPF.ViewModels
 
         private IAudioDeviceService<MMDevice> AudioDeviceService;
 
-        private AudioDeviceServiceHelper AudioDeviceServiceHelper;
-
         private IAudioRecorder AudioRecorder;
 
         public MainWindowViewModel()
         {
             AudioDeviceService = new AudioDeviceService();
-            AudioDeviceServiceHelper = new AudioDeviceServiceHelper();
             var audioDevices = AudioDeviceService.GetInputAudioDevices();
             AudioDevices = new ObservableCollection<MMDevice>(audioDevices);
             SelectedAudioDevice = AudioDevices.FirstOrDefault(c => c.ID == AudioDeviceService.GetDefaultInputAudioDevice()?.ID);
