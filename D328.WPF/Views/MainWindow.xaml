@@ -13,6 +13,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <ComboBox
@@ -29,6 +30,11 @@
             Grid.Row="2"
             Command="{Binding RecordingStopCommand}"
             Content="Recording Stop" />
+
+        <ProgressBar
+            Grid.Row="3"
+            Maximum="1"
+            Value="{Binding Peak}" />
 
     </Grid>
 </views:D328Window>

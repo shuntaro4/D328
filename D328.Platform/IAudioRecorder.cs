@@ -7,5 +7,7 @@ namespace D328.Platform
         void Start();
 
         void Stop();
+
+        float GetPeak();
     }
 }

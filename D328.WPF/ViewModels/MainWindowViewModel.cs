@@ -4,6 +4,7 @@ using D328.WPF.Repository;
 using NAudio.CoreAudioApi;
 using Prism.Commands;
 using Prism.Mvvm;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -35,13 +36,21 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _selectedAudioDevice, value);
         }
 
+        private float _peek;
+
+        public float Peak
+        {
+            get => _peek;
+            set => SetProperty(ref _peek, value);
+        }
+
         public DelegateCommand RecordingStartCommand { get; }
 
         public DelegateCommand RecordingStopCommand { get; }
 
         private IAudioDeviceService<MMDevice> AudioDeviceService;
 
-        private IAudioRecorder AudioRecorder;
+        private AudioRecorder AudioRecorder;
 
         public MainWindowViewModel()
         {
@@ -60,6 +69,16 @@ namespace D328.WPF.ViewModels
 
             AudioRecorder = new AudioRecorder(fileName, SelectedAudioDevice);
             AudioRecorder.Start();
+            AudioRecorder.OnDataAvailable += (s, _) =>
+            {
+                var audioRecorder = s as AudioRecorder;
+                if (audioRecorder == null)
+                {
+                    return;
+                }
+                Peak = audioRecorder.GetPeak();
+                Console.WriteLine(Peak);
+            };
         }
 
         private void RecordingStopCommandExecute()
