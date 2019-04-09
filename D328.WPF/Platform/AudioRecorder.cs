@@ -64,12 +64,12 @@ namespace D328.WPF.Platform
 
         public void Start()
         {
-            _wasapiCapture.StartRecording();
+            _wasapiCapture?.StartRecording();
         }
 
         public void Stop()
         {
-            _wasapiCapture.StopRecording();
+            _wasapiCapture?.StopRecording();
         }
 
         public void Dispose()
