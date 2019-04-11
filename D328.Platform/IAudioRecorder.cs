@@ -9,5 +9,7 @@ namespace D328.Platform
         void Stop();
 
         float GetPeak();
+
+        void SubscriveEventOnDataAvailable(EventHandler subscriveEvent);
     }
 }

@@ -69,7 +69,7 @@ namespace D328.WPF.ViewModels
 
             AudioRecorder = new AudioRecorder(fileName, SelectedAudioDevice);
             AudioRecorder.Start();
-            AudioRecorder.OnDataAvailable += (s, _) =>
+            AudioRecorder.SubscriveEventOnDataAvailable((s, _) =>
             {
                 var audioRecorder = s as AudioRecorder;
                 if (audioRecorder == null)
@@ -78,7 +78,7 @@ namespace D328.WPF.ViewModels
                 }
                 Peak = audioRecorder.GetPeak();
                 Console.WriteLine(Peak);
-            };
+            });
         }
 
         private void RecordingStopCommandExecute()
