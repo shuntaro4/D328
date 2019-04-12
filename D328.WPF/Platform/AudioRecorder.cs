@@ -22,6 +22,8 @@ namespace D328.WPF.Platform
 
         private EventHandler OnDataAvailable;
 
+        private bool isRecording;
+
         public AudioRecorder(string outputFilePath, MMDevice inputAudioDevice)
         {
             _outputFilePath = outputFilePath;
@@ -50,11 +52,14 @@ namespace D328.WPF.Platform
 
         private void DataAvailable(object sender, WaveInEventArgs e)
         {
-            if (_waveFileWriter == null)
+            if (isRecording)
             {
-                _waveFileWriter = new WaveFileWriter(_outputFilePath, _wasapiCapture.WaveFormat);
+                if (_waveFileWriter == null)
+                {
+                    _waveFileWriter = new WaveFileWriter(_outputFilePath, _wasapiCapture.WaveFormat);
+                }
+                _waveFileWriter.Write(e.Buffer, 0, e.BytesRecorded);
             }
-            _waveFileWriter.Write(e.Buffer, 0, e.BytesRecorded);
 
             OnDataAvailableHandler(new EventArgs());
         }
@@ -64,9 +69,14 @@ namespace D328.WPF.Platform
             Dispose();
         }
 
-        public void Start()
+        public void Ready()
         {
             _wasapiCapture?.StartRecording();
+        }
+
+        public void Start()
+        {
+            isRecording = true;
         }
 
         public void Stop()

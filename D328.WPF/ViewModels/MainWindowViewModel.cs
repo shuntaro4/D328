@@ -4,7 +4,6 @@ using D328.WPF.Repository;
 using NAudio.CoreAudioApi;
 using Prism.Commands;
 using Prism.Mvvm;
-using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -61,14 +60,18 @@ namespace D328.WPF.ViewModels
 
             RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);
             RecordingStopCommand = new DelegateCommand(RecordingStopCommandExecute);
+
+            RecordingReadyCommandExecute();
         }
 
-        private void RecordingStartCommandExecute()
+        private void RecordingReadyCommandExecute()
         {
-            var fileName = @"test.wav";
+            if (SelectedAudioDevice == null)
+            {
+                return;
+            }
 
-            AudioRecorder = new AudioRecorder(fileName, SelectedAudioDevice);
-            AudioRecorder.Start();
+            AudioRecorder = new AudioRecorder("", SelectedAudioDevice);
             AudioRecorder.SubscriveEventOnDataAvailable((s, _) =>
             {
                 var audioRecorder = s as AudioRecorder;
@@ -77,13 +80,20 @@ namespace D328.WPF.ViewModels
                     return;
                 }
                 Peak = audioRecorder.GetPeak();
-                Console.WriteLine(Peak);
             });
+            AudioRecorder.Ready();
+        }
+
+        private void RecordingStartCommandExecute()
+        {
+            AudioRecorder?.Start();
         }
 
         private void RecordingStopCommandExecute()
         {
-            AudioRecorder.Stop();
+            AudioRecorder?.Stop();
+
+            RecordingReadyCommandExecute();
         }
     }
 }
