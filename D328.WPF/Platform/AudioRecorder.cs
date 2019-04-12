@@ -28,7 +28,7 @@ namespace D328.WPF.Platform
 
             if (string.IsNullOrWhiteSpace(_outputFilePath))
             {
-                _outputFilePath = $"{DateTime.Now.ToString("yyyy-MM-dd-hhmmss")}.wav";
+                _outputFilePath = $"{DateTime.Now.ToString("yyyy-MM-dd-HHmmss")}.wav";
             }
 
             _inputAudioDevice = inputAudioDevice;
