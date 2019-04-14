@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:views="clr-namespace:D328.WPF.Views"
     Title="{Binding Title}"
@@ -19,8 +20,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <ComboBox
@@ -28,20 +27,27 @@
             ItemsSource="{Binding AudioDevices}"
             SelectedValue="{Binding SelectedAudioDevice}" />
 
-        <Button
-            Grid.Row="1"
-            Command="{Binding RecordingStartCommand}"
-            Content="Recording Start" />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="5*" />
+            </Grid.ColumnDefinitions>
 
-        <Button
-            Grid.Row="2"
-            Command="{Binding RecordingStopCommand}"
-            Content="Recording Stop" />
+            <Button
+                Grid.Column="0"
+                Command="{Binding RecordingStartCommand}"
+                Content="{iconPacks:FontAwesome StarRegular}" />
 
-        <ProgressBar
-            Grid.Row="3"
-            Maximum="1"
-            Value="{Binding Peak}" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding RecordingStopCommand}"
+                Content="{iconPacks:FontAwesome StarRegular}" />
 
+            <ProgressBar
+                Grid.Column="2"
+                Maximum="1"
+                Value="{Binding Peak}" />
+        </Grid>
     </Grid>
 </views:D328Window>
