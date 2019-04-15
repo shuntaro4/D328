@@ -22,7 +22,7 @@ namespace D328.WPF.Platform
 
         private EventHandler _onDataAvailable;
 
-        private bool isRecording;
+        private bool _isRecording;
 
 
         public AudioRecorder(string outputFilePath, MMDevice inputAudioDevice)
@@ -53,7 +53,7 @@ namespace D328.WPF.Platform
 
         private void DataAvailable(object sender, WaveInEventArgs e)
         {
-            if (isRecording)
+            if (_isRecording)
             {
                 if (_waveFileWriter == null)
                 {
@@ -77,7 +77,7 @@ namespace D328.WPF.Platform
 
         public void Start()
         {
-            isRecording = true;
+            _isRecording = true;
         }
 
         public void Stop()
