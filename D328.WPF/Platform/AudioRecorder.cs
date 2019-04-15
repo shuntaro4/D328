@@ -1,4 +1,5 @@
-﻿using D328.Platform;
+﻿using D328.Domain.Model;
+using D328.Platform;
 using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using System;
@@ -103,6 +104,11 @@ namespace D328.WPF.Platform
         public void SubscriveEventOnDataAvailable(EventHandler subscriveEvent)
         {
             _onDataAvailable += subscriveEvent;
+        }
+
+        public D328Record GetRecordData()
+        {
+            return new D328Record(_outputFilePath);
         }
 
         private void OnDataAvailableHandler(EventArgs e)

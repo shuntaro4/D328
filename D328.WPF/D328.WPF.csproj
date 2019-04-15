@@ -111,6 +111,10 @@
     <PackageReference Include="Prism.Unity" Version="7.1.0.431&#xD;" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\D328.Domain\D328.Domain.csproj">
+      <Project>{D5289ABD-BF34-43D3-879D-914BA0113E86}</Project>
+      <Name>D328.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\D328.Platform\D328.Platform.csproj">
       <Project>{b0b5e3c1-ce44-44d1-a891-88c565bfdacd}</Project>
       <Name>D328.Platform</Name>

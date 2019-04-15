@@ -1,4 +1,5 @@
-﻿using System;
+﻿using D328.Domain.Model;
+using System;
 
 namespace D328.Platform
 {
@@ -13,5 +14,7 @@ namespace D328.Platform
         float GetPeak();
 
         void SubscriveEventOnDataAvailable(EventHandler subscriveEvent);
+
+        D328Record GetRecordData();
     }
 }
