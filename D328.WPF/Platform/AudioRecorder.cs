@@ -20,9 +20,10 @@ namespace D328.WPF.Platform
 
         private float _peak;
 
-        private EventHandler OnDataAvailable;
+        private EventHandler _onDataAvailable;
 
         private bool isRecording;
+
 
         public AudioRecorder(string outputFilePath, MMDevice inputAudioDevice)
         {
@@ -101,16 +102,16 @@ namespace D328.WPF.Platform
 
         public void SubscriveEventOnDataAvailable(EventHandler subscriveEvent)
         {
-            OnDataAvailable += subscriveEvent;
+            _onDataAvailable += subscriveEvent;
         }
 
         private void OnDataAvailableHandler(EventArgs e)
         {
-            if (OnDataAvailable == null)
+            if (_onDataAvailable == null)
             {
                 return;
             }
-            OnDataAvailable(this, e);
+            _onDataAvailable(this, e);
         }
     }
 }
