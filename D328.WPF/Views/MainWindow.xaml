@@ -62,7 +62,8 @@
             <Button
                 Grid.Column="1"
                 Command="{Binding RecordingStopCommand}"
-                Content="{iconPacks:FontAwesome StopCircleRegular}" />
+                Content="{iconPacks:FontAwesome StopCircleRegular}"
+                IsEnabled="{Binding WindowMode, Converter={StaticResource WindowModeToRecordingStopButtonEnabledConverter}, Mode=OneWay}" />
 
             <ProgressBar
                 Grid.Column="2"

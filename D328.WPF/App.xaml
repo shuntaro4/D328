@@ -16,6 +16,7 @@
 
             <!--  Converter  -->
             <converter:WindowModeToRecordingButtonEnabledConverter x:Key="WindowModeToRecordingButtonEnabledConverter" />
+            <converter:WindowModeToRecordingStopButtonEnabledConverter x:Key="WindowModeToRecordingStopButtonEnabledConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>
