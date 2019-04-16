@@ -53,12 +53,15 @@
             <Button
                 Grid.Column="0"
                 Command="{Binding RecordingStartCommand}"
-                Content="{iconPacks:FontAwesome StarRegular}" />
+                Content="{iconPacks:FontAwesome MicrophoneAltSolid}" />
+
+            <!--  todo pause  -->
+            <!--  todo play  -->
 
             <Button
                 Grid.Column="1"
                 Command="{Binding RecordingStopCommand}"
-                Content="{iconPacks:FontAwesome StarRegular}" />
+                Content="{iconPacks:FontAwesome StopCircleRegular}" />
 
             <ProgressBar
                 Grid.Column="2"
