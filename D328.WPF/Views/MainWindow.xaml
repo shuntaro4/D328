@@ -53,7 +53,8 @@
             <Button
                 Grid.Column="0"
                 Command="{Binding RecordingStartCommand}"
-                Content="{iconPacks:FontAwesome MicrophoneAltSolid}" />
+                Content="{iconPacks:FontAwesome MicrophoneAltSolid}"
+                IsEnabled="{Binding WindowMode, Converter={StaticResource WindowModeToRecordingButtonEnabledConverter}, Mode=OneWay}" />
 
             <!--  todo pause  -->
             <!--  todo play  -->

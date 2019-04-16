@@ -65,6 +65,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converter\WindowModeToRecordingButtonEnabledConverter.cs" />
     <Compile Include="Platform\AudioDeviceService.cs" />
     <Compile Include="Platform\AudioRecorder.cs" />
     <Compile Include="Platform\AudioDeviceServiceHelper.cs" />
@@ -120,5 +121,6 @@
       <Name>D328.Platform</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

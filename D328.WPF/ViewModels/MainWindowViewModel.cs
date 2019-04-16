@@ -12,7 +12,16 @@ namespace D328.WPF.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
+        public enum MainWindowMode
+        {
+            Normal,
+            Recording,
+            Pause,
+            Playing
+        };
+
         private string _title = "D328";
+
 
         public string Title
         {
@@ -52,6 +61,14 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _recordList, value);
         }
 
+        private MainWindowMode _windowMode;
+
+        public MainWindowMode WindowMode
+        {
+            get => _windowMode;
+            set => SetProperty(ref _windowMode, value);
+        }
+
         public DelegateCommand RecordingStartCommand { get; }
 
         public DelegateCommand RecordingStopCommand { get; }
@@ -84,6 +101,8 @@ namespace D328.WPF.ViewModels
                 return;
             }
 
+            WindowMode = MainWindowMode.Normal;
+
             AudioRecorder = new AudioRecorder("", SelectedAudioDevice);
             AudioRecorder.SubscriveEventOnDataAvailable((s, _) =>
             {
@@ -99,11 +118,15 @@ namespace D328.WPF.ViewModels
 
         private void RecordingStartCommandExecute()
         {
+            WindowMode = MainWindowMode.Recording;
+
             AudioRecorder?.Start();
         }
 
         private void RecordingStopCommandExecute()
         {
+            WindowMode = MainWindowMode.Normal;
+
             AudioRecorder?.Stop();
             RecordList.Add(AudioRecorder.GetRecordData());
 

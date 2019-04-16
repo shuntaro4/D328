@@ -2,6 +2,7 @@
     x:Class="D328.WPF.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:D328.WPF.Converter"
     xmlns:prism="http://prismlibrary.com/">
     <Application.Resources>
         <ResourceDictionary>
@@ -12,6 +13,9 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/steel.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!--  Converter  -->
+            <converter:WindowModeToRecordingButtonEnabledConverter x:Key="WindowModeToRecordingButtonEnabledConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>
