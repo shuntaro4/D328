@@ -3,7 +3,7 @@ using System;
 
 namespace D328.Platform
 {
-    public interface IAudioRecorder : IDisposable
+    public interface IAudioRecorderService : IDisposable
     {
         void Ready();
 

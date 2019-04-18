@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace D328.WPF.Platform
 {
-    public class AudioRecorder : IAudioRecorder
+    public class AudioRecorderService : IAudioRecorderService
     {
         private MMDevice _inputAudioDevice;
 
@@ -26,7 +26,7 @@ namespace D328.WPF.Platform
         private bool _isRecording;
 
 
-        public AudioRecorder(string outputFilePath, MMDevice inputAudioDevice)
+        public AudioRecorderService(string outputFilePath, MMDevice inputAudioDevice)
         {
             _outputFilePath = outputFilePath;
 

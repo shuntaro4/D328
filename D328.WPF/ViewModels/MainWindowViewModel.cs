@@ -77,7 +77,7 @@ namespace D328.WPF.ViewModels
 
         private IAudioDeviceService<MMDevice> AudioDeviceService;
 
-        private AudioRecorder AudioRecorder;
+        private IAudioRecorderService AudioRecorderService;
 
         public MainWindowViewModel()
         {
@@ -103,40 +103,40 @@ namespace D328.WPF.ViewModels
 
             WindowMode = MainWindowMode.Normal;
 
-            AudioRecorder = new AudioRecorder("", SelectedAudioDevice);
-            AudioRecorder.SubscriveEventOnDataAvailable((s, _) =>
+            AudioRecorderService = new AudioRecorderService("", SelectedAudioDevice);
+            AudioRecorderService.SubscriveEventOnDataAvailable((s, _) =>
             {
-                var audioRecorder = s as AudioRecorder;
-                if (audioRecorder == null)
+                var audioRecorderService = s as AudioRecorderService;
+                if (audioRecorderService == null)
                 {
                     return;
                 }
-                Peak = audioRecorder.GetPeak();
+                Peak = audioRecorderService.GetPeak();
             });
-            AudioRecorder.Ready();
+            AudioRecorderService.Ready();
         }
 
         private void RecordingStartCommandExecute()
         {
             WindowMode = MainWindowMode.Recording;
 
-            AudioRecorder?.Start();
+            AudioRecorderService?.Start();
         }
 
         private void RecordingStopCommandExecute()
         {
             WindowMode = MainWindowMode.Normal;
 
-            AudioRecorder?.Stop();
-            RecordList.Add(AudioRecorder.GetRecordData());
+            AudioRecorderService?.Stop();
+            RecordList.Add(AudioRecorderService.GetRecordData());
 
             RecordingReadyCommandExecute();
         }
 
         private void WindowClosedCommandExecute()
         {
-            AudioRecorder.Dispose();
-            AudioRecorder = null;
+            AudioRecorderService.Dispose();
+            AudioRecorderService = null;
         }
     }
 }
