@@ -26,7 +26,7 @@ namespace D328.WPF.Platform
         private bool _isRecording;
 
 
-        public AudioRecorderService(string outputFilePath, MMDevice inputAudioDevice)
+        public AudioRecorderService(MMDevice inputAudioDevice, string outputFilePath = "")
         {
             _outputFilePath = outputFilePath;
 

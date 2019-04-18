@@ -103,7 +103,7 @@ namespace D328.WPF.ViewModels
 
             WindowMode = MainWindowMode.Normal;
 
-            AudioRecorderService = new AudioRecorderService("", SelectedAudioDevice);
+            AudioRecorderService = new AudioRecorderService(SelectedAudioDevice);
             AudioRecorderService.SubscriveEventOnDataAvailable((s, _) =>
             {
                 var audioRecorderService = s as AudioRecorderService;
