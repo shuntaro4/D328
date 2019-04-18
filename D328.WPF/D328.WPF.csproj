@@ -68,7 +68,7 @@
     <Compile Include="Converter\WindowModeToRecordingStopButtonEnabledConverter.cs" />
     <Compile Include="Converter\WindowModeToRecordingButtonEnabledConverter.cs" />
     <Compile Include="Platform\AudioDeviceService.cs" />
-    <Compile Include="Platform\AudioRecorder.cs" />
+    <Compile Include="Platform\AudioRecorderService.cs" />
     <Compile Include="Platform\AudioDeviceServiceHelper.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\D328Window.cs" />
