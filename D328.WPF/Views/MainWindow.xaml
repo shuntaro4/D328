@@ -79,6 +79,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="5*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -91,17 +92,19 @@
                 Content="{iconPacks:FontAwesome MicrophoneAltSolid}"
                 IsEnabled="{Binding WindowMode, Converter={StaticResource WindowModeToRecordingButtonEnabledConverter}, Mode=OneWay}" />
 
-            <!--  todo pause  -->
-            <!--  todo play  -->
-
             <Button
                 Grid.Column="1"
                 Command="{Binding RecordingStopCommand}"
                 Content="{iconPacks:FontAwesome StopCircleRegular}"
                 IsEnabled="{Binding WindowMode, Converter={StaticResource WindowModeToRecordingStopButtonEnabledConverter}, Mode=OneWay}" />
 
-            <ProgressBar
+            <Button
                 Grid.Column="2"
+                Command="{Binding PlaybackStartCommand}"
+                Content="{iconPacks:FontAwesome PlaySolid}" />
+
+            <ProgressBar
+                Grid.Column="3"
                 Maximum="1"
                 Value="{Binding Peak}" />
         </Grid>
