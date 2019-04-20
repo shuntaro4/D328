@@ -77,6 +77,14 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _recordList, value);
         }
 
+        private D328Record _selectedRecord;
+
+        public D328Record SelectedRecord
+        {
+            get => _selectedRecord;
+            set => SetProperty(ref _selectedRecord, value);
+        }
+
         private MainWindowMode _windowMode;
 
         public MainWindowMode WindowMode
