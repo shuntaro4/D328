@@ -29,20 +29,20 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _title, value);
         }
 
-        private ObservableCollection<MMDevice> _audioDevices;
+        private ObservableCollection<MMDevice> _inputAudioDevices;
 
-        public ObservableCollection<MMDevice> AudioDevices
+        public ObservableCollection<MMDevice> InputAudioDevices
         {
-            get => _audioDevices;
-            set => SetProperty(ref _audioDevices, value);
+            get => _inputAudioDevices;
+            set => SetProperty(ref _inputAudioDevices, value);
         }
 
-        private MMDevice _selectedAudioDevice;
+        private MMDevice _selectedInputAudioDevice;
 
-        public MMDevice SelectedAudioDevice
+        public MMDevice SelectedInputAudioDevice
         {
-            get => _selectedAudioDevice;
-            set => SetProperty(ref _selectedAudioDevice, value);
+            get => _selectedInputAudioDevice;
+            set => SetProperty(ref _selectedInputAudioDevice, value);
         }
 
         private float _peek;
@@ -82,9 +82,9 @@ namespace D328.WPF.ViewModels
         public MainWindowViewModel()
         {
             AudioDeviceService = new AudioDeviceService();
-            var audioDevices = AudioDeviceService.GetInputAudioDevices();
-            AudioDevices = new ObservableCollection<MMDevice>(audioDevices);
-            SelectedAudioDevice = AudioDevices.FirstOrDefault(c => c.ID == AudioDeviceService.GetDefaultInputAudioDevice()?.ID);
+            var inputAudioDevices = AudioDeviceService.GetInputAudioDevices();
+            InputAudioDevices = new ObservableCollection<MMDevice>(inputAudioDevices);
+            SelectedInputAudioDevice = InputAudioDevices.FirstOrDefault(c => c.ID == AudioDeviceService.GetDefaultInputAudioDevice()?.ID);
             RecordList = new ObservableCollection<D328Record>();
 
             RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);
@@ -96,14 +96,14 @@ namespace D328.WPF.ViewModels
 
         private void RecordingReadyCommandExecute()
         {
-            if (SelectedAudioDevice == null)
+            if (SelectedInputAudioDevice == null)
             {
                 return;
             }
 
             WindowMode = MainWindowMode.Normal;
 
-            AudioRecorderService = new AudioRecorderService(SelectedAudioDevice);
+            AudioRecorderService = new AudioRecorderService(SelectedInputAudioDevice);
             AudioRecorderService.SubscriveEventOnDataAvailable((s, _) =>
             {
                 IAudioRecorderService audioRecorderService = s as AudioRecorderService;

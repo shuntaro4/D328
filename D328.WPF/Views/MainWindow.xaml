@@ -48,8 +48,8 @@
                     Text="Input:" />
                 <ComboBox
                     Grid.Column="1"
-                    ItemsSource="{Binding AudioDevices}"
-                    SelectedValue="{Binding SelectedAudioDevice}" />
+                    ItemsSource="{Binding InputAudioDevices}"
+                    SelectedValue="{Binding SelectedInputAudioDevice}" />
             </Grid>
         </Grid>
 
