@@ -106,7 +106,7 @@ namespace D328.WPF.ViewModels
             AudioRecorderService = new AudioRecorderService(SelectedAudioDevice);
             AudioRecorderService.SubscriveEventOnDataAvailable((s, _) =>
             {
-                var audioRecorderService = s as AudioRecorderService;
+                IAudioRecorderService audioRecorderService = s as AudioRecorderService;
                 if (audioRecorderService == null)
                 {
                     return;
