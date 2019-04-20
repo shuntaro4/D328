@@ -81,6 +81,7 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="5*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -109,8 +110,13 @@
                 Command="{Binding PlaybackPauseCommand}"
                 Content="{iconPacks:FontAwesome PauseSolid}" />
 
-            <ProgressBar
+            <Button
                 Grid.Column="4"
+                Command="{Binding PlaybackStopCommand}"
+                Content="{iconPacks:FontAwesome StopSolid}" />
+
+            <ProgressBar
+                Grid.Column="5"
                 Maximum="1"
                 Value="{Binding Peak}" />
         </Grid>
