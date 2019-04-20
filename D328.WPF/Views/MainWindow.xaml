@@ -27,12 +27,31 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ComboBox
+        <Grid
             Grid.Row="0"
             Grid.Column="0"
-            Grid.ColumnSpan="2"
-            ItemsSource="{Binding AudioDevices}"
-            SelectedValue="{Binding SelectedAudioDevice}" />
+            Grid.ColumnSpan="2">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    HorizontalAlignment="Right"
+                    Text="Input:" />
+                <ComboBox
+                    Grid.Column="1"
+                    ItemsSource="{Binding AudioDevices}"
+                    SelectedValue="{Binding SelectedAudioDevice}" />
+            </Grid>
+        </Grid>
 
         <ListBox
             Grid.Row="1"
