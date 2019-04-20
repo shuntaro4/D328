@@ -7,5 +7,7 @@ namespace D328.Platform
         List<T> GetInputAudioDevices();
 
         T GetDefaultInputAudioDevice();
+
+        List<T> GetOutputAudioDevices();
     }
 }

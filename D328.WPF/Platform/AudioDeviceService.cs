@@ -23,5 +23,10 @@ namespace D328.WPF.Repository
         {
             return _emurator.GetDefaultAudioEndpoint(DataFlow.Capture, Role.Console);
         }
+
+        public List<MMDevice> GetOutputAudioDevices()
+        {
+            return _emurator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active).ToList();
+        }
     }
 }
