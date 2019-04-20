@@ -101,6 +101,8 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand PlaybackStartCommand { get; }
 
+        public DelegateCommand PlaybackPauseCommand { get; }
+
         private IAudioDeviceService<MMDevice> AudioDeviceService;
 
         private IAudioRecorderService AudioRecorderService;
@@ -124,6 +126,7 @@ namespace D328.WPF.ViewModels
             RecordingStopCommand = new DelegateCommand(RecordingStopCommandExecute);
             WindowCloseCommand = new DelegateCommand(WindowClosedCommandExecute);
             PlaybackStartCommand = new DelegateCommand(PlaybackStartCommandExecute);
+            PlaybackPauseCommand = new DelegateCommand(PlaybackPauseCommandExecute);
 
             RecordingReadyCommandExecute();
         }
@@ -183,8 +186,16 @@ namespace D328.WPF.ViewModels
                 return;
             }
 
-            AudioPlayerService = new AudioPlayerService(SelectedRecord);
+            if (AudioPlayerService == null)
+            {
+                AudioPlayerService = new AudioPlayerService(SelectedRecord);
+            }
             AudioPlayerService.Play();
+        }
+
+        private void PlaybackPauseCommandExecute()
+        {
+            AudioPlayerService?.Pause();
         }
     }
 }
