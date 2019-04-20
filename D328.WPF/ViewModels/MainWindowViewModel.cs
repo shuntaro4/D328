@@ -45,6 +45,22 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _selectedInputAudioDevice, value);
         }
 
+        private ObservableCollection<MMDevice> _outputAudioDevices;
+
+        public ObservableCollection<MMDevice> OutputAudioDevices
+        {
+            get => _outputAudioDevices;
+            set => SetProperty(ref _outputAudioDevices, value);
+        }
+
+        private MMDevice _selectedOutputAudioDevice;
+
+        public MMDevice SelectedOutputAudioDevice
+        {
+            get => _selectedOutputAudioDevice;
+            set => SetProperty(ref _selectedOutputAudioDevice, value);
+        }
+
         private float _peek;
 
         public float Peak
@@ -85,6 +101,11 @@ namespace D328.WPF.ViewModels
             var inputAudioDevices = AudioDeviceService.GetInputAudioDevices();
             InputAudioDevices = new ObservableCollection<MMDevice>(inputAudioDevices);
             SelectedInputAudioDevice = InputAudioDevices.FirstOrDefault(c => c.ID == AudioDeviceService.GetDefaultInputAudioDevice()?.ID);
+
+            var outputAudioDevice = AudioDeviceService.GetOutputAudioDevices();
+            OutputAudioDevices = new ObservableCollection<MMDevice>(outputAudioDevice);
+            SelectedOutputAudioDevice = OutputAudioDevices.FirstOrDefault(c => c.ID == AudioDeviceService.GetDefaultOutputAudioDevice()?.ID);
+
             RecordList = new ObservableCollection<D328Record>();
 
             RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);

@@ -51,6 +51,21 @@
                     ItemsSource="{Binding InputAudioDevices}"
                     SelectedValue="{Binding SelectedInputAudioDevice}" />
             </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    HorizontalAlignment="Right"
+                    Text="Output:" />
+                <ComboBox
+                    Grid.Column="1"
+                    ItemsSource="{Binding OutputAudioDevices}"
+                    SelectedValue="{Binding SelectedOutputAudioDevice}" />
+            </Grid>
         </Grid>
 
         <ListBox
