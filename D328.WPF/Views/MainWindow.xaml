@@ -73,7 +73,13 @@
             Grid.Column="0"
             DisplayMemberPath="AudioPath"
             ItemsSource="{Binding RecordList}"
-            SelectedValue="{Binding SelectedRecord}" />
+            SelectedValue="{Binding SelectedRecord}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding RecordListSelectionChangedCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ListBox>
 
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
