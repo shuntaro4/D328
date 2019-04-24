@@ -1,4 +1,5 @@
 ﻿using D328.Domain.Model;
+using D328.Infrastructure.Repository;
 using D328.Platform;
 using D328.WPF.Platform;
 using D328.WPF.Repository;
@@ -171,8 +172,14 @@ namespace D328.WPF.ViewModels
             WindowMode = MainWindowMode.Normal;
 
             AudioRecorderService?.Stop();
-            RecordList.Add(AudioRecorderService.GetRecordData());
-
+            var record = AudioRecorderService.GetRecordData();
+            RecordList.Add(record);
+            var recordRepository = new Record()
+            {
+                Id = record.Id,
+                AudioPath = record.AudioPath
+            };
+            recordRepository.Save();
             RecordingReadyCommandExecute();
         }
 
