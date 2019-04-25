@@ -1,8 +1,6 @@
-﻿using Realms;
-
-namespace D328.Infrastructure.Repository
+﻿namespace D328.Infrastructure.Repository
 {
-    public class Record : RealmObject
+    public class Record
     {
         public int Id { get; set; }
 
@@ -10,11 +8,6 @@ namespace D328.Infrastructure.Repository
 
         public void Save()
         {
-            var realm = Realm.GetInstance();
-            realm.Write(() =>
-            {
-                realm.Add(this);
-            });
         }
     }
 }
