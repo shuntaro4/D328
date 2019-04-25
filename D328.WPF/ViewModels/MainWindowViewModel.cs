@@ -174,11 +174,7 @@ namespace D328.WPF.ViewModels
             AudioRecorderService?.Stop();
             var record = AudioRecorderService.GetRecordData();
             RecordList.Add(record);
-            var recordRepository = new Record()
-            {
-                Id = record.Id,
-                AudioPath = record.AudioPath
-            };
+            var recordRepository = new RecordRepository(record);
             recordRepository.Save();
             RecordingReadyCommandExecute();
         }

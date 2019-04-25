@@ -8,4 +8,8 @@
     <PackageReference Include="Realm" Version="3.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\D328.Domain\D328.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
