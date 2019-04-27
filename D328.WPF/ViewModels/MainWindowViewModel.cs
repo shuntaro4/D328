@@ -1,10 +1,8 @@
-﻿using D328.Application;
-using D328.Application.Services;
+﻿using D328.Application.Services;
 using D328.Audio.Windows;
 using D328.Domain;
 using D328.Domain.Model;
 using D328.Infrastructure.Repository;
-using D328.Platform;
 using Prism.Commands;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
@@ -139,24 +137,24 @@ namespace D328.WPF.ViewModels
 
         private void RecordingReadyCommandExecute()
         {
-            //if (SelectedInputAudioDevice == null)
-            //{
-            //    return;
-            //}
+            if (SelectedInputAudioDevice == null)
+            {
+                return;
+            }
 
-            //WindowMode = MainWindowMode.Normal;
+            WindowMode = MainWindowMode.Normal;
 
-            //AudioRecorderService = new AudioRecorderService(SelectedInputAudioDevice);
-            //AudioRecorderService.SubscriveEventOnDataAvailable((s, _) =>
-            //{
-            //    IAudioRecorderService audioRecorderService = s as AudioRecorderService;
-            //    if (audioRecorderService == null)
-            //    {
-            //        return;
-            //    }
-            //    Peak = audioRecorderService.GetPeak();
-            //});
-            //AudioRecorderService.Ready();
+            AudioRecorderService = new AudioRecorderService(SelectedInputAudioDevice);
+            AudioRecorderService.SubscriveEventOnDataAvailable((s, _) =>
+            {
+                IAudioRecorderService audioRecorderService = s as AudioRecorderService;
+                if (audioRecorderService == null)
+                {
+                    return;
+                }
+                Peak = audioRecorderService.GetPeak();
+            });
+            AudioRecorderService.Ready();
         }
 
         private void RecordingStartCommandExecute()

@@ -68,7 +68,6 @@
     </Compile>
     <Compile Include="Converter\WindowModeToRecordingStopButtonEnabledConverter.cs" />
     <Compile Include="Converter\WindowModeToRecordingButtonEnabledConverter.cs" />
-    <Compile Include="Platform\AudioRecorderService.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\D328Window.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
@@ -131,10 +130,6 @@
     <ProjectReference Include="..\D328.Infrastructure\D328.Repository.csproj">
       <Project>{a0880271-258c-4112-8b33-f0f6b6ed44f8}</Project>
       <Name>D328.Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\D328.Platform\D328.Platform.csproj">
-      <Project>{b0b5e3c1-ce44-44d1-a891-88c565bfdacd}</Project>
-      <Name>D328.Platform</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

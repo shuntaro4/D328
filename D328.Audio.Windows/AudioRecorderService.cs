@@ -1,11 +1,12 @@
-﻿using D328.Domain.Model;
-using D328.Platform;
+﻿using D328.Application.Services;
+using D328.Domain;
+using D328.Domain.Model;
 using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using System;
 using System.Threading;
 
-namespace D328.WPF.Platform
+namespace D328.Audio.Windows
 {
     public class AudioRecorderService : IAudioRecorderService
     {
@@ -26,7 +27,7 @@ namespace D328.WPF.Platform
         private bool _isRecording;
 
 
-        public AudioRecorderService(MMDevice inputAudioDevice, string outputFilePath = "")
+        public AudioRecorderService(AudioDevice inputAudioDevice, string outputFilePath = "")
         {
             _outputFilePath = outputFilePath;
 
@@ -35,7 +36,7 @@ namespace D328.WPF.Platform
                 _outputFilePath = $"{DateTime.Now.ToString("yyyy-MM-dd-HHmmss")}.wav";
             }
 
-            _inputAudioDevice = inputAudioDevice;
+            _inputAudioDevice = new AudioDeviceService().InputAudioDeviceToMMDevice(inputAudioDevice);
             if (_inputAudioDevice == null)
             {
                 throw new ArgumentNullException(nameof(inputAudioDevice));
