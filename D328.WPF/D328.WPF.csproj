@@ -68,10 +68,8 @@
     </Compile>
     <Compile Include="Converter\WindowModeToRecordingStopButtonEnabledConverter.cs" />
     <Compile Include="Converter\WindowModeToRecordingButtonEnabledConverter.cs" />
-    <Compile Include="Platform\AudioDeviceService.cs" />
     <Compile Include="Platform\AudioPlayerService.cs" />
     <Compile Include="Platform\AudioRecorderService.cs" />
-    <Compile Include="Platform\AudioDeviceServiceHelper.cs" />
     <Compile Include="Platform\SampleProvider.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\D328Window.cs" />
@@ -120,13 +118,21 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\D328.Application\D328.Application.csproj">
+      <Project>{db342745-c816-4ebf-b91a-3f6ea91ea209}</Project>
+      <Name>D328.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\D328.Audio.Windows\D328.Audio.Windows.csproj">
+      <Project>{0daeea0f-21a8-414d-a8b6-6666d2f46762}</Project>
+      <Name>D328.Audio.Windows</Name>
+    </ProjectReference>
     <ProjectReference Include="..\D328.Domain\D328.Domain.csproj">
       <Project>{D5289ABD-BF34-43D3-879D-914BA0113E86}</Project>
       <Name>D328.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\D328.Infrastructure\D328.Infrastructure.csproj">
+    <ProjectReference Include="..\D328.Infrastructure\D328.Repository.csproj">
       <Project>{a0880271-258c-4112-8b33-f0f6b6ed44f8}</Project>
-      <Name>D328.Infrastructure</Name>
+      <Name>D328.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\D328.Platform\D328.Platform.csproj">
       <Project>{b0b5e3c1-ce44-44d1-a891-88c565bfdacd}</Project>

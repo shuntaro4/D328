@@ -11,9 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D328.Domain", "D328.Domain\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D328.WPF.Test", "D328.WPF.Test\D328.WPF.Test.csproj", "{22460667-1FC5-4E97-AE8E-219247613804}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D328.Infrastructure", "D328.Infrastructure\D328.Infrastructure.csproj", "{A0880271-258C-4112-8B33-F0F6B6ED44F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D328.Repository", "D328.Infrastructure\D328.Repository.csproj", "{A0880271-258C-4112-8B33-F0F6B6ED44F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D328.Application", "D328.Application\D328.Application.csproj", "{DB342745-C816-4EBF-B91A-3F6EA91EA209}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D328.Application", "D328.Application\D328.Application.csproj", "{DB342745-C816-4EBF-B91A-3F6EA91EA209}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1CD72F30-EC78-4F6D-B33F-A6833B5F73FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D328.Audio.Windows", "D328.Audio.Windows\D328.Audio.Windows.csproj", "{0DAEEA0F-21A8-414D-A8B6-6666D2F46762}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,9 +49,18 @@ Global
 		{DB342745-C816-4EBF-B91A-3F6EA91EA209}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB342745-C816-4EBF-B91A-3F6EA91EA209}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB342745-C816-4EBF-B91A-3F6EA91EA209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DAEEA0F-21A8-414D-A8B6-6666D2F46762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DAEEA0F-21A8-414D-A8B6-6666D2F46762}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DAEEA0F-21A8-414D-A8B6-6666D2F46762}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DAEEA0F-21A8-414D-A8B6-6666D2F46762}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B0B5E3C1-CE44-44D1-A891-88C565BFDACD} = {1CD72F30-EC78-4F6D-B33F-A6833B5F73FB}
+		{A0880271-258C-4112-8B33-F0F6B6ED44F8} = {1CD72F30-EC78-4F6D-B33F-A6833B5F73FB}
+		{0DAEEA0F-21A8-414D-A8B6-6666D2F46762} = {1CD72F30-EC78-4F6D-B33F-A6833B5F73FB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EB026491-AF19-441A-BDC7-24FFD346C5E3}

@@ -48,6 +48,7 @@
                     Text="Input:" />
                 <ComboBox
                     Grid.Column="1"
+                    DisplayMemberPath="Name"
                     ItemsSource="{Binding InputAudioDevices}"
                     SelectedValue="{Binding SelectedInputAudioDevice}" />
             </Grid>
@@ -63,6 +64,7 @@
                     Text="Output:" />
                 <ComboBox
                     Grid.Column="1"
+                    DisplayMemberPath="Name"
                     ItemsSource="{Binding OutputAudioDevices}"
                     SelectedValue="{Binding SelectedOutputAudioDevice}" />
             </Grid>
