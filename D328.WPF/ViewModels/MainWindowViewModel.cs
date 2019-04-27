@@ -2,7 +2,7 @@
 using D328.Audio.Windows;
 using D328.Domain;
 using D328.Domain.Model;
-using D328.Infrastructure.Repository;
+using D328.Repository;
 using Prism.Commands;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;

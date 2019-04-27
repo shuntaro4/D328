@@ -2,7 +2,7 @@
 using D328.Domain.Repository;
 using Realms;
 
-namespace D328.Infrastructure.Repository
+namespace D328.Repository
 {
     public class RecordRepository : RealmObject, IRepository
     {
