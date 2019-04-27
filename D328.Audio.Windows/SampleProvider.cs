@@ -1,6 +1,6 @@
 ﻿using NAudio.Wave;
 
-namespace D328.WPF.Platform
+namespace D328.Audio.Windows
 {
     public class SampleProvider : ISampleProvider
     {

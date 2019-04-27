@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace D328.Platform
+namespace D328.Application.Services
 {
     public interface IAudioPlayerService : IDisposable
     {

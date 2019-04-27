@@ -68,9 +68,7 @@
     </Compile>
     <Compile Include="Converter\WindowModeToRecordingStopButtonEnabledConverter.cs" />
     <Compile Include="Converter\WindowModeToRecordingButtonEnabledConverter.cs" />
-    <Compile Include="Platform\AudioPlayerService.cs" />
     <Compile Include="Platform\AudioRecorderService.cs" />
-    <Compile Include="Platform\SampleProvider.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\D328Window.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

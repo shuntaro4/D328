@@ -1,10 +1,10 @@
-﻿using D328.Domain.Model;
-using D328.Platform;
+﻿using D328.Application;
+using D328.Domain.Model;
 using NAudio.Wave;
 
-namespace D328.WPF.Platform
+namespace D328.Audio.Windows
 {
-    class AudioPlayerService : IAudioPlayerService
+    public class AudioPlayerService : IAudioPlayerService
     {
         private readonly Record _recordData;
 
