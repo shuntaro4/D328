@@ -44,5 +44,15 @@ namespace D328.Audio.Windows
             var mmdevice = _emurator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Console);
             return devices.FirstOrDefault(c => c.Id == mmdevice?.ID);
         }
+
+        internal MMDevice InputAudioDeviceToMMDevice(AudioDevice inputDevice)
+        {
+            if (inputDevice == null)
+            {
+                return null;
+            }
+            var devices = _emurator.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active);
+            return devices.FirstOrDefault(c => c.ID == inputDevice?.Id);
+        }
     }
 }
