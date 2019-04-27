@@ -15,6 +15,6 @@ namespace D328.Platform
 
         void SubscriveEventOnDataAvailable(EventHandler subscriveEvent);
 
-        D328Record GetRecordData();
+        Record GetRecordData();
     }
 }

@@ -15,7 +15,7 @@ namespace D328.Infrastructure.Repository
 
         }
 
-        public RecordRepository(D328Record record)
+        public RecordRepository(Record record)
         {
             Id = record.Id;
             AudioPath = record.AudioPath;

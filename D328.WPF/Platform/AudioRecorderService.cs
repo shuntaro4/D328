@@ -106,9 +106,9 @@ namespace D328.WPF.Platform
             _onDataAvailable += subscriveEvent;
         }
 
-        public D328Record GetRecordData()
+        public Record GetRecordData()
         {
-            return new D328Record(_outputFilePath);
+            return new Record(_outputFilePath);
         }
 
         private void OnDataAvailableHandler(EventArgs e)

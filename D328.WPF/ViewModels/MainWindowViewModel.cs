@@ -70,17 +70,17 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _peek, value);
         }
 
-        private ObservableCollection<D328Record> _recordList;
+        private ObservableCollection<Record> _recordList;
 
-        public ObservableCollection<D328Record> RecordList
+        public ObservableCollection<Record> RecordList
         {
             get => _recordList;
             set => SetProperty(ref _recordList, value);
         }
 
-        private D328Record _selectedRecord;
+        private Record _selectedRecord;
 
-        public D328Record SelectedRecord
+        public Record SelectedRecord
         {
             get => _selectedRecord;
             set => SetProperty(ref _selectedRecord, value);
@@ -125,7 +125,7 @@ namespace D328.WPF.ViewModels
             OutputAudioDevices = new ObservableCollection<MMDevice>(outputAudioDevice);
             SelectedOutputAudioDevice = OutputAudioDevices.FirstOrDefault(c => c.ID == AudioDeviceService.GetDefaultOutputAudioDevice()?.ID);
 
-            RecordList = new ObservableCollection<D328Record>();
+            RecordList = new ObservableCollection<Record>();
 
             RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);
             RecordingStopCommand = new DelegateCommand(RecordingStopCommandExecute);

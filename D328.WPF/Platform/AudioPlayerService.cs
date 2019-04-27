@@ -6,13 +6,13 @@ namespace D328.WPF.Platform
 {
     class AudioPlayerService : IAudioPlayerService
     {
-        private readonly D328Record _recordData;
+        private readonly Record _recordData;
 
         private IWavePlayer _wavePlayer;
 
         private WaveStream _waveStream;
 
-        public AudioPlayerService(D328Record record)
+        public AudioPlayerService(Record record)
         {
             _recordData = record;
             var waveStream = new AudioFileReader(_recordData.AudioPath);
