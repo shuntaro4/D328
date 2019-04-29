@@ -1,4 +1,4 @@
-﻿namespace D328.Domain.Repository
+﻿namespace D328.Repository
 {
     public interface IRepository
     {
