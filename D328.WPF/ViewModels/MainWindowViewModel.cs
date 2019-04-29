@@ -112,6 +112,8 @@ namespace D328.WPF.ViewModels
 
         private IAudioPlayerService AudioPlayerService;
 
+        private RecordRepository RecordRepository = new RecordRepository();
+
         public MainWindowViewModel()
         {
             var inputAudioDevices = AudioDeviceService.GetInputAudioDevices();
@@ -122,8 +124,7 @@ namespace D328.WPF.ViewModels
             OutputAudioDevices = new ObservableCollection<AudioDevice>(outputAudioDevice);
             SelectedOutputAudioDevice = AudioDeviceService.GetSelectedOutputAudioDevice(OutputAudioDevices);
 
-            var recordRepository = new RecordRepository();
-            RecordList = new ObservableCollection<Record>(recordRepository.FindAll());
+            RecordList = new ObservableCollection<Record>(RecordRepository.FindAll());
 
             RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);
             RecordingStopCommand = new DelegateCommand(RecordingStopCommandExecute);
@@ -171,10 +172,9 @@ namespace D328.WPF.ViewModels
 
             AudioRecorderService?.Stop();
             var record = AudioRecorderService.GetRecordData();
-            var recordRepository = new RecordRepository(record);
-            recordRepository.Save();
+            RecordRepository.Save(record);
 
-            RecordList = new ObservableCollection<Record>(recordRepository.FindAll());
+            RecordList = new ObservableCollection<Record>(RecordRepository.FindAll());
 
             RecordingReadyCommandExecute();
         }

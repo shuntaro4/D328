@@ -4,7 +4,7 @@ namespace D328.Repository
 {
     public interface IRepository<T>
     {
-        void Save();
+        void Save(T target);
 
         int GetMaxId();
 
