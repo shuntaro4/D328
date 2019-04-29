@@ -8,7 +8,8 @@ namespace D328.Repository
         public static Realm GetInstance()
         {
             var dbpath = $@"{AppDomain.CurrentDomain.BaseDirectory}D328.realm";
-            return Realm.GetInstance(dbpath);
+            var config = new RealmConfiguration(dbpath);
+            return Realm.GetInstance(config);
         }
     }
 }
