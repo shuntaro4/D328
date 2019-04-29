@@ -26,6 +26,8 @@ namespace D328.Repository
             var realm = RealmHelper.GetInstance();
             realm.Write(() =>
             {
+                var id = GetMaxId();
+                Id = id + 1;
                 realm.Add(this);
             });
         }
