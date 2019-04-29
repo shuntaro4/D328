@@ -1,5 +1,6 @@
 ﻿using D328.Domain.Model;
 using Realms;
+using System.Linq;
 
 namespace D328.Repository
 {
@@ -27,6 +28,14 @@ namespace D328.Repository
             {
                 realm.Add(this);
             });
+        }
+
+        public int GetMaxId()
+        {
+            var realm = RealmHelper.GetInstance();
+            return realm.All<RecordRepository>()
+                .OrderByDescending(x => x.Id)
+                .FirstOrDefault()?.Id ?? 0;
         }
     }
 }
