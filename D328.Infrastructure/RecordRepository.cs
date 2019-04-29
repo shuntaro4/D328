@@ -22,7 +22,7 @@ namespace D328.Repository
 
         public void Save()
         {
-            var realm = Realm.GetInstance();
+            var realm = RealmHelper.GetInstance();
             realm.Write(() =>
             {
                 realm.Add(this);
