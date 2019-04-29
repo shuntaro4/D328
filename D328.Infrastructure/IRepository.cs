@@ -1,9 +1,13 @@
-﻿namespace D328.Repository
+﻿using System.Collections.Generic;
+
+namespace D328.Repository
 {
-    public interface IRepository
+    public interface IRepository<T>
     {
         void Save();
 
         int GetMaxId();
+
+        IEnumerable<T> FindAll();
     }
 }
