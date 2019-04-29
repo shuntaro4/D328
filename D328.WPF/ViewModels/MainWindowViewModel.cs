@@ -112,7 +112,7 @@ namespace D328.WPF.ViewModels
 
         private IAudioPlayerService AudioPlayerService;
 
-        private RecordRepository RecordRepository = new RecordRepository();
+        private IRepository<Record> RecordRepository = new RecordRepository();
 
         public MainWindowViewModel()
         {
