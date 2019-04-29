@@ -3,5 +3,7 @@
     public interface IRepository
     {
         void Save();
+
+        int GetMaxId();
     }
 }
