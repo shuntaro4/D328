@@ -6,9 +6,14 @@
 
         public string AudioPath { get; } = "";
 
-        public Record(string audioPath)
+        private Record(string audioPath)
         {
             AudioPath = audioPath;
+        }
+
+        public static Record CreateNew(string audioPath)
+        {
+            return new Record(audioPath);
         }
     }
 }
