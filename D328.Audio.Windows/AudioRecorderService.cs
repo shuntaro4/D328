@@ -109,7 +109,7 @@ namespace D328.Audio.Windows
 
         public Record GetRecordData()
         {
-            return Record.CreateNew(_outputFilePath);
+            return Record.CreateNew(_outputFilePath, title: _outputFilePath);
         }
 
         private void OnDataAvailableHandler(EventArgs e)
