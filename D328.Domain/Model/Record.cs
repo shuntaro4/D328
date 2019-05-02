@@ -6,14 +6,17 @@
 
         public string AudioPath { get; } = "";
 
-        private Record(int Id, string audioPath)
+        public string Title { get; set; } = "";
+
+        private Record(int Id, string audioPath, string title)
         {
             AudioPath = audioPath;
+            Title = title;
         }
 
-        public static Record CreateNew(string audioPath, int Id = -1)
+        public static Record CreateNew(string audioPath, int Id = -1, string title = "")
         {
-            return new Record(Id, audioPath);
+            return new Record(Id, audioPath, title);
         }
     }
 }

@@ -9,6 +9,8 @@ namespace D328.Repository
 
         public string AudioPath { get; set; }
 
+        public string Title { get; set; }
+
         public RecordObject()
         {
         }
@@ -17,11 +19,12 @@ namespace D328.Repository
         {
             Id = record.Id;
             AudioPath = record.AudioPath;
+            Title = record.Title;
         }
 
         public Record ToRecord()
         {
-            return Record.CreateNew(AudioPath, Id);
+            return Record.CreateNew(AudioPath, Id, Title);
         }
     }
 }
