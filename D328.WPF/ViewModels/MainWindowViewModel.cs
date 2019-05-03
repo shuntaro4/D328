@@ -96,7 +96,7 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand RecordingStopCommand { get; }
 
-        public DelegateCommand WindowCloseCommand { get; }
+        public DelegateCommand WindowClosedCommand { get; }
 
         public DelegateCommand PlaybackStartCommand { get; }
 
@@ -130,7 +130,7 @@ namespace D328.WPF.ViewModels
 
             RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);
             RecordingStopCommand = new DelegateCommand(RecordingStopCommandExecute);
-            WindowCloseCommand = new DelegateCommand(WindowClosedCommandExecute);
+            WindowClosedCommand = new DelegateCommand(WindowClosedCommandExecute);
             PlaybackStartCommand = new DelegateCommand(PlaybackStartCommandExecute);
             PlaybackPauseCommand = new DelegateCommand(PlaybackPauseCommandExecute);
             PlaybackStopCommand = new DelegateCommand(PlaybackStopCommandExecute);

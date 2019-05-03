@@ -12,7 +12,7 @@
     prism:ViewModelLocator.AutoWireViewModel="True">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closed">
-            <i:InvokeCommandAction Command="{Binding WindowCloseCommand}" />
+            <i:InvokeCommandAction Command="{Binding WindowClosedCommand}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
