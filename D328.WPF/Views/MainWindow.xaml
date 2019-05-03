@@ -17,123 +17,139 @@
     </i:Interaction.Triggers>
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="2*" />
-        </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid
-            Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="2">
+        <Menu Grid.Row="0">
+            <MenuItem Header="ファイル(_F)">
+                <MenuItem Header="設定" InputGestureText="Ctrl+," />
+                <Separator />
+                <MenuItem Command="{Binding CloseCommand}" Header="終了" />
+            </MenuItem>
+        </Menu>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="5*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock
-                    Grid.Column="0"
-                    HorizontalAlignment="Right"
-                    Text="Input:" />
-                <ComboBox
-                    Grid.Column="1"
-                    DisplayMemberPath="Name"
-                    ItemsSource="{Binding InputAudioDevices}"
-                    SelectedValue="{Binding SelectedInputAudioDevice}" />
-            </Grid>
-
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="5*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock
-                    Grid.Column="0"
-                    HorizontalAlignment="Right"
-                    Text="Output:" />
-                <ComboBox
-                    Grid.Column="1"
-                    DisplayMemberPath="Name"
-                    ItemsSource="{Binding OutputAudioDevices}"
-                    SelectedValue="{Binding SelectedOutputAudioDevice}" />
-            </Grid>
-        </Grid>
-
-        <ListBox
-            Grid.Row="1"
-            Grid.Column="0"
-            DisplayMemberPath="AudioPath"
-            ItemsSource="{Binding RecordList}"
-            SelectedValue="{Binding SelectedRecord}">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding RecordListSelectionChangedCommand}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </ListBox>
-
-        <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
-                <TextBox Text="{Binding SelectedRecord.Title}" />
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        HorizontalAlignment="Right"
+                        Text="Input:" />
+                    <ComboBox
+                        Grid.Column="1"
+                        DisplayMemberPath="Name"
+                        ItemsSource="{Binding InputAudioDevices}"
+                        SelectedValue="{Binding SelectedInputAudioDevice}" />
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        HorizontalAlignment="Right"
+                        Text="Output:" />
+                    <ComboBox
+                        Grid.Column="1"
+                        DisplayMemberPath="Name"
+                        ItemsSource="{Binding OutputAudioDevices}"
+                        SelectedValue="{Binding SelectedOutputAudioDevice}" />
+                </Grid>
             </Grid>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="5*" />
-                </Grid.ColumnDefinitions>
-                <Button
-                    Grid.Column="0"
-                    Command="{Binding RecordingStartCommand}"
-                    Content="{iconPacks:FontAwesome MicrophoneAltSolid}"
-                    IsEnabled="{Binding WindowMode, Converter={StaticResource WindowModeToRecordingButtonEnabledConverter}, Mode=OneWay}" />
 
-                <Button
-                    Grid.Column="1"
-                    Command="{Binding RecordingStopCommand}"
-                    Content="{iconPacks:FontAwesome StopCircleRegular}"
-                    IsEnabled="{Binding WindowMode, Converter={StaticResource WindowModeToRecordingStopButtonEnabledConverter}, Mode=OneWay}" />
+            <ListBox
+                Grid.Row="1"
+                Grid.Column="0"
+                DisplayMemberPath="AudioPath"
+                ItemsSource="{Binding RecordList}"
+                SelectedValue="{Binding SelectedRecord}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding RecordListSelectionChangedCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
 
-                <Button
-                    Grid.Column="2"
-                    Command="{Binding PlaybackStartCommand}"
-                    Content="{iconPacks:FontAwesome PlaySolid}" />
+            <Grid Grid.Row="1" Grid.Column="1">
 
-                <Button
-                    Grid.Column="3"
-                    Command="{Binding PlaybackPauseCommand}"
-                    Content="{iconPacks:FontAwesome PauseSolid}" />
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-                <Button
-                    Grid.Column="4"
-                    Command="{Binding PlaybackStopCommand}"
-                    Content="{iconPacks:FontAwesome StopSolid}" />
+                <Grid Grid.Row="0">
+                    <TextBox Text="{Binding SelectedRecord.Title}" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Column="0"
+                        Command="{Binding RecordingStartCommand}"
+                        Content="{iconPacks:FontAwesome MicrophoneAltSolid}"
+                        IsEnabled="{Binding WindowMode, Converter={StaticResource WindowModeToRecordingButtonEnabledConverter}, Mode=OneWay}" />
 
-                <ProgressBar
-                    Grid.Column="5"
-                    Maximum="1"
-                    Value="{Binding Peak}" />
+                    <Button
+                        Grid.Column="1"
+                        Command="{Binding RecordingStopCommand}"
+                        Content="{iconPacks:FontAwesome StopCircleRegular}"
+                        IsEnabled="{Binding WindowMode, Converter={StaticResource WindowModeToRecordingStopButtonEnabledConverter}, Mode=OneWay}" />
+
+                    <Button
+                        Grid.Column="2"
+                        Command="{Binding PlaybackStartCommand}"
+                        Content="{iconPacks:FontAwesome PlaySolid}" />
+
+                    <Button
+                        Grid.Column="3"
+                        Command="{Binding PlaybackPauseCommand}"
+                        Content="{iconPacks:FontAwesome PauseSolid}" />
+
+                    <Button
+                        Grid.Column="4"
+                        Command="{Binding PlaybackStopCommand}"
+                        Content="{iconPacks:FontAwesome StopSolid}" />
+
+                    <ProgressBar
+                        Grid.Column="5"
+                        Maximum="1"
+                        Value="{Binding Peak}" />
+                </Grid>
             </Grid>
         </Grid>
     </Grid>
+
 </views:D328Window>
