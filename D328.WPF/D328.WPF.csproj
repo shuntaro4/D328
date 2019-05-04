@@ -128,7 +128,7 @@
       <Project>{D5289ABD-BF34-43D3-879D-914BA0113E86}</Project>
       <Name>D328.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\D328.Infrastructure\D328.Repository.csproj">
+    <ProjectReference Include="..\D328.Repository\D328.Repository.csproj">
       <Project>{a0880271-258c-4112-8b33-f0f6b6ed44f8}</Project>
       <Name>D328.Repository</Name>
     </ProjectReference>
