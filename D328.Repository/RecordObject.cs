@@ -1,5 +1,6 @@
 ﻿using D328.Domain.Model;
 using Realms;
+using System.Collections.Generic;
 
 namespace D328.Repository
 {
@@ -10,6 +11,9 @@ namespace D328.Repository
         public string AudioPath { get; set; }
 
         public string Title { get; set; }
+
+        public IList<LineObject> Lines { get; }
+
 
         public RecordObject()
         {
