@@ -126,6 +126,11 @@
 
                 <Grid Grid.Row="2">
                     <ListBox ItemsSource="{Binding SelectedRecord.Lines}" SelectedValue="{Binding SelectedLine}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding RecordListSelectionChangedCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>

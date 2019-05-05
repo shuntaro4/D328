@@ -119,6 +119,8 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand CreateNewRecordCommand { get; }
 
+        public DelegateCommand LineListSelectionChangedCommand { get; }
+
 
         private IAudioDeviceService AudioDeviceService = new AudioDeviceService();
 
@@ -149,6 +151,7 @@ namespace D328.WPF.ViewModels
             RecordListSelectionChangedCommand = new DelegateCommand(RecordListSelectionChangedCommandExecute);
             CloseCommand = new DelegateCommand(CloseCommandExecute);
             CreateNewRecordCommand = new DelegateCommand(CreateNewRecordCommandExecute);
+            LineListSelectionChangedCommand = new DelegateCommand(RecordListSelectionChangedCommandExecute);
 
             RecordingReadyCommandExecute();
         }
