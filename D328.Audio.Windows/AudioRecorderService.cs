@@ -27,14 +27,9 @@ namespace D328.Audio.Windows
         private bool _isRecording;
 
 
-        public AudioRecorderService(AudioDevice inputAudioDevice, string outputFilePath = "")
+        public AudioRecorderService(AudioDevice inputAudioDevice)
         {
-            _outputFilePath = outputFilePath;
-
-            if (string.IsNullOrWhiteSpace(_outputFilePath))
-            {
-                _outputFilePath = $"{DateTime.Now.ToString("yyyy-MM-dd-HHmmss")}.wav";
-            }
+            _outputFilePath = $"{DateTime.Now.ToString("yyyy-MM-dd-HHmmss")}.wav";
 
             _inputAudioDevice = new AudioDeviceService().InputAudioDeviceToMMDevice(inputAudioDevice);
             if (_inputAudioDevice == null)
