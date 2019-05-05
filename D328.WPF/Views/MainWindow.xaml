@@ -140,29 +140,29 @@
                                     <TextBox Grid.Column="0" Text="{Binding SortNumber}" />
                                     <Button
                                         Grid.Column="1"
-                                        Command="{Binding RecordingStartCommand}"
+                                        Command="{Binding Path=DataContext.RecordingStartCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
                                         Content="{iconPacks:FontAwesome MicrophoneAltSolid}"
                                         IsEnabled="{Binding WindowMode, Converter={StaticResource WindowModeToRecordingButtonEnabledConverter}, Mode=OneWay}" />
 
                                     <Button
                                         Grid.Column="2"
-                                        Command="{Binding RecordingStopCommand}"
+                                        Command="{Binding Path=DataContext.RecordingStopCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
                                         Content="{iconPacks:FontAwesome StopCircleRegular}"
                                         IsEnabled="{Binding WindowMode, Converter={StaticResource WindowModeToRecordingStopButtonEnabledConverter}, Mode=OneWay}" />
 
                                     <Button
                                         Grid.Column="3"
-                                        Command="{Binding PlaybackStartCommand}"
+                                        Command="{Binding Path=DataContext.PlaybackStartCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
                                         Content="{iconPacks:FontAwesome PlaySolid}" />
 
                                     <Button
                                         Grid.Column="4"
-                                        Command="{Binding PlaybackPauseCommand}"
+                                        Command="{Binding Path=DataContext.PlaybackPauseCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
                                         Content="{iconPacks:FontAwesome PauseSolid}" />
 
                                     <Button
                                         Grid.Column="5"
-                                        Command="{Binding PlaybackStopCommand}"
+                                        Command="{Binding Path=DataContext.PlaybackStopCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
                                         Content="{iconPacks:FontAwesome StopSolid}" />
                                 </Grid>
                             </DataTemplate>
