@@ -14,7 +14,7 @@
             Title = title;
         }
 
-        public static Record CreateNew(string audioPath, int Id = -1, string title = "")
+        public static Record CreateNew(int Id = -1, string title = "", string audioPath = "")
         {
             return new Record(Id, audioPath, title);
         }

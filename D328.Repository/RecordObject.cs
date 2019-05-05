@@ -28,7 +28,7 @@ namespace D328.Repository
 
         public Record ToRecord()
         {
-            return Record.CreateNew(AudioPath, Id, Title);
+            return Record.CreateNew(Id, Title, AudioPath);
         }
     }
 }
