@@ -6,16 +6,26 @@ namespace D328.Audio.Windows
 {
     public class AudioPlayerService : IAudioPlayerService
     {
-        private readonly Record _recordData;
-
         private IWavePlayer _wavePlayer;
 
         private WaveStream _waveStream;
 
-        public AudioPlayerService(Record record)
+        public AudioPlayerService(Record record) : this(record.AudioPath)
         {
-            _recordData = record;
-            var waveStream = new AudioFileReader(_recordData.AudioPath);
+        }
+
+        public AudioPlayerService(Line line) : this(line.AudioPath)
+        {
+        }
+
+        private AudioPlayerService(string audioPath)
+        {
+            if (audioPath == "")
+            {
+                return;
+            }
+
+            var waveStream = new AudioFileReader(audioPath);
             _waveStream = waveStream;
             var sampleProvider = new SampleProvider(waveStream);
 
