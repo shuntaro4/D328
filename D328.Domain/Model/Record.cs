@@ -22,5 +22,10 @@ namespace D328.Domain.Model
         {
             return new Record(Id, audioPath, title);
         }
+
+        public void AddLine(Line line)
+        {
+            Lines.Add(line);
+        }
     }
 }
