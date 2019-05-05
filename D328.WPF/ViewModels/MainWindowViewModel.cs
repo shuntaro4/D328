@@ -6,6 +6,7 @@ using D328.Repository;
 using Prism.Commands;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace D328.WPF.ViewModels
 {
@@ -82,6 +83,14 @@ namespace D328.WPF.ViewModels
         {
             get => _selectedRecord;
             set => SetProperty(ref _selectedRecord, value);
+        }
+
+        private Line _selectedLine;
+
+        public Line SelectedLine
+        {
+            get => _selectedLine;
+            set => SetProperty(ref _selectedLine, value);
         }
 
         private MainWindowMode _windowMode;
@@ -228,7 +237,10 @@ namespace D328.WPF.ViewModels
 
         private void CreateNewRecordCommandExecute()
         {
-            SelectedRecord = Record.CreateNew();
+            var record = Record.CreateNew();
+            record.AddLine(Line.CreateNew());
+            SelectedRecord = record;
+            SelectedLine = record.Lines.FirstOrDefault();
         }
     }
 }
