@@ -22,5 +22,9 @@ namespace D328.Repository
             AudioPath = line.AudioPath;
         }
 
+        public Line ToLine()
+        {
+            return Line.CreateNew(Id, SortNumber, AudioPath);
+        }
     }
 }
