@@ -1,4 +1,6 @@
-﻿namespace D328.Domain.Model
+﻿using System.Collections.Generic;
+
+namespace D328.Domain.Model
 {
     public class Record
     {
@@ -7,6 +9,8 @@
         public string AudioPath { get; } = "";
 
         public string Title { get; set; } = "";
+
+        public List<Line> Lines { get; } = new List<Line>();
 
         private Record(int Id, string audioPath, string title)
         {
