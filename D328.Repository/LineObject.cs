@@ -1,4 +1,5 @@
-﻿using Realms;
+﻿using D328.Domain.Model;
+using Realms;
 
 namespace D328.Repository
 {
@@ -13,5 +14,13 @@ namespace D328.Repository
         public LineObject()
         {
         }
+
+        public LineObject(Line line)
+        {
+            Id = line.Id;
+            SortNumber = line.SortNumber;
+            AudioPath = line.AudioPath;
+        }
+
     }
 }
