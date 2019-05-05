@@ -4,7 +4,7 @@
     {
         public int Id { get; } = -1;
 
-        public int SortNumber { get; } = -1;
+        public int SortNumber { get; set; } = 1;
 
         public string AudioPath { get; } = "";
 
@@ -15,7 +15,7 @@
             AudioPath = audioPath;
         }
 
-        public static Line CreateNew(int id = -1, int sortNumber = -1, string audioPath = "")
+        public static Line CreateNew(int id = -1, int sortNumber = 1, string audioPath = "")
         {
             return new Line(id, sortNumber, audioPath);
         }
