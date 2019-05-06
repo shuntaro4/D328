@@ -1,4 +1,6 @@
-﻿namespace D328.Domain.Model
+﻿using D328.Domain.Enum;
+
+namespace D328.Domain.Model
 {
     public class Line
     {
@@ -7,6 +9,8 @@
         public int SortNumber { get; set; } = 1;
 
         public string AudioPath { get; } = "";
+
+        public LineMode LineMode { get; set; } = LineMode.Normal;
 
         private Line(int id, int sortNumber, string audioPath)
         {

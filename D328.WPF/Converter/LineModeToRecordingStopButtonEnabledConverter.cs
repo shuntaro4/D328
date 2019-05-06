@@ -1,20 +1,20 @@
-﻿using System;
+﻿using D328.Domain.Enum;
+using System;
 using System.Globalization;
 using System.Windows.Data;
-using static D328.WPF.ViewModels.MainWindowViewModel;
 
 namespace D328.WPF.Converter
 {
-    public class WindowModeToRecordingButtonEnabledConverter : IValueConverter
+    public class LineModeToRecordingStopButtonEnabledConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var windowMode = value as MainWindowMode?;
-            if (windowMode == null)
+            var lineMode = value as LineMode?;
+            if (lineMode == null)
             {
                 return false;
             }
-            return windowMode == MainWindowMode.Normal;
+            return lineMode == LineMode.Recording || lineMode == LineMode.Pause;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

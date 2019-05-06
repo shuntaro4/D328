@@ -1,6 +1,7 @@
 ﻿using D328.Application.Services;
 using D328.Audio.Windows;
 using D328.Domain;
+using D328.Domain.Enum;
 using D328.Domain.Model;
 using D328.Repository;
 using Prism.Commands;
@@ -12,14 +13,6 @@ namespace D328.WPF.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        public enum MainWindowMode
-        {
-            Normal,
-            Recording,
-            Pause,
-            Playing
-        };
-
         private string _title = "D328";
 
 
@@ -69,49 +62,41 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _peek, value);
         }
 
-        private ObservableCollection<Record> _recordList;
+        private ObservableCollection<RecordViewModel> _recordList;
 
-        public ObservableCollection<Record> RecordList
+        public ObservableCollection<RecordViewModel> RecordList
         {
             get => _recordList;
             set => SetProperty(ref _recordList, value);
         }
 
-        private Record _selectedRecord;
+        private RecordViewModel _selectedRecord;
 
-        public Record SelectedRecord
+        public RecordViewModel SelectedRecord
         {
             get => _selectedRecord;
             set => SetProperty(ref _selectedRecord, value);
         }
 
-        private Line _selectedLine;
+        private LineViewModel _selectedLine;
 
-        public Line SelectedLine
+        public LineViewModel SelectedLine
         {
             get => _selectedLine;
             set => SetProperty(ref _selectedLine, value);
         }
 
-        private MainWindowMode _windowMode;
+        public DelegateCommand<LineViewModel> RecordingStartCommand { get; }
 
-        public MainWindowMode WindowMode
-        {
-            get => _windowMode;
-            set => SetProperty(ref _windowMode, value);
-        }
-
-        public DelegateCommand RecordingStartCommand { get; }
-
-        public DelegateCommand RecordingStopCommand { get; }
+        public DelegateCommand<LineViewModel> RecordingStopCommand { get; }
 
         public DelegateCommand WindowClosedCommand { get; }
 
-        public DelegateCommand<Line> PlaybackStartCommand { get; }
+        public DelegateCommand<LineViewModel> PlaybackStartCommand { get; }
 
-        public DelegateCommand PlaybackPauseCommand { get; }
+        public DelegateCommand<LineViewModel> PlaybackPauseCommand { get; }
 
-        public DelegateCommand PlaybackStopCommand { get; }
+        public DelegateCommand<LineViewModel> PlaybackStopCommand { get; }
 
         public DelegateCommand RecordListSelectionChangedCommand { get; }
 
@@ -140,14 +125,14 @@ namespace D328.WPF.ViewModels
             OutputAudioDevices = new ObservableCollection<AudioDevice>(outputAudioDevice);
             SelectedOutputAudioDevice = AudioDeviceService.GetSelectedOutputAudioDevice(OutputAudioDevices);
 
-            RecordList = new ObservableCollection<Record>(RecordRepository.FindAll());
+            RecordList = new ObservableCollection<RecordViewModel>(RecordRepository.FindAll().Select(x => new RecordViewModel(x)));
 
-            RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);
-            RecordingStopCommand = new DelegateCommand(RecordingStopCommandExecute);
+            RecordingStartCommand = new DelegateCommand<LineViewModel>(RecordingStartCommandExecute);
+            RecordingStopCommand = new DelegateCommand<LineViewModel>(RecordingStopCommandExecute);
             WindowClosedCommand = new DelegateCommand(WindowClosedCommandExecute);
-            PlaybackStartCommand = new DelegateCommand<Line>(PlaybackStartCommandExecute);
-            PlaybackPauseCommand = new DelegateCommand(PlaybackPauseCommandExecute);
-            PlaybackStopCommand = new DelegateCommand(PlaybackStopCommandExecute);
+            PlaybackStartCommand = new DelegateCommand<LineViewModel>(PlaybackStartCommandExecute);
+            PlaybackPauseCommand = new DelegateCommand<LineViewModel>(PlaybackPauseCommandExecute);
+            PlaybackStopCommand = new DelegateCommand<LineViewModel>(PlaybackStopCommandExecute);
             RecordListSelectionChangedCommand = new DelegateCommand(RecordListSelectionChangedCommandExecute);
             CloseCommand = new DelegateCommand(CloseCommandExecute);
             CreateNewRecordCommand = new DelegateCommand(CreateNewRecordCommandExecute);
@@ -163,8 +148,6 @@ namespace D328.WPF.ViewModels
                 return;
             }
 
-            WindowMode = MainWindowMode.Normal;
-
             AudioRecorderService = new AudioRecorderService(SelectedInputAudioDevice);
             AudioRecorderService.SubscriveEventOnDataAvailable((s, _) =>
             {
@@ -178,22 +161,22 @@ namespace D328.WPF.ViewModels
             AudioRecorderService.Ready();
         }
 
-        private void RecordingStartCommandExecute()
+        private void RecordingStartCommandExecute(LineViewModel line)
         {
-            WindowMode = MainWindowMode.Recording;
+            line.LineMode = LineMode.Recording;
 
             AudioRecorderService?.Start();
         }
 
-        private void RecordingStopCommandExecute()
+        private void RecordingStopCommandExecute(LineViewModel line)
         {
-            WindowMode = MainWindowMode.Normal;
+            line.LineMode = LineMode.Normal;
 
             AudioRecorderService?.Stop();
             var record = AudioRecorderService.GetRecordData();
             RecordRepository.Save(record);
 
-            RecordList = new ObservableCollection<Record>(RecordRepository.FindAll());
+            RecordList = new ObservableCollection<RecordViewModel>(RecordRepository.FindAll().Select(x => new RecordViewModel(x)));
 
             RecordingReadyCommandExecute();
         }
@@ -207,22 +190,24 @@ namespace D328.WPF.ViewModels
             AudioPlayerService = null;
         }
 
-        private void PlaybackStartCommandExecute(Line line)
+        private void PlaybackStartCommandExecute(LineViewModel line)
         {
             if (AudioPlayerService == null)
             {
-                AudioPlayerService = new AudioPlayerService(line);
+                AudioPlayerService = new AudioPlayerService(line.ToDomainModel());
             }
             AudioPlayerService.Play();
         }
 
-        private void PlaybackPauseCommandExecute()
+        private void PlaybackPauseCommandExecute(LineViewModel line)
         {
+            line.LineMode = LineMode.Pause;
             AudioPlayerService?.Pause();
         }
 
-        private void PlaybackStopCommandExecute()
+        private void PlaybackStopCommandExecute(LineViewModel line)
         {
+            line.LineMode = LineMode.Normal;
             AudioPlayerService?.Stop();
         }
 
@@ -240,9 +225,13 @@ namespace D328.WPF.ViewModels
         private void CreateNewRecordCommandExecute()
         {
             var record = Record.CreateNew();
-            record.AddLine(Line.CreateNew());
-            SelectedRecord = record;
-            SelectedLine = record.Lines.FirstOrDefault();
+            record.AddLine(Line.CreateNew(sortNumber: 1));
+            record.AddLine(Line.CreateNew(sortNumber: 2));
+            record.AddLine(Line.CreateNew(sortNumber: 3));
+            record.AddLine(Line.CreateNew(sortNumber: 4));
+            record.AddLine(Line.CreateNew(sortNumber: 5));
+            SelectedRecord = new RecordViewModel(record);
+            SelectedLine = SelectedRecord.Lines.FirstOrDefault();
         }
     }
 }
