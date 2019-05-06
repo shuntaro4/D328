@@ -1,5 +1,4 @@
-﻿using D328.Domain.Model;
-using System;
+﻿using System;
 
 namespace D328.Application.Services
 {
@@ -15,6 +14,6 @@ namespace D328.Application.Services
 
         void SubscriveEventOnDataAvailable(EventHandler subscriveEvent);
 
-        Record GetRecordData();
+        string GetAudioPath();
     }
 }

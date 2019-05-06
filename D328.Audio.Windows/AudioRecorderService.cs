@@ -1,6 +1,5 @@
 ﻿using D328.Application.Services;
 using D328.Domain;
-using D328.Domain.Model;
 using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using System;
@@ -102,9 +101,9 @@ namespace D328.Audio.Windows
             _onDataAvailable += subscriveEvent;
         }
 
-        public Record GetRecordData()
+        public string GetAudioPath()
         {
-            return Record.CreateNew(title: _outputFilePath, audioPath: _outputFilePath); // todo title は仮
+            return _outputFilePath;
         }
 
         private void OnDataAvailableHandler(EventArgs e)

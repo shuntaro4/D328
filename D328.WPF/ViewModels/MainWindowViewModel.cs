@@ -173,10 +173,7 @@ namespace D328.WPF.ViewModels
             line.LineMode = LineMode.Normal;
 
             AudioRecorderService?.Stop();
-            var record = AudioRecorderService.GetRecordData();
-            RecordRepository.Save(record);
-
-            RecordList = new ObservableCollection<RecordViewModel>(RecordRepository.FindAll().Select(x => new RecordViewModel(x)));
+            line.AudioPath = AudioRecorderService.GetAudioPath();
 
             RecordingReadyCommandExecute();
         }
