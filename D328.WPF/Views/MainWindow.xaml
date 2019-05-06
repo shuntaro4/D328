@@ -24,6 +24,10 @@
 
         <Menu Grid.Row="0">
             <MenuItem Header="ファイル(_F)">
+                <MenuItem
+                    Command="{Binding CreateNewRecordCommand}"
+                    Header="新規レコード"
+                    InputGestureText="Ctrl+N" />
                 <MenuItem Header="設定" InputGestureText="Ctrl+," />
                 <Separator />
                 <MenuItem Command="{Binding CloseCommand}" Header="終了" />
