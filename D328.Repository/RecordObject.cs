@@ -24,6 +24,11 @@ namespace D328.Repository
             Id = record.Id;
             AudioPath = record.AudioPath;
             Title = record.Title;
+            Lines = new List<LineObject>();
+            foreach (var line in record.Lines)
+            {
+                Lines.Add(new LineObject(line));
+            }
         }
 
         public Record ToRecord()

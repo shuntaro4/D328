@@ -30,6 +30,11 @@
                     InputGestureText="Ctrl+N" />
                 <MenuItem Header="設定" InputGestureText="Ctrl+," />
                 <Separator />
+                <MenuItem
+                    Command="{Binding SelectedRecord.SaveRecordCommand}"
+                    Header="保存"
+                    InputGestureText="Ctrl+S" />
+                <Separator />
                 <MenuItem Command="{Binding CloseCommand}" Header="終了" />
             </MenuItem>
         </Menu>

@@ -1,4 +1,6 @@
 ﻿using D328.Domain.Model;
+using D328.Repository;
+using Prism.Commands;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -39,12 +41,22 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _lines, value);
         }
 
+        public DelegateCommand SaveRecordCommand { get; }
+
+        private IRepository<Record> RecordRepository = new RecordRepository();
+
         public RecordViewModel(Record record)
         {
             Id = record.Id;
             Title = record.Title;
             AudioPath = record.AudioPath;
             Lines = new ObservableCollection<LineViewModel>(record.Lines.Select(x => new LineViewModel(x)));
+            SaveRecordCommand = new DelegateCommand(SaveRecordCommandExecute);
+        }
+
+        private void SaveRecordCommandExecute()
+        {
+            RecordRepository.Save(ToDomainModel());
         }
 
         public Record ToDomainModel()
