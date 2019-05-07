@@ -107,6 +107,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <ProgressBar
@@ -191,6 +192,24 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Grid.Style>
+                        <Style>
+                            <Setter Property="Grid.Visibility" Value="Visible" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding SelectedRecord}" Value="{x:Null}">
+                                    <Setter Property="Grid.Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="{iconPacks:FontAwesome PlaySolid}" />
                 </Grid>
             </Grid>
         </Grid>
