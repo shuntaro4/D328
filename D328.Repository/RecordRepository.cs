@@ -12,8 +12,11 @@ namespace D328.Repository
             realm.Write(() =>
             {
                 var recordObject = new RecordObject(record);
-                var id = GetMaxId();
-                recordObject.Id = id + 1;
+                if (recordObject.Id < 0)
+                {
+                    var id = GetMaxId();
+                    recordObject.Id = id + 1;
+                }
                 realm.Add(recordObject);
             });
         }
