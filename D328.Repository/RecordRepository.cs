@@ -14,19 +14,19 @@ namespace D328.Repository
                 var recordObject = new RecordObject(record);
                 if (recordObject.Id < 0)
                 {
-                    var id = GetMaxId();
-                    recordObject.Id = id + 1;
+                    var id = NextIdentity();
+                    recordObject.Id = id;
                 }
                 realm.Add(recordObject);
             });
         }
 
-        public int GetMaxId()
+        public int NextIdentity()
         {
             var realm = RealmHelper.GetInstance();
             return realm.All<RecordObject>()
                 .OrderByDescending(x => x.Id)
-                .FirstOrDefault()?.Id ?? 0;
+                .FirstOrDefault()?.Id + 1 ?? 1;
         }
 
         public IEnumerable<Record> FindAll()

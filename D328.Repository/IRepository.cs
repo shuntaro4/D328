@@ -6,7 +6,7 @@ namespace D328.Repository
     {
         void Save(T target);
 
-        int GetMaxId();
+        int NextIdentity();
 
         IEnumerable<T> FindAll();
     }
