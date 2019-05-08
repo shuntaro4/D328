@@ -33,7 +33,12 @@ namespace D328.Repository
 
         public Record ToRecord()
         {
-            return Record.CreateNew(Id, Title, AudioPath);
+            var record = Record.CreateNew(Id, Title, AudioPath);
+            foreach (var lineObject in Lines)
+            {
+                record.AddLine(lineObject.ToLine());
+            }
+            return record;
         }
     }
 }
