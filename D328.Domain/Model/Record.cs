@@ -12,8 +12,9 @@ namespace D328.Domain.Model
 
         public List<Line> Lines { get; } = new List<Line>();
 
-        private Record(int Id, string audioPath, string title)
+        private Record(int id, string audioPath, string title)
         {
+            Id = id;
             AudioPath = audioPath;
             Title = title;
         }
