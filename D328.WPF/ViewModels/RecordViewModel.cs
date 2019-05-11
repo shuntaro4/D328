@@ -56,6 +56,8 @@ namespace D328.WPF.ViewModels
 
         private void SaveRecordCommandExecute()
         {
+            // todo It is necessary to modify this process. now, can not saved.
+
             RecordRepository.Save(ToDomainModel());
         }
 
