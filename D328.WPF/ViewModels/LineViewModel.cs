@@ -37,16 +37,24 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _lineMode, value);
         }
 
+        private Record _record;
+        public Record Record
+        {
+            get => _record;
+            set => SetProperty(ref _record, value);
+        }
+
         public LineViewModel(Line line)
         {
             Id = line.Id;
             SortNumber = line.SortNumber;
             AudioPath = line.AudioPath;
+            Record = line.Record;
         }
 
         public Line ToDomainModel()
         {
-            return Line.CreateNew(Id, SortNumber, AudioPath);
+            return Line.CreateNew(Id, SortNumber, AudioPath, Record);
         }
     }
 }
