@@ -11,7 +11,7 @@ namespace D328.Repository
             var realm = RealmHelper.GetInstance();
             realm.Write(() =>
             {
-                var lineObject = new LineObject(line);
+                var lineObject = LineObject.CreateNew(line);
                 if (lineObject.Id < 0)
                 {
                     var id = NextIdentity();

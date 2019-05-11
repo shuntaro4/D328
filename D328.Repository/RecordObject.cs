@@ -28,7 +28,7 @@ namespace D328.Repository
             Lines = new List<LineObject>();
             foreach (var line in record.Lines)
             {
-                Lines.Add(new LineObject(line));
+                Lines.Add(LineObject.CreateNew(line));
             }
         }
 

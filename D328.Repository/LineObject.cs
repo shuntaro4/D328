@@ -17,11 +17,16 @@ namespace D328.Repository
         {
         }
 
-        public LineObject(Line line)
+        private LineObject(Line line)
         {
             Id = line.Id;
             SortNumber = line.SortNumber;
             AudioPath = line.AudioPath;
+        }
+
+        public static LineObject CreateNew(Line line)
+        {
+            return new LineObject(line);
         }
 
         public Line ToLine()
