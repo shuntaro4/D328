@@ -19,6 +19,7 @@ namespace D328.Domain.Model
             Id = id;
             SortNumber = sortNumber;
             AudioPath = audioPath;
+            Record = record;
         }
 
         public static Line CreateNew(int id = -1, int sortNumber = 1, string audioPath = "", Record record = null)
