@@ -6,6 +6,7 @@ namespace D328.Repository
 {
     internal class RecordObject : RealmObject
     {
+        [PrimaryKey]
         public int Id { get; set; }
 
         public string AudioPath { get; set; }
