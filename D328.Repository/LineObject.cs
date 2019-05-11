@@ -3,7 +3,7 @@ using Realms;
 
 namespace D328.Repository
 {
-    public class LineObject : RealmObject
+    internal class LineObject : RealmObject
     {
         public int Id { get; set; }
 
