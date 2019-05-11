@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace D328.Repository
 {
-    public class LineObjectRepository : IRepository<Line>
+    public class LineRepository : IRepository<Line>
     {
         public void Save(Line line)
         {
