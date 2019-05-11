@@ -1,6 +1,6 @@
 ﻿using D328.Domain.Model;
 using Realms;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace D328.Repository
 {
@@ -12,7 +12,8 @@ namespace D328.Repository
 
         public string Title { get; set; }
 
-        public IList<LineObject> Lines { get; }
+        [Backlink(nameof(LineObject.RecordObject))]
+        public IQueryable<LineObject> Lines { get; }
 
 
         public RecordObject()
@@ -25,11 +26,6 @@ namespace D328.Repository
             Id = record.Id;
             AudioPath = record.AudioPath;
             Title = record.Title;
-            Lines = new List<LineObject>();
-            foreach (var line in record.Lines)
-            {
-                Lines.Add(LineObject.CreateNew(line));
-            }
         }
 
         public static RecordObject CreateNew(Record record)
