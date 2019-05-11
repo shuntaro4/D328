@@ -11,6 +11,8 @@ namespace D328.Repository
 
         public string AudioPath { get; set; }
 
+        public RecordObject RecordObject { get; set; }
+
         public LineObject()
         {
         }
