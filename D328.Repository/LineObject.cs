@@ -31,7 +31,7 @@ namespace D328.Repository
 
         public Line ToLine()
         {
-            return Line.CreateNew(Id, SortNumber, AudioPath);
+            return Line.CreateNew(Id, SortNumber, AudioPath, RecordObject.ToRecord());
         }
     }
 }

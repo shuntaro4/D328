@@ -222,11 +222,11 @@ namespace D328.WPF.ViewModels
         private void CreateNewRecordCommandExecute()
         {
             var record = Record.CreateNew();
-            record.AddLine(Line.CreateNew(sortNumber: 1));
-            record.AddLine(Line.CreateNew(sortNumber: 2));
-            record.AddLine(Line.CreateNew(sortNumber: 3));
-            record.AddLine(Line.CreateNew(sortNumber: 4));
-            record.AddLine(Line.CreateNew(sortNumber: 5));
+            record.AddLine(Line.CreateNew(sortNumber: 1, record: record));
+            record.AddLine(Line.CreateNew(sortNumber: 2, record: record));
+            record.AddLine(Line.CreateNew(sortNumber: 3, record: record));
+            record.AddLine(Line.CreateNew(sortNumber: 4, record: record));
+            record.AddLine(Line.CreateNew(sortNumber: 5, record: record));
             SelectedRecord = new RecordViewModel(record);
             SelectedLine = SelectedRecord.Lines.FirstOrDefault();
         }
