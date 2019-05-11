@@ -22,6 +22,7 @@ namespace D328.Repository
             Id = line.Id;
             SortNumber = line.SortNumber;
             AudioPath = line.AudioPath;
+            RecordObject = RecordObject.CreateNew(line.Record);
         }
 
         public static LineObject CreateNew(Line line)
