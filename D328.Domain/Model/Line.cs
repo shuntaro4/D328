@@ -12,16 +12,18 @@ namespace D328.Domain.Model
 
         public LineMode LineMode { get; set; } = LineMode.Normal;
 
-        private Line(int id, int sortNumber, string audioPath)
+        public Record Record { get; set; }
+
+        private Line(int id, int sortNumber, string audioPath, Record record)
         {
             Id = id;
             SortNumber = sortNumber;
             AudioPath = audioPath;
         }
 
-        public static Line CreateNew(int id = -1, int sortNumber = 1, string audioPath = "")
+        public static Line CreateNew(int id = -1, int sortNumber = 1, string audioPath = "", Record record = null)
         {
-            return new Line(id, sortNumber, audioPath);
+            return new Line(id, sortNumber, audioPath, record);
         }
     }
 }
