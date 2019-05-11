@@ -11,7 +11,7 @@ namespace D328.Repository
             var realm = RealmHelper.GetInstance();
             realm.Write(() =>
             {
-                var recordObject = new RecordObject(record);
+                var recordObject = RecordObject.CreateNew(record);
                 if (recordObject.Id < 0)
                 {
                     var id = NextIdentity();

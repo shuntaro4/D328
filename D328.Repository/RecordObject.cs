@@ -17,9 +17,10 @@ namespace D328.Repository
 
         public RecordObject()
         {
+            // Please do not use. This constructor is realm library only.
         }
 
-        public RecordObject(Record record)
+        private RecordObject(Record record)
         {
             Id = record.Id;
             AudioPath = record.AudioPath;
@@ -29,6 +30,11 @@ namespace D328.Repository
             {
                 Lines.Add(new LineObject(line));
             }
+        }
+
+        public static RecordObject CreateNew(Record record)
+        {
+            return new RecordObject(record);
         }
 
         public Record ToRecord()
