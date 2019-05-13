@@ -34,7 +34,7 @@ namespace D328.Repository
             return new RecordObject(record);
         }
 
-        public Record ToRecord()
+        public Record ToDomainModel()
         {
             var record = Record.CreateNew(Id, Title, AudioPath);
             foreach (var lineObject in Lines)

@@ -35,7 +35,7 @@ namespace D328.Repository
             return realm.All<RecordObject>()
                 // "Select" is not supported by Realm. So, convert it to List type.
                 .ToList()
-                .Select(x => x.ToRecord());
+                .Select(x => x.ToDomainModel());
         }
     }
 }
