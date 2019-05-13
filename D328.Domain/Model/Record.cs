@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace D328.Domain.Model
 {
@@ -21,6 +22,7 @@ namespace D328.Domain.Model
 
         public static Record CreateNew(int Id = -1, string title = "", string audioPath = "")
         {
+            title = title == "" ? DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") : title;
             return new Record(Id, audioPath, title);
         }
 
