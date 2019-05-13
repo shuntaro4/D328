@@ -43,9 +43,9 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand SaveRecordCommand { get; }
 
-        private IRepository<Record> RecordRepository = new RecordRepository();
+        private RecordRepository RecordRepository = new RecordRepository();
 
-        private IRepository<Line> LineRepository = new LineRepository();
+        private LineRepository LineRepository = new LineRepository();
 
         public RecordViewModel(Record record)
         {
@@ -59,10 +59,10 @@ namespace D328.WPF.ViewModels
         private void SaveRecordCommandExecute()
         {
             var record = ToDomainModel();
-            RecordRepository.Save(record);
+            var savedRecord = RecordRepository.Save(record);
             foreach (var line in record.Lines)
             {
-                LineRepository.Save(line);
+                LineRepository.Save(line, savedRecord);
             }
         }
 
@@ -71,7 +71,7 @@ namespace D328.WPF.ViewModels
             var record = Record.CreateNew(Id, Title, AudioPath);
             foreach (var line in Lines)
             {
-                record.AddLine(line.ToDomainModel());
+                record.Lines.Add(line.ToDomainModel());
             }
             return record;
         }

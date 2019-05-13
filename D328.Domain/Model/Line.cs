@@ -4,27 +4,24 @@ namespace D328.Domain.Model
 {
     public class Line
     {
-        public int Id { get; } = -1;
+        public int Id { get; }
 
-        public int SortNumber { get; set; } = 1;
+        public int SortNumber { get; set; }
 
-        public string AudioPath { get; } = "";
+        public string AudioPath { get; }
 
         public LineMode LineMode { get; set; } = LineMode.Normal;
 
-        public Record Record { get; set; }
-
-        private Line(int id, int sortNumber, string audioPath, Record record)
+        private Line(int id, int sortNumber, string audioPath)
         {
             Id = id;
             SortNumber = sortNumber;
             AudioPath = audioPath;
-            Record = record;
         }
 
-        public static Line CreateNew(int id = -1, int sortNumber = 1, string audioPath = "", Record record = null)
+        public static Line CreateNew(int id = -1, int sortNumber = 1, string audioPath = "")
         {
-            return new Line(id, sortNumber, audioPath, record);
+            return new Line(id, sortNumber, audioPath);
         }
     }
 }

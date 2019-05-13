@@ -6,19 +6,20 @@ namespace D328.Repository
 {
     public class RecordRepository : IRepository<Record>
     {
-        public void Save(Record record)
+        public Record Save(Record record)
         {
             var realm = RealmHelper.GetInstance();
+            var recordObject = RecordObject.CreateNew(record);
             realm.Write(() =>
             {
-                var recordObject = RecordObject.CreateNew(record);
                 if (recordObject.Id < 0)
                 {
                     var id = NextIdentity();
                     recordObject.Id = id;
                 }
-                realm.Add(recordObject);
+                realm.Add(recordObject, true);
             });
+            return recordObject.ToDomainModel();
         }
 
         public int NextIdentity()
@@ -32,10 +33,10 @@ namespace D328.Repository
         public IEnumerable<Record> FindAll()
         {
             var realm = RealmHelper.GetInstance();
-            return realm.All<RecordObject>()
-                // "Select" is not supported by Realm. So, convert it to List type.
-                .ToList()
-                .Select(x => x.ToDomainModel());
+            // "Select" is not supported by Realm. So, convert it to List type.
+            var list = realm.All<RecordObject>().ToList();
+            var result = list.Select(x => x.ToDomainModel());
+            return result;
         }
     }
 }

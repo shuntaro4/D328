@@ -6,19 +6,20 @@ namespace D328.Repository
 {
     public class LineRepository : IRepository<Line>
     {
-        public void Save(Line line)
+        public Line Save(Line line, Record record)
         {
             var realm = RealmHelper.GetInstance();
+            var lineObject = LineObject.CreateNew(line, record);
             realm.Write(() =>
             {
-                var lineObject = LineObject.CreateNew(line);
                 if (lineObject.Id < 0)
                 {
                     var id = NextIdentity();
                     lineObject.Id = id;
                 }
-                realm.Add(lineObject);
+                realm.Add(lineObject, true);
             });
+            return lineObject.ToDomainModel();
         }
 
         public int NextIdentity()
