@@ -45,6 +45,8 @@ namespace D328.WPF.ViewModels
 
         private IRepository<Record> RecordRepository = new RecordRepository();
 
+        private IRepository<Line> LineRepository = new LineRepository();
+
         public RecordViewModel(Record record)
         {
             Id = record.Id;
@@ -56,9 +58,12 @@ namespace D328.WPF.ViewModels
 
         private void SaveRecordCommandExecute()
         {
-            // todo It is necessary to modify this process. now, can not saved.
-
-            RecordRepository.Save(ToDomainModel());
+            var record = ToDomainModel();
+            RecordRepository.Save(record);
+            foreach (var line in record.Lines)
+            {
+                LineRepository.Save(line);
+            }
         }
 
         public Record ToDomainModel()
