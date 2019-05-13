@@ -39,7 +39,7 @@ namespace D328.Repository
             var record = Record.CreateNew(Id, Title, AudioPath);
             foreach (var lineObject in Lines)
             {
-                record.AddLine(lineObject.ToLine());
+                record.AddLine(lineObject.ToDomainModel());
             }
             return record;
         }

@@ -35,7 +35,7 @@ namespace D328.Repository
             return realm.All<LineObject>()
                 // "Select" is not supported by Realm. So, convert it to List type.
                 .ToList()
-                .Select(x => x.ToLine());
+                .Select(x => x.ToDomainModel());
         }
     }
 }
