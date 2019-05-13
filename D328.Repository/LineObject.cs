@@ -12,8 +12,6 @@ namespace D328.Repository
 
         public string AudioPath { get; set; }
 
-        public RecordObject RecordObject { get; set; }
-
         public LineObject()
         {
         }
@@ -23,7 +21,6 @@ namespace D328.Repository
             Id = line.Id;
             SortNumber = line.SortNumber;
             AudioPath = line.AudioPath;
-            RecordObject = RecordObject.CreateNew(line.Record);
         }
 
         public static LineObject CreateNew(Line line)
@@ -33,7 +30,7 @@ namespace D328.Repository
 
         public Line ToDomainModel()
         {
-            return Line.CreateNew(Id, SortNumber, AudioPath, RecordObject.ToDomainModel());
+            return Line.CreateNew(Id, SortNumber, AudioPath);
         }
     }
 }
