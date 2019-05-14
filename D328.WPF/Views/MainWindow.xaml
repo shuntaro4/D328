@@ -28,7 +28,6 @@
                     Command="{Binding CreateNewRecordCommand}"
                     Header="新規レコード"
                     InputGestureText="Ctrl+N" />
-                <MenuItem Header="設定" InputGestureText="Ctrl+," />
                 <Separator />
                 <MenuItem
                     Command="{Binding SelectedRecord.SaveRecordCommand}"
