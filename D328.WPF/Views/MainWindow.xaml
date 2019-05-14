@@ -119,10 +119,22 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <ProgressBar
-                    Grid.Row="0"
-                    Maximum="1"
-                    Value="{Binding Peak}" />
+                <Grid Grid.Row="0" Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <iconPacks:PackIconFontAwesome
+                        Grid.Column="0"
+                        Margin="0,0,10,0"
+                        Kind="MicrophoneAltSolid" />
+                    <ProgressBar
+                        Grid.Column="1"
+                        Height="10"
+                        Maximum="1"
+                        Value="{Binding Peak}" />
+
+                </Grid>
 
                 <Grid Grid.Row="1">
                     <Grid.Style>
