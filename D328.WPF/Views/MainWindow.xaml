@@ -60,6 +60,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
+                <!--  Input Devices  -->
                 <Grid Grid.Row="0" Margin="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
@@ -78,6 +79,7 @@
                         SelectedValue="{Binding SelectedInputAudioDevice}" />
                 </Grid>
 
+                <!--  Output Devices  -->
                 <Grid Grid.Row="1" Margin="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
@@ -97,6 +99,7 @@
                 </Grid>
             </Grid>
 
+            <!--  Record List  -->
             <ListBox
                 Grid.Row="1"
                 Grid.Column="0"
@@ -120,6 +123,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
+                <!--  Peek  -->
                 <Grid Grid.Row="0" Margin="10,5,10,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" />
@@ -137,6 +141,7 @@
 
                 </Grid>
 
+                <!--  Record.Title  -->
                 <Grid Grid.Row="1" Margin="10,5,10,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" />
@@ -161,6 +166,7 @@
                     <TextBox Grid.Column="1" Text="{Binding SelectedRecord.Title}" />
                 </Grid>
 
+                <!--  Line List  -->
                 <Grid Grid.Row="2">
                     <ListBox ItemsSource="{Binding SelectedRecord.Lines}" SelectedValue="{Binding SelectedLine}">
                         <i:Interaction.Triggers>
