@@ -159,7 +159,8 @@
                     <Button
                         Grid.Column="1"
                         Margin="2.5,5,2.5,5"
-                        Padding="10">
+                        Padding="10"
+                        Command="{Binding SelectedRecord.SaveRecordCommand}">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
