@@ -60,14 +60,16 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0">
+                <Grid Grid.Row="0" Margin="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
                         <ColumnDefinition Width="5*" />
                     </Grid.ColumnDefinitions>
                     <TextBlock
                         Grid.Column="0"
+                        Padding="0,0,5,0"
                         HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
                         Text="Input:" />
                     <ComboBox
                         Grid.Column="1"
@@ -76,14 +78,16 @@
                         SelectedValue="{Binding SelectedInputAudioDevice}" />
                 </Grid>
 
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="1" Margin="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
                         <ColumnDefinition Width="5*" />
                     </Grid.ColumnDefinitions>
                     <TextBlock
                         Grid.Column="0"
+                        Padding="0,0,5,0"
                         HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
                         Text="Output:" />
                     <ComboBox
                         Grid.Column="1"
