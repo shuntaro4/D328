@@ -120,12 +120,12 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <!--  Action  -->
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
@@ -179,6 +179,62 @@
                                 Text="Save" />
                         </Grid>
                     </Button>
+
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!--  time  -->
+                        <Grid Grid.Row="0" Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Grid.Column="0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="15"
+                                Text="99:99:99.99" />
+                            <TextBlock
+                                Grid.Column="1"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="15"
+                                Text=" / " />
+                            <TextBlock
+                                Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="15"
+                                Text="99:99:99.99" />
+                        </Grid>
+
+                        <!--  play / pause / stop  -->
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Button
+                                Grid.Column="0"
+                                Margin="5,5,2.5,5"
+                                Content="{iconPacks:FontAwesome PlaySolid}" />
+                            <Button
+                                Grid.Column="1"
+                                Margin="2.5,5,2.5,5"
+                                Content="{iconPacks:FontAwesome PauseSolid}" />
+                            <Button
+                                Grid.Column="2"
+                                Margin="2.5,5,2.5,5"
+                                Content="{iconPacks:FontAwesome StopSolid}" />
+                        </Grid>
+                    </Grid>
                 </Grid>
 
                 <!--  Peek  -->
@@ -289,24 +345,6 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                </Grid>
-
-                <Grid Grid.Row="4">
-                    <Grid.Style>
-                        <Style>
-                            <Setter Property="Grid.Visibility" Value="Visible" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding SelectedRecord}" Value="{x:Null}">
-                                    <Setter Property="Grid.Visibility" Value="Collapsed" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Grid.Style>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Content="{iconPacks:FontAwesome PlaySolid}" />
                 </Grid>
             </Grid>
         </Grid>
