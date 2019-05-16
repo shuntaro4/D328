@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace D328.Repository
 {
-    internal class RecordObject : RealmObject
+    internal class RecordData : RealmObject
     {
         [PrimaryKey]
         public int Id { get; set; }
@@ -16,21 +16,21 @@ namespace D328.Repository
         [Backlink(nameof(LineObject.OwnerRecordObject))]
         public IQueryable<LineObject> Lines { get; }
 
-        public RecordObject()
+        public RecordData()
         {
             // Please do not use. This constructor is realm library only.
         }
 
-        private RecordObject(Record record)
+        private RecordData(Record record)
         {
             Id = record.Id;
             AudioPath = record.AudioPath;
             Title = record.Title;
         }
 
-        public static RecordObject CreateNew(Record record)
+        public static RecordData CreateNew(Record record)
         {
-            return new RecordObject(record);
+            return new RecordData(record);
         }
 
         public Record ToDomainModel()

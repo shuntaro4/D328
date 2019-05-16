@@ -9,7 +9,7 @@ namespace D328.Repository
         public Record Save(Record record)
         {
             var realm = RealmHelper.GetInstance();
-            var recordObject = RecordObject.CreateNew(record);
+            var recordObject = RecordData.CreateNew(record);
             realm.Write(() =>
             {
                 if (recordObject.Id < 0)
@@ -25,7 +25,7 @@ namespace D328.Repository
         public int NextIdentity()
         {
             var realm = RealmHelper.GetInstance();
-            return realm.All<RecordObject>()
+            return realm.All<RecordData>()
                 .OrderByDescending(x => x.Id)
                 .FirstOrDefault()?.Id + 1 ?? 1;
         }
@@ -34,7 +34,7 @@ namespace D328.Repository
         {
             var realm = RealmHelper.GetInstance();
             // "Select" is not supported by Realm. So, convert it to List type.
-            var list = realm.All<RecordObject>().ToList();
+            var list = realm.All<RecordData>().ToList();
             var result = list.Select(x => x.ToDomainModel());
             return result;
         }

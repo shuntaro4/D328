@@ -12,7 +12,7 @@ namespace D328.Repository
 
         public string AudioPath { get; set; }
 
-        public RecordObject OwnerRecordObject { get; set; }
+        public RecordData OwnerRecordObject { get; set; }
 
         public LineObject()
         {
@@ -23,7 +23,7 @@ namespace D328.Repository
             Id = line.Id;
             SortNumber = line.SortNumber;
             AudioPath = line.AudioPath;
-            OwnerRecordObject = RecordObject.CreateNew(ownerRecord);
+            OwnerRecordObject = RecordData.CreateNew(ownerRecord);
         }
 
         public static LineObject CreateNew(Line line, Record ownerRecord)
