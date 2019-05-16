@@ -14,19 +14,28 @@ namespace D328.Repository
             db = RealmHelper.GetInstance();
         }
 
-        public Record Save(Record record)
+        public void Save(Record record)
         {
-            var recordData = RecordData.CreateNew(record);
             db.Write(() =>
             {
+                var recordData = RecordData.CreateNew(record);
                 if (recordData.Id < 0)
                 {
                     var id = NextIdentity();
                     recordData.Id = id;
                 }
                 db.Add(recordData, true);
+                var lineDataList = record.Lines.Select(line => LineData.CreateNew(line, recordData)).ToList();
+                foreach (var lineData in lineDataList)
+                {
+                    if (lineData.Id < 0)
+                    {
+                        var id = ChildNextIdentity();
+                        lineData.Id = id;
+                    }
+                    db.Add(lineData, true);
+                }
             });
-            return recordData.ToDomainModel();
         }
 
         public int NextIdentity()

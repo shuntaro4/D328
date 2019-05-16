@@ -45,8 +45,6 @@ namespace D328.WPF.ViewModels
 
         private RecordRepository RecordRepository = new RecordRepository();
 
-        private LineRepository LineRepository = new LineRepository();
-
         public RecordViewModel(Record record)
         {
             Id = record.Id;
@@ -59,11 +57,7 @@ namespace D328.WPF.ViewModels
         private void SaveRecordCommandExecute()
         {
             var record = ToDomainModel();
-            var savedRecord = RecordRepository.Save(record);
-            foreach (var line in record.Lines)
-            {
-                LineRepository.Save(line, savedRecord);
-            }
+            RecordRepository.Save(record);
         }
 
         public Record ToDomainModel()

@@ -18,17 +18,17 @@ namespace D328.Repository
         {
         }
 
-        private LineData(Line line, Record ownerRecord)
+        private LineData(Line line, RecordData ownerRecordData)
         {
             Id = line.Id;
             SortNumber = line.SortNumber;
             AudioPath = line.AudioPath;
-            OwnerRecordObject = RecordData.CreateNew(ownerRecord);
+            OwnerRecordObject = ownerRecordData;
         }
 
-        public static LineData CreateNew(Line line, Record ownerRecord)
+        public static LineData CreateNew(Line line, RecordData ownerRecordData)
         {
-            return new LineData(line, ownerRecord);
+            return new LineData(line, ownerRecordData);
         }
 
         public Line ToDomainModel()
