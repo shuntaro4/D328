@@ -30,6 +30,14 @@ namespace D328.Repository
                 .FirstOrDefault()?.Id + 1 ?? 1;
         }
 
+        public int ChildNextIdentity()
+        {
+            var realm = RealmHelper.GetInstance();
+            return realm.All<LineData>()
+                .OrderByDescending(x => x.Id)
+                .FirstOrDefault()?.Id + 1 ?? 1;
+        }
+
         public IEnumerable<Record> FindAll()
         {
             var realm = RealmHelper.GetInstance();
