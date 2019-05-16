@@ -212,6 +212,12 @@ namespace D328.WPF.ViewModels
         {
             AudioPlayerService?.Dispose();
             AudioPlayerService = null;
+
+            SelectedRecord?.SubscriveEventOnSaveFinished((_, __) =>
+            {
+                RecordList.Clear();
+                RecordList = new ObservableCollection<RecordViewModel>(RecordRepository.FindAll().Select(x => new RecordViewModel(x)));
+            });
         }
 
         private void CloseCommandExecute()

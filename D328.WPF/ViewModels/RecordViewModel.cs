@@ -2,6 +2,7 @@
 using D328.Repository;
 using Prism.Commands;
 using Prism.Mvvm;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -45,6 +46,8 @@ namespace D328.WPF.ViewModels
 
         private RecordRepository RecordRepository = new RecordRepository();
 
+        private EventHandler _onSaveFinished;
+
         public RecordViewModel(Record record)
         {
             Id = record.Id;
@@ -58,6 +61,8 @@ namespace D328.WPF.ViewModels
         {
             var record = ToDomainModel();
             RecordRepository.Save(record);
+
+            OnSaveFinishedHandler(new EventArgs());
         }
 
         public Record ToDomainModel()
@@ -68,6 +73,20 @@ namespace D328.WPF.ViewModels
                 record.Lines.Add(line.ToDomainModel());
             }
             return record;
+        }
+
+        public void SubscriveEventOnSaveFinished(EventHandler subscriveEvent)
+        {
+            _onSaveFinished += subscriveEvent;
+        }
+
+        private void OnSaveFinishedHandler(EventArgs e)
+        {
+            if (_onSaveFinished == null)
+            {
+                return;
+            }
+            _onSaveFinished(this, e);
         }
     }
 }
