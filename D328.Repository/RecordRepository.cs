@@ -1,4 +1,5 @@
 ﻿using D328.Domain.Model;
+using Realms;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,43 +7,46 @@ namespace D328.Repository
 {
     public class RecordRepository : IRepository<Record>
     {
+        private readonly Realm db;
+
+        public RecordRepository()
+        {
+            db = RealmHelper.GetInstance();
+        }
+
         public Record Save(Record record)
         {
-            var realm = RealmHelper.GetInstance();
             var recordObject = RecordData.CreateNew(record);
-            realm.Write(() =>
+            db.Write(() =>
             {
                 if (recordObject.Id < 0)
                 {
                     var id = NextIdentity();
                     recordObject.Id = id;
                 }
-                realm.Add(recordObject, true);
+                db.Add(recordObject, true);
             });
             return recordObject.ToDomainModel();
         }
 
         public int NextIdentity()
         {
-            var realm = RealmHelper.GetInstance();
-            return realm.All<RecordData>()
+            return db.All<RecordData>()
                 .OrderByDescending(x => x.Id)
                 .FirstOrDefault()?.Id + 1 ?? 1;
         }
 
         public int ChildNextIdentity()
         {
-            var realm = RealmHelper.GetInstance();
-            return realm.All<LineData>()
+            return db.All<LineData>()
                 .OrderByDescending(x => x.Id)
                 .FirstOrDefault()?.Id + 1 ?? 1;
         }
 
         public IEnumerable<Record> FindAll()
         {
-            var realm = RealmHelper.GetInstance();
             // "Select" is not supported by Realm. So, convert it to List type.
-            var list = realm.All<RecordData>().ToList();
+            var list = db.All<RecordData>().ToList();
             var result = list.Select(x => x.ToDomainModel());
             return result;
         }
