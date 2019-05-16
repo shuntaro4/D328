@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using D328.Domain.Model;
+using System.Collections.Generic;
 
 namespace D328.Repository
 {
-    public interface IRepository<T>
+    public interface IRecordRepository
     {
-        int NextIdentity();
+        void Save(Record record);
 
-        IEnumerable<T> FindAll();
+        IEnumerable<Record> FindAll();
     }
 }

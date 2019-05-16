@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace D328.Repository
 {
-    public class RecordRepository : IRepository<Record>
+    public class RecordRepository : IRecordRepository
     {
         private readonly Realm db;
 
@@ -38,14 +38,14 @@ namespace D328.Repository
             });
         }
 
-        public int NextIdentity()
+        private int NextIdentity()
         {
             return db.All<RecordData>()
                 .OrderByDescending(x => x.Id)
                 .FirstOrDefault()?.Id + 1 ?? 1;
         }
 
-        public int ChildNextIdentity()
+        private int ChildNextIdentity()
         {
             return db.All<LineData>()
                 .OrderByDescending(x => x.Id)
