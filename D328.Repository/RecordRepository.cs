@@ -16,17 +16,17 @@ namespace D328.Repository
 
         public Record Save(Record record)
         {
-            var recordObject = RecordData.CreateNew(record);
+            var recordData = RecordData.CreateNew(record);
             db.Write(() =>
             {
-                if (recordObject.Id < 0)
+                if (recordData.Id < 0)
                 {
                     var id = NextIdentity();
-                    recordObject.Id = id;
+                    recordData.Id = id;
                 }
-                db.Add(recordObject, true);
+                db.Add(recordData, true);
             });
-            return recordObject.ToDomainModel();
+            return recordData.ToDomainModel();
         }
 
         public int NextIdentity()
