@@ -13,8 +13,8 @@ namespace D328.Repository
 
         public string Title { get; set; }
 
-        [Backlink(nameof(LineObject.OwnerRecordObject))]
-        public IQueryable<LineObject> Lines { get; }
+        [Backlink(nameof(LineData.OwnerRecordObject))]
+        public IQueryable<LineData> Lines { get; }
 
         public RecordData()
         {

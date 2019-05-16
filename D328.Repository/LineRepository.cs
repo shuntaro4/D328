@@ -9,7 +9,7 @@ namespace D328.Repository
         public Line Save(Line line, Record record)
         {
             var realm = RealmHelper.GetInstance();
-            var lineObject = LineObject.CreateNew(line, record);
+            var lineObject = LineData.CreateNew(line, record);
             realm.Write(() =>
             {
                 if (lineObject.Id < 0)
@@ -25,7 +25,7 @@ namespace D328.Repository
         public int NextIdentity()
         {
             var realm = RealmHelper.GetInstance();
-            return realm.All<LineObject>()
+            return realm.All<LineData>()
                 .OrderByDescending(x => x.Id)
                 .FirstOrDefault()?.Id + 1 ?? 1;
         }
@@ -33,7 +33,7 @@ namespace D328.Repository
         public IEnumerable<Line> FindAll()
         {
             var realm = RealmHelper.GetInstance();
-            return realm.All<LineObject>()
+            return realm.All<LineData>()
                 // "Select" is not supported by Realm. So, convert it to List type.
                 .ToList()
                 .Select(x => x.ToDomainModel());

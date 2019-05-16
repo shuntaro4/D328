@@ -3,7 +3,7 @@ using Realms;
 
 namespace D328.Repository
 {
-    internal class LineObject : RealmObject
+    internal class LineData : RealmObject
     {
         [PrimaryKey]
         public int Id { get; set; }
@@ -14,11 +14,11 @@ namespace D328.Repository
 
         public RecordData OwnerRecordObject { get; set; }
 
-        public LineObject()
+        public LineData()
         {
         }
 
-        private LineObject(Line line, Record ownerRecord)
+        private LineData(Line line, Record ownerRecord)
         {
             Id = line.Id;
             SortNumber = line.SortNumber;
@@ -26,9 +26,9 @@ namespace D328.Repository
             OwnerRecordObject = RecordData.CreateNew(ownerRecord);
         }
 
-        public static LineObject CreateNew(Line line, Record ownerRecord)
+        public static LineData CreateNew(Line line, Record ownerRecord)
         {
-            return new LineObject(line, ownerRecord);
+            return new LineData(line, ownerRecord);
         }
 
         public Line ToDomainModel()
