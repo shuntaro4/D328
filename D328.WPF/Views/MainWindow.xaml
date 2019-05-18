@@ -223,6 +223,7 @@
                             <Button
                                 Grid.Column="0"
                                 Margin="5,5,2.5,5"
+                                Command="{Binding SelectedRecord.PlaybackStartCommand}"
                                 Content="{iconPacks:FontAwesome PlaySolid}" />
                             <Button
                                 Grid.Column="1"

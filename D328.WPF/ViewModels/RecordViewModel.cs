@@ -1,4 +1,6 @@
-﻿using D328.Domain.Model;
+﻿using D328.Application.Services;
+using D328.Audio.Windows;
+using D328.Domain.Model;
 using D328.Repository;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -44,7 +46,13 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand SaveRecordCommand { get; }
 
+        public DelegateCommand PlaybackStartCommand { get; }
+
         private RecordRepository RecordRepository = new RecordRepository();
+
+        private IAudioMixerService AudioMixerService;
+
+        private IAudioPlayerService AudioPlayerService;
 
         private EventHandler _onSaveFinished;
 
@@ -55,6 +63,7 @@ namespace D328.WPF.ViewModels
             AudioPath = record.AudioPath;
             Lines = new ObservableCollection<LineViewModel>(record.Lines.Select(x => new LineViewModel(x)));
             SaveRecordCommand = new DelegateCommand(SaveRecordCommandExecute);
+            PlaybackStartCommand = new DelegateCommand(PlaybackStartCommandExecute);
         }
 
         private void SaveRecordCommandExecute()
@@ -63,6 +72,16 @@ namespace D328.WPF.ViewModels
             RecordRepository.Save(record);
 
             OnSaveFinishedHandler(new EventArgs());
+        }
+
+        private void PlaybackStartCommandExecute()
+        {
+            var record = ToDomainModel();
+            IAudioMixerService audioMixerService = new AudioMixerService(record);
+            AudioPath = audioMixerService.MixLines();
+
+            AudioPlayerService = new AudioPlayerService(ToDomainModel());
+            AudioPlayerService.Play();
         }
 
         public Record ToDomainModel()
