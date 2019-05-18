@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioDeviceService.cs" />
+    <Compile Include="AudioMixerService.cs" />
     <Compile Include="AudioPlayerService.cs" />
     <Compile Include="AudioRecorderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
