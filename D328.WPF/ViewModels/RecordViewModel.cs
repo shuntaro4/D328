@@ -77,8 +77,8 @@ namespace D328.WPF.ViewModels
         private void PlaybackStartCommandExecute()
         {
             var record = ToDomainModel();
-            IAudioMixerService audioMixerService = new AudioMixerService(record);
-            AudioPath = audioMixerService.MixLines();
+            AudioMixerService = new AudioMixerService(record);
+            AudioPath = AudioMixerService.MixLines();
 
             AudioPlayerService = new AudioPlayerService(ToDomainModel());
             AudioPlayerService.Play();
