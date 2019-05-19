@@ -80,6 +80,8 @@ namespace D328.WPF.ViewModels
 
         private void PlaybackStartCommandExecute()
         {
+            // todo It is necessary to fix timing to mix audio.
+
             var record = ToDomainModel();
             AudioMixerService = new AudioMixerService(record);
             AudioPath = AudioMixerService.MixLines();
