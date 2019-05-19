@@ -50,6 +50,7 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand PlaybackPauseCommand { get; }
 
+        public DelegateCommand PlaybackStopCommand { get; }
 
         private RecordRepository RecordRepository = new RecordRepository();
 
@@ -68,6 +69,7 @@ namespace D328.WPF.ViewModels
             SaveRecordCommand = new DelegateCommand(SaveRecordCommandExecute);
             PlaybackStartCommand = new DelegateCommand(PlaybackStartCommandExecute);
             PlaybackPauseCommand = new DelegateCommand(PlaybackPauseCommandExecute);
+            PlaybackStopCommand = new DelegateCommand(PlaybackStopCommandExecute);
         }
 
         private void SaveRecordCommandExecute()
@@ -96,6 +98,11 @@ namespace D328.WPF.ViewModels
         private void PlaybackPauseCommandExecute()
         {
             AudioPlayerService?.Pause();
+        }
+
+        private void PlaybackStopCommandExecute()
+        {
+            AudioPlayerService?.Stop();
         }
 
         public Record ToDomainModel()

@@ -233,6 +233,7 @@
                             <Button
                                 Grid.Column="2"
                                 Margin="2.5,5,2.5,5"
+                                Command="{Binding SelectedRecord.PlaybackStopCommand}"
                                 Content="{iconPacks:FontAwesome StopSolid}" />
                         </Grid>
                     </Grid>
