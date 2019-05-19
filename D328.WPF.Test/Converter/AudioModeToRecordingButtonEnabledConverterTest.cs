@@ -5,48 +5,48 @@ using Xunit;
 
 namespace D328.WPF.Test.Converter
 {
-    public class LineModeToRecordingButtonEnabledConverterTest
+    public class AudioModeToRecordingButtonEnabledConverterTest
     {
-        private readonly LineModeToRecordingButtonEnabledConverter target = new LineModeToRecordingButtonEnabledConverter();
+        private readonly AudioModeToRecordingButtonEnabledConverter target = new AudioModeToRecordingButtonEnabledConverter();
 
-        [Fact(DisplayName = "正：Enable=true(LineMode=Normal)")]
-        [Trait("LineModeToRecordingButtonEnabledConverter", "Convert")]
+        [Fact(DisplayName = "正：Enable=true(AudioMode=Normal)")]
+        [Trait("AudioModeToRecordingButtonEnabledConverter", "Convert")]
         public void ConvertTrue1()
         {
-            var value = LineMode.Normal;
+            var value = AudioMode.Normal;
 
             var actual = target.Convert(value, null, null, null) as bool?;
 
             Assert.True(actual);
         }
 
-        [Fact(DisplayName = "正：Enable=false(LineMode=Recording)")]
-        [Trait("LineModeToRecordingButtonEnabledConverter", "Convert")]
+        [Fact(DisplayName = "正：Enable=false(AudioMode=Recording)")]
+        [Trait("AudioModeToRecordingButtonEnabledConverter", "Convert")]
         public void ConvertTrue2()
         {
-            var value = LineMode.Recording;
+            var value = AudioMode.Recording;
 
             var actual = target.Convert(value, null, null, null) as bool?;
 
             Assert.False(actual);
         }
 
-        [Fact(DisplayName = "正：Enable=false(LineMode=Pause)")]
-        [Trait("LineModeToRecordingButtonEnabledConverter", "Convert")]
+        [Fact(DisplayName = "正：Enable=false(AudioMode=Pause)")]
+        [Trait("AudioModeToRecordingButtonEnabledConverter", "Convert")]
         public void ConvertTrue3()
         {
-            var value = LineMode.Pause;
+            var value = AudioMode.Pause;
 
             var actual = target.Convert(value, null, null, null) as bool?;
 
             Assert.False(actual);
         }
 
-        [Fact(DisplayName = "正：Enable=false(LineMode=Playing)")]
-        [Trait("LineModeToRecordingButtonEnabledConverter", "Convert")]
+        [Fact(DisplayName = "正：Enable=false(AudioMode=Playing)")]
+        [Trait("AudioModeToRecordingButtonEnabledConverter", "Convert")]
         public void ConvertTrue4()
         {
-            var value = LineMode.Playing;
+            var value = AudioMode.Playing;
 
             var actual = target.Convert(value, null, null, null) as bool?;
 
@@ -54,7 +54,7 @@ namespace D328.WPF.Test.Converter
         }
 
         [Fact(DisplayName = "異：value=null")]
-        [Trait("LineModeToRecordingButtonEnabledConverter", "Convert")]
+        [Trait("AudioModeToRecordingButtonEnabledConverter", "Convert")]
         public void ConvertFalse1()
         {
             var actual = target.Convert(null, null, null, null) as bool?;
@@ -63,7 +63,7 @@ namespace D328.WPF.Test.Converter
         }
 
         [Fact(DisplayName = "異：未実装")]
-        [Trait("LineModeToRecordingButtonEnabledConverter", "ConvertBack")]
+        [Trait("AudioModeToRecordingButtonEnabledConverter", "ConvertBack")]
         public void ConvertBackFalse1()
         {
             Assert.ThrowsAny<NotImplementedException>(() => { target.ConvertBack(null, null, null, null); });

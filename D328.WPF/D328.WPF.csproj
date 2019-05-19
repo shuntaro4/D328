@@ -69,8 +69,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Converter\LineModeToRecordingStopButtonEnabledConverter.cs" />
-    <Compile Include="Converter\LineModeToRecordingButtonEnabledConverter.cs" />
+    <Compile Include="Converter\AudioModeToRecordingStopButtonEnabledConverter.cs" />
+    <Compile Include="Converter\AudioModeToRecordingButtonEnabledConverter.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\D328Window.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

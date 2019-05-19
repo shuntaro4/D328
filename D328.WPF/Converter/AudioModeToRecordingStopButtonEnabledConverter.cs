@@ -5,16 +5,16 @@ using System.Windows.Data;
 
 namespace D328.WPF.Converter
 {
-    public class LineModeToRecordingButtonEnabledConverter : IValueConverter
+    public class AudioModeToRecordingStopButtonEnabledConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var lineMode = value as LineMode?;
+            var lineMode = value as AudioMode?;
             if (lineMode == null)
             {
                 return false;
             }
-            return lineMode == LineMode.Normal;
+            return lineMode == AudioMode.Recording || lineMode == AudioMode.Pause;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

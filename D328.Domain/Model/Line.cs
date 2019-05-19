@@ -10,7 +10,7 @@ namespace D328.Domain.Model
 
         public string AudioPath { get; }
 
-        public LineMode LineMode { get; set; } = LineMode.Normal;
+        public AudioMode AudioMode { get; set; } = AudioMode.Normal;
 
         private Line(int id, int sortNumber, string audioPath)
         {

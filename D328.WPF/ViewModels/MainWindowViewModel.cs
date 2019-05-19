@@ -163,14 +163,14 @@ namespace D328.WPF.ViewModels
 
         private void RecordingStartCommandExecute(LineViewModel line)
         {
-            line.LineMode = LineMode.Recording;
+            line.AudioMode = AudioMode.Recording;
 
             AudioRecorderService?.Start();
         }
 
         private void RecordingStopCommandExecute(LineViewModel line)
         {
-            line.LineMode = LineMode.Normal;
+            line.AudioMode = AudioMode.Normal;
 
             AudioRecorderService?.Stop();
             line.AudioPath = AudioRecorderService.GetAudioPath();
@@ -198,13 +198,13 @@ namespace D328.WPF.ViewModels
 
         private void PlaybackPauseCommandExecute(LineViewModel line)
         {
-            line.LineMode = LineMode.Pause;
+            line.AudioMode = AudioMode.Pause;
             AudioPlayerService?.Pause();
         }
 
         private void PlaybackStopCommandExecute(LineViewModel line)
         {
-            line.LineMode = LineMode.Normal;
+            line.AudioMode = AudioMode.Normal;
             AudioPlayerService?.Stop();
         }
 

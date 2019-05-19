@@ -30,8 +30,8 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _audioPath, value);
         }
 
-        private LineMode _lineMode = LineMode.Normal;
-        public LineMode LineMode
+        private AudioMode _lineMode = AudioMode.Normal;
+        public AudioMode AudioMode
         {
             get => _lineMode;
             set => SetProperty(ref _lineMode, value);

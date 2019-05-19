@@ -1,6 +1,6 @@
 ﻿namespace D328.Domain.Enum
 {
-    public enum LineMode
+    public enum AudioMode
     {
         Normal,
         Recording,

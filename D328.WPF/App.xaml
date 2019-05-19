@@ -15,8 +15,8 @@
             </ResourceDictionary.MergedDictionaries>
 
             <!--  Converter  -->
-            <converter:LineModeToRecordingButtonEnabledConverter x:Key="LineModeToRecordingButtonEnabledConverter" />
-            <converter:LineModeToRecordingStopButtonEnabledConverter x:Key="LineModeToRecordingStopButtonEnabledConverter" />
+            <converter:AudioModeToRecordingButtonEnabledConverter x:Key="AudioModeToRecordingButtonEnabledConverter" />
+            <converter:AudioModeToRecordingStopButtonEnabledConverter x:Key="AudioModeToRecordingStopButtonEnabledConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>
