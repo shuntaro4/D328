@@ -48,6 +48,9 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand PlaybackStartCommand { get; }
 
+        public DelegateCommand PlaybackPauseCommand { get; }
+
+
         private RecordRepository RecordRepository = new RecordRepository();
 
         private IAudioMixerService AudioMixerService;
@@ -64,6 +67,7 @@ namespace D328.WPF.ViewModels
             Lines = new ObservableCollection<LineViewModel>(record.Lines.Select(x => new LineViewModel(x)));
             SaveRecordCommand = new DelegateCommand(SaveRecordCommandExecute);
             PlaybackStartCommand = new DelegateCommand(PlaybackStartCommandExecute);
+            PlaybackPauseCommand = new DelegateCommand(PlaybackPauseCommandExecute);
         }
 
         private void SaveRecordCommandExecute()
@@ -82,6 +86,11 @@ namespace D328.WPF.ViewModels
 
             AudioPlayerService = new AudioPlayerService(ToDomainModel());
             AudioPlayerService.Play();
+        }
+
+        private void PlaybackPauseCommandExecute()
+        {
+            AudioPlayerService?.Pause();
         }
 
         public Record ToDomainModel()

@@ -228,6 +228,7 @@
                             <Button
                                 Grid.Column="1"
                                 Margin="2.5,5,2.5,5"
+                                Command="{Binding SelectedRecord.PlaybackPauseCommand}"
                                 Content="{iconPacks:FontAwesome PauseSolid}" />
                             <Button
                                 Grid.Column="2"
