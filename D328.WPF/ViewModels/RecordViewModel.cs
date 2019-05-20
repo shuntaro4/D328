@@ -52,6 +52,8 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand PlaybackStopCommand { get; }
 
+        public DelegateCommand ClearLinesAudioModeCommand { get; }
+
         private RecordRepository RecordRepository = new RecordRepository();
 
         private IAudioMixerService AudioMixerService;
@@ -70,6 +72,7 @@ namespace D328.WPF.ViewModels
             PlaybackStartCommand = new DelegateCommand(PlaybackStartCommandExecute);
             PlaybackPauseCommand = new DelegateCommand(PlaybackPauseCommandExecute);
             PlaybackStopCommand = new DelegateCommand(PlaybackStopCommandExecute);
+            ClearLinesAudioModeCommand = new DelegateCommand(ClearLinesAudioModeCommandExecute);
         }
 
         private void SaveRecordCommandExecute()
@@ -127,6 +130,14 @@ namespace D328.WPF.ViewModels
                 return;
             }
             _onSaveFinished(this, e);
+        }
+
+        private void ClearLinesAudioModeCommandExecute()
+        {
+            foreach (var line in Lines)
+            {
+                line.ClearAudioCommand.Execute();
+            }
         }
     }
 }
