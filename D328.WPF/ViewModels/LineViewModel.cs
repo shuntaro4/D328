@@ -1,5 +1,6 @@
 ﻿using D328.Domain.Enum;
 using D328.Domain.Model;
+using Prism.Commands;
 using Prism.Mvvm;
 
 namespace D328.WPF.ViewModels
@@ -37,16 +38,25 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _audioMode, value);
         }
 
+        public DelegateCommand ClearAudioCommand { get; }
+
         public LineViewModel(Line line)
         {
             Id = line.Id;
             SortNumber = line.SortNumber;
             AudioPath = line.AudioPath;
+
+            ClearAudioCommand = new DelegateCommand(ClearAudioModeCommandExecute);
         }
 
         public Line ToDomainModel()
         {
             return Line.CreateNew(Id, SortNumber, AudioPath);
+        }
+
+        private void ClearAudioModeCommandExecute()
+        {
+            AudioMode = AudioMode.Normal;
         }
     }
 }
