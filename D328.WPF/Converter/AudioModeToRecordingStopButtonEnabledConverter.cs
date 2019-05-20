@@ -9,12 +9,12 @@ namespace D328.WPF.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var lineMode = value as AudioMode?;
-            if (lineMode == null)
+            var audioMode = value as AudioMode?;
+            if (audioMode == null)
             {
                 return false;
             }
-            return lineMode == AudioMode.Recording || lineMode == AudioMode.Pause;
+            return audioMode == AudioMode.Recording || audioMode == AudioMode.Pause;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
