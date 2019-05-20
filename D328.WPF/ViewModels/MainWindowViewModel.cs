@@ -213,6 +213,8 @@ namespace D328.WPF.ViewModels
             AudioPlayerService?.Dispose();
             AudioPlayerService = null;
 
+            SelectedRecord.ClearLinesAudioModeCommand.Execute();
+
             SelectedRecord?.SubscriveEventOnSaveFinished((_, __) =>
             {
                 RecordList.Clear();
