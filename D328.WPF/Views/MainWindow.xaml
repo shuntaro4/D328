@@ -329,19 +329,16 @@
                                     <Button
                                         Grid.Column="3"
                                         Command="{Binding Path=DataContext.PlaybackStartCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-                                        CommandParameter="{Binding .}"
                                         Content="{iconPacks:FontAwesome PlaySolid}" />
 
                                     <Button
                                         Grid.Column="4"
                                         Command="{Binding Path=DataContext.PlaybackPauseCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-                                        CommandParameter="{Binding .}"
                                         Content="{iconPacks:FontAwesome PauseSolid}" />
 
                                     <Button
                                         Grid.Column="5"
                                         Command="{Binding Path=DataContext.PlaybackStopCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-                                        CommandParameter="{Binding .}"
                                         Content="{iconPacks:FontAwesome StopSolid}" />
                                 </Grid>
                             </DataTemplate>

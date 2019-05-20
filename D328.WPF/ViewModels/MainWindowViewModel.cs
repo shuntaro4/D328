@@ -92,11 +92,11 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand WindowClosedCommand { get; }
 
-        public DelegateCommand<LineViewModel> PlaybackStartCommand { get; }
+        public DelegateCommand PlaybackStartCommand { get; }
 
-        public DelegateCommand<LineViewModel> PlaybackPauseCommand { get; }
+        public DelegateCommand PlaybackPauseCommand { get; }
 
-        public DelegateCommand<LineViewModel> PlaybackStopCommand { get; }
+        public DelegateCommand PlaybackStopCommand { get; }
 
         public DelegateCommand RecordListSelectionChangedCommand { get; }
 
@@ -130,9 +130,9 @@ namespace D328.WPF.ViewModels
             RecordingStartCommand = new DelegateCommand<LineViewModel>(RecordingStartCommandExecute);
             RecordingStopCommand = new DelegateCommand<LineViewModel>(RecordingStopCommandExecute);
             WindowClosedCommand = new DelegateCommand(WindowClosedCommandExecute);
-            PlaybackStartCommand = new DelegateCommand<LineViewModel>(PlaybackStartCommandExecute);
-            PlaybackPauseCommand = new DelegateCommand<LineViewModel>(PlaybackPauseCommandExecute);
-            PlaybackStopCommand = new DelegateCommand<LineViewModel>(PlaybackStopCommandExecute);
+            PlaybackStartCommand = new DelegateCommand(PlaybackStartCommandExecute);
+            PlaybackPauseCommand = new DelegateCommand(PlaybackPauseCommandExecute);
+            PlaybackStopCommand = new DelegateCommand(PlaybackStopCommandExecute);
             RecordListSelectionChangedCommand = new DelegateCommand(RecordListSelectionChangedCommandExecute);
             CloseCommand = new DelegateCommand(CloseCommandExecute);
             CreateNewRecordCommand = new DelegateCommand(CreateNewRecordCommandExecute);
@@ -187,24 +187,25 @@ namespace D328.WPF.ViewModels
             AudioPlayerService = null;
         }
 
-        private void PlaybackStartCommandExecute(LineViewModel line)
+        private void PlaybackStartCommandExecute()
         {
             if (AudioPlayerService == null)
             {
-                AudioPlayerService = new AudioPlayerService(line.ToDomainModel());
+                AudioPlayerService = new AudioPlayerService(SelectedLine.ToDomainModel());
             }
+            SelectedLine.AudioMode = AudioMode.Playing;
             AudioPlayerService.Play();
         }
 
-        private void PlaybackPauseCommandExecute(LineViewModel line)
+        private void PlaybackPauseCommandExecute()
         {
-            line.AudioMode = AudioMode.Pause;
+            SelectedLine.AudioMode = AudioMode.Pause;
             AudioPlayerService?.Pause();
         }
 
-        private void PlaybackStopCommandExecute(LineViewModel line)
+        private void PlaybackStopCommandExecute()
         {
-            line.AudioMode = AudioMode.Normal;
+            SelectedLine.AudioMode = AudioMode.Normal;
             AudioPlayerService?.Stop();
         }
 
