@@ -163,14 +163,14 @@ namespace D328.WPF.ViewModels
 
         private void RecordingStartCommandExecute(LineViewModel line)
         {
-            line.AudioMode = AudioMode.Recording;
+            SelectedLine.AudioMode = AudioMode.Recording;
 
             AudioRecorderService?.Start();
         }
 
         private void RecordingStopCommandExecute(LineViewModel line)
         {
-            line.AudioMode = AudioMode.Normal;
+            SelectedLine.AudioMode = AudioMode.Normal;
 
             AudioRecorderService?.Stop();
             line.AudioPath = AudioRecorderService.GetAudioPath();
