@@ -173,7 +173,7 @@ namespace D328.WPF.ViewModels
             SelectedLine.AudioMode = AudioMode.Normal;
 
             AudioRecorderService?.Stop();
-            line.AudioPath = AudioRecorderService.GetAudioPath();
+            SelectedLine.AudioPath = AudioRecorderService.GetAudioPath();
 
             RecordingReadyCommandExecute();
         }
