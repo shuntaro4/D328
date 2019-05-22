@@ -326,8 +326,9 @@
 
                                     <Button
                                         Grid.Column="3"
-                                        Command="{Binding Path=DataContext.PlaybackStartCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-                                        Content="{iconPacks:FontAwesome PlaySolid}" />
+                                        Command="{Binding Path=PlaybackStartCommand}"
+                                        Content="{iconPacks:FontAwesome PlaySolid}"
+                                        IsEnabled="{Binding AudioMode, Converter={StaticResource AudioModeToPlayButtonEnabledConverter}, Mode=OneWay}" />
 
                                     <Button
                                         Grid.Column="4"

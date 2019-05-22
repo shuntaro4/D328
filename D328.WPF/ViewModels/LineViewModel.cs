@@ -1,4 +1,6 @@
-﻿using D328.Domain.Enum;
+﻿using D328.Application.Services;
+using D328.Audio.Windows;
+using D328.Domain.Enum;
 using D328.Domain.Model;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -40,6 +42,10 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand ClearAudioCommand { get; }
 
+        public DelegateCommand PlaybackStartCommand { get; }
+
+        private IAudioPlayerService AudioPlayerService;
+
         public LineViewModel(Line line)
         {
             Id = line.Id;
@@ -47,6 +53,7 @@ namespace D328.WPF.ViewModels
             AudioPath = line.AudioPath;
 
             ClearAudioCommand = new DelegateCommand(ClearAudioModeCommandExecute);
+            PlaybackStartCommand = new DelegateCommand(PlaybackStartCommandExecute);
         }
 
         public Line ToDomainModel()
@@ -57,6 +64,16 @@ namespace D328.WPF.ViewModels
         private void ClearAudioModeCommandExecute()
         {
             AudioMode = AudioMode.Normal;
+        }
+
+        private void PlaybackStartCommandExecute()
+        {
+            if (AudioPlayerService == null)
+            {
+                AudioPlayerService = new AudioPlayerService(ToDomainModel());
+            }
+            AudioMode = AudioMode.Playing;
+            AudioPlayerService.Play();
         }
     }
 }
