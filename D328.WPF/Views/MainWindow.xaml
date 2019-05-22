@@ -315,14 +315,12 @@
                                     <Button
                                         Grid.Column="1"
                                         Command="{Binding Path=DataContext.RecordingStartCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-                                        CommandParameter="{Binding .}"
                                         Content="{iconPacks:FontAwesome MicrophoneAltSolid}"
                                         IsEnabled="{Binding AudioMode, Converter={StaticResource AudioModeToRecordingButtonEnabledConverter}, Mode=OneWay}" />
 
                                     <Button
                                         Grid.Column="2"
                                         Command="{Binding Path=DataContext.RecordingStopCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-                                        CommandParameter="{Binding .}"
                                         Content="{iconPacks:FontAwesome StopCircleRegular}"
                                         IsEnabled="{Binding AudioMode, Converter={StaticResource AudioModeToRecordingStopButtonEnabledConverter}, Mode=OneWay}" />
 

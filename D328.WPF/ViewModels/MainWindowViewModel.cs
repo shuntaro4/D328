@@ -86,9 +86,9 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _selectedLine, value);
         }
 
-        public DelegateCommand<LineViewModel> RecordingStartCommand { get; }
+        public DelegateCommand RecordingStartCommand { get; }
 
-        public DelegateCommand<LineViewModel> RecordingStopCommand { get; }
+        public DelegateCommand RecordingStopCommand { get; }
 
         public DelegateCommand WindowClosedCommand { get; }
 
@@ -127,8 +127,8 @@ namespace D328.WPF.ViewModels
 
             RecordList = new ObservableCollection<RecordViewModel>(RecordRepository.FindAll().Select(x => new RecordViewModel(x)));
 
-            RecordingStartCommand = new DelegateCommand<LineViewModel>(RecordingStartCommandExecute);
-            RecordingStopCommand = new DelegateCommand<LineViewModel>(RecordingStopCommandExecute);
+            RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);
+            RecordingStopCommand = new DelegateCommand(RecordingStopCommandExecute);
             WindowClosedCommand = new DelegateCommand(WindowClosedCommandExecute);
             PlaybackStartCommand = new DelegateCommand(PlaybackStartCommandExecute);
             PlaybackPauseCommand = new DelegateCommand(PlaybackPauseCommandExecute);
@@ -161,14 +161,14 @@ namespace D328.WPF.ViewModels
             AudioRecorderService.Ready();
         }
 
-        private void RecordingStartCommandExecute(LineViewModel line)
+        private void RecordingStartCommandExecute()
         {
             SelectedLine.AudioMode = AudioMode.Recording;
 
             AudioRecorderService?.Start();
         }
 
-        private void RecordingStopCommandExecute(LineViewModel line)
+        private void RecordingStopCommandExecute()
         {
             SelectedLine.AudioMode = AudioMode.Normal;
 
