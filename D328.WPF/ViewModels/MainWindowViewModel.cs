@@ -92,8 +92,6 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand WindowClosedCommand { get; }
 
-        public DelegateCommand PlaybackPauseCommand { get; }
-
         public DelegateCommand PlaybackStopCommand { get; }
 
         public DelegateCommand RecordListSelectionChangedCommand { get; }
@@ -128,7 +126,6 @@ namespace D328.WPF.ViewModels
             RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);
             RecordingStopCommand = new DelegateCommand(RecordingStopCommandExecute);
             WindowClosedCommand = new DelegateCommand(WindowClosedCommandExecute);
-            PlaybackPauseCommand = new DelegateCommand(PlaybackPauseCommandExecute);
             PlaybackStopCommand = new DelegateCommand(PlaybackStopCommandExecute);
             RecordListSelectionChangedCommand = new DelegateCommand(RecordListSelectionChangedCommandExecute);
             CloseCommand = new DelegateCommand(CloseCommandExecute);
@@ -182,12 +179,6 @@ namespace D328.WPF.ViewModels
 
             AudioPlayerService?.Dispose();
             AudioPlayerService = null;
-        }
-
-        private void PlaybackPauseCommandExecute()
-        {
-            SelectedLine.AudioMode = AudioMode.Pause;
-            AudioPlayerService?.Pause();
         }
 
         private void PlaybackStopCommandExecute()

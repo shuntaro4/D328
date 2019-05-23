@@ -44,6 +44,8 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand PlaybackStartCommand { get; }
 
+        public DelegateCommand PlaybackPauseCommand { get; }
+
         private IAudioPlayerService AudioPlayerService;
 
         public LineViewModel(Line line)
@@ -54,6 +56,7 @@ namespace D328.WPF.ViewModels
 
             ClearAudioCommand = new DelegateCommand(ClearAudioModeCommandExecute);
             PlaybackStartCommand = new DelegateCommand(PlaybackStartCommandExecute);
+            PlaybackPauseCommand = new DelegateCommand(PlaybackPauseCommandExecute);
         }
 
         public Line ToDomainModel()
@@ -74,6 +77,12 @@ namespace D328.WPF.ViewModels
             }
             AudioMode = AudioMode.Playing;
             AudioPlayerService.Play();
+        }
+
+        private void PlaybackPauseCommandExecute()
+        {
+            AudioMode = AudioMode.Pause;
+            AudioPlayerService?.Pause();
         }
     }
 }
