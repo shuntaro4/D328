@@ -337,7 +337,7 @@
 
                                     <Button
                                         Grid.Column="5"
-                                        Command="{Binding Path=DataContext.PlaybackStopCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                                        Command="{Binding Path=PlaybackStopCommand}"
                                         Content="{iconPacks:FontAwesome StopSolid}" />
                                 </Grid>
                             </DataTemplate>
