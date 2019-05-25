@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\AudioModeToPauseButtonEnabledConverter.cs" />
     <Compile Include="Converter\AudioModeToPlayButtonEnabledConverter .cs" />
     <Compile Include="ViewModels\RecordViewModel.cs" />
     <Compile Include="ViewModels\LineViewModel.cs" />
