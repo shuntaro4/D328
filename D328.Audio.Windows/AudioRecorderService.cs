@@ -73,6 +73,9 @@ namespace D328.Audio.Windows
 
         public void Start()
         {
+            // Wait a bit to avoid recording click sound.
+            Thread.Sleep(300);
+
             _isRecording = true;
         }
 
