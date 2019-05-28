@@ -1,6 +1,7 @@
 ﻿using D328.Application.Services;
 using D328.Domain.Model;
 using NAudio.Wave;
+using System;
 
 namespace D328.Audio.Windows
 {
@@ -64,6 +65,11 @@ namespace D328.Audio.Windows
             Stop();
             _wavePlayer?.Dispose();
             _wavePlayer = null;
+        }
+
+        public TimeSpan GetTotalTime()
+        {
+            return _waveStream?.TotalTime ?? new TimeSpan(0);
         }
     }
 }

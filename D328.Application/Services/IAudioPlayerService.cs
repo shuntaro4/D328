@@ -9,5 +9,7 @@ namespace D328.Application.Services
         void Pause();
 
         void Stop();
+
+        TimeSpan GetTotalTime();
     }
 }
