@@ -36,6 +36,14 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _audioPath, value);
         }
 
+        private TimeSpan _totalTime = new TimeSpan(0);
+
+        public TimeSpan TotalTime
+        {
+            get => _totalTime;
+            set => SetProperty(ref _totalTime, value);
+        }
+
         private ObservableCollection<LineViewModel> _lines = new ObservableCollection<LineViewModel>();
 
         public ObservableCollection<LineViewModel> Lines
@@ -95,6 +103,7 @@ namespace D328.WPF.ViewModels
             {
                 AudioPlayerService = new AudioPlayerService(ToDomainModel());
             }
+            TotalTime = AudioPlayerService.GetTotalTime();
             AudioPlayerService.Play();
         }
 

@@ -209,7 +209,7 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 FontSize="15"
-                                Text="99:99:99.99" />
+                                Text="{Binding SelectedRecord.TotalTime, StringFormat={}{0:hh\\:mm\\:ss\\.fff}}" />
                         </Grid>
 
                         <!--  play / pause / stop  -->
