@@ -19,6 +19,7 @@
             <converter:AudioModeToRecordingStopButtonEnabledConverter x:Key="AudioModeToRecordingStopButtonEnabledConverter" />
             <converter:AudioModeToPlayButtonEnabledConverter x:Key="AudioModeToPlayButtonEnabledConverter" />
             <converter:AudioModeToPauseButtonEnabledConverter x:Key="AudioModeToPauseButtonEnabledConverter" />
+            <converter:AudioModeToStopButtonEnabledConverter x:Key="AudioModeToStopButtonEnabledConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

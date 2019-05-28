@@ -334,12 +334,13 @@
                                         Grid.Column="4"
                                         Command="{Binding Path=PlaybackPauseCommand}"
                                         Content="{iconPacks:FontAwesome PauseSolid}"
-                                        IsEnabled="{Binding AudioMode, Converter={StaticResource AudioModeToPauseButtonEnabledConverter}, Mode=OneWay}"/>
+                                        IsEnabled="{Binding AudioMode, Converter={StaticResource AudioModeToPauseButtonEnabledConverter}, Mode=OneWay}" />
 
                                     <Button
                                         Grid.Column="5"
                                         Command="{Binding Path=PlaybackStopCommand}"
-                                        Content="{iconPacks:FontAwesome StopSolid}" />
+                                        Content="{iconPacks:FontAwesome StopSolid}"
+                                        IsEnabled="{Binding AudioMode, Converter={StaticResource AudioModeToStopButtonEnabledConverter}, Mode=OneWay}" />
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
