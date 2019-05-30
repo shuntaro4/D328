@@ -71,5 +71,11 @@ namespace D328.Audio.Windows
         {
             return _waveStream?.TotalTime ?? new TimeSpan(0);
         }
+
+        public TimeSpan GetCurrentTime()
+        {
+            return _waveStream?.CurrentTime ?? new TimeSpan(0);
+        }
+
     }
 }

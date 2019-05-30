@@ -11,5 +11,7 @@ namespace D328.Application.Services
         void Stop();
 
         TimeSpan GetTotalTime();
+
+        TimeSpan GetCurrentTime();
     }
 }
