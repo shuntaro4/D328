@@ -2,6 +2,7 @@
 using D328.Domain.Model;
 using NAudio.Wave;
 using System;
+using System.Windows.Threading;
 
 namespace D328.Audio.Windows
 {
@@ -10,6 +11,8 @@ namespace D328.Audio.Windows
         private IWavePlayer _wavePlayer;
 
         private WaveStream _waveStream;
+
+        private DispatcherTimer _timer;
 
         private EventHandler _onCurrentTimeChanged;
 
@@ -34,6 +37,12 @@ namespace D328.Audio.Windows
 
             _wavePlayer = new WaveOut { DesiredLatency = 200 };
             _wavePlayer.Init(sampleProvider);
+
+            _timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(500)
+            };
+            _timer.Tick += TimerOnTick;
         }
 
         public void Play()
@@ -46,6 +55,7 @@ namespace D328.Audio.Windows
             }
 
             _wavePlayer.Play();
+            _timer.Start();
         }
 
         public void Pause()
@@ -60,6 +70,8 @@ namespace D328.Audio.Windows
             {
                 _waveStream.Position = 0;
             }
+            _timer.Stop();
+            OnDataAvailableHandler(new EventArgs());
         }
 
         public void Dispose()
@@ -77,6 +89,11 @@ namespace D328.Audio.Windows
         public TimeSpan GetCurrentTime()
         {
             return _waveStream?.CurrentTime ?? new TimeSpan(0);
+        }
+
+        private void TimerOnTick(object sender, EventArgs e)
+        {
+            OnDataAvailableHandler(new EventArgs());
         }
 
         public void SubscriveEventOnCurrentTimeChanged(EventHandler subscriveEvent)

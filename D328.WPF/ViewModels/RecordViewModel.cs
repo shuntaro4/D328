@@ -110,6 +110,15 @@ namespace D328.WPF.ViewModels
             if (AudioPlayerService == null)
             {
                 AudioPlayerService = new AudioPlayerService(ToDomainModel());
+                AudioPlayerService.SubscriveEventOnCurrentTimeChanged((s, _) =>
+                {
+                    IAudioPlayerService audioPlayerService = s as AudioPlayerService;
+                    if (audioPlayerService == null)
+                    {
+                        return;
+                    }
+                    CurrentTime = audioPlayerService.GetCurrentTime();
+                });
             }
             TotalTime = AudioPlayerService.GetTotalTime();
             AudioPlayerService.Play();
