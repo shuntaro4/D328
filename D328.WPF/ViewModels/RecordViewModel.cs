@@ -36,6 +36,14 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _audioPath, value);
         }
 
+        private TimeSpan _currentTime = new TimeSpan(0);
+
+        public TimeSpan CurrentTime
+        {
+            get => _currentTime;
+            set => SetProperty(ref _currentTime, value);
+        }
+
         private TimeSpan _totalTime = new TimeSpan(0);
 
         public TimeSpan TotalTime
