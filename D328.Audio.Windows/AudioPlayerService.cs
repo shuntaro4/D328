@@ -11,6 +11,8 @@ namespace D328.Audio.Windows
 
         private WaveStream _waveStream;
 
+        private EventHandler _onCurrentTimeChanged;
+
         public AudioPlayerService(Record record) : this(record.AudioPath)
         {
         }
@@ -77,5 +79,18 @@ namespace D328.Audio.Windows
             return _waveStream?.CurrentTime ?? new TimeSpan(0);
         }
 
+        public void SubscriveEventOnCurrentTimeChanged(EventHandler subscriveEvent)
+        {
+            _onCurrentTimeChanged += subscriveEvent;
+        }
+
+        private void OnDataAvailableHandler(EventArgs e)
+        {
+            if (_onCurrentTimeChanged == null)
+            {
+                return;
+            }
+            _onCurrentTimeChanged(this, e);
+        }
     }
 }

@@ -13,5 +13,7 @@ namespace D328.Application.Services
         TimeSpan GetTotalTime();
 
         TimeSpan GetCurrentTime();
+
+        void SubscriveEventOnCurrentTimeChanged(EventHandler subscriveEvent);
     }
 }
