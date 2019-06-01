@@ -201,10 +201,6 @@ namespace D328.WPF.ViewModels
         {
             var record = Record.CreateNew();
             record.Lines.Add(Line.CreateNew(sortNumber: 1));
-            record.Lines.Add(Line.CreateNew(sortNumber: 2));
-            record.Lines.Add(Line.CreateNew(sortNumber: 3));
-            record.Lines.Add(Line.CreateNew(sortNumber: 4));
-            record.Lines.Add(Line.CreateNew(sortNumber: 5));
             SelectedRecord = new RecordViewModel(record);
             SelectedLine = SelectedRecord.Lines.FirstOrDefault();
         }
