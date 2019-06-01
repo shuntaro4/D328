@@ -61,6 +61,7 @@
     <Compile Include="Converter\AudioModeToStopButtonEnabledConverter.cs" />
     <Compile Include="Converter\AudioModeToPauseButtonEnabledConverter.cs" />
     <Compile Include="Converter\AudioModeToPlayButtonEnabledConverter .cs" />
+    <Compile Include="Converter\NullToBoolValueConverter.cs" />
     <Compile Include="ViewModels\RecordViewModel.cs" />
     <Compile Include="ViewModels\LineViewModel.cs" />
     <Compile Include="Views\D328UserControl.cs" />

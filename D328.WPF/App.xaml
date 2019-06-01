@@ -20,6 +20,7 @@
             <converter:AudioModeToPlayButtonEnabledConverter x:Key="AudioModeToPlayButtonEnabledConverter" />
             <converter:AudioModeToPauseButtonEnabledConverter x:Key="AudioModeToPauseButtonEnabledConverter" />
             <converter:AudioModeToStopButtonEnabledConverter x:Key="AudioModeToStopButtonEnabledConverter" />
+            <converter:NullToBoolValueConverter x:Key="NullToBoolValueConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

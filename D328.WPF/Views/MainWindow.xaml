@@ -159,7 +159,8 @@
                         Grid.Column="1"
                         Margin="2.5,5,2.5,5"
                         Padding="10"
-                        Command="{Binding SelectedRecord.SaveRecordCommand}">
+                        Command="{Binding SelectedRecord.SaveRecordCommand}"
+                        IsEnabled="{Binding SelectedRecord, Converter={StaticResource NullToBoolValueConverter}}">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
