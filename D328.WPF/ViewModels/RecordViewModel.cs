@@ -1,5 +1,6 @@
 ﻿using D328.Application.Services;
 using D328.Audio.Windows;
+using D328.Domain.DomainService;
 using D328.Domain.Model;
 using D328.Repository;
 using Prism.Commands;
@@ -80,6 +81,8 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand AddLineCommand { get; }
 
+        public DelegateCommand RemoveLineCommand { get; }
+
         private RecordRepository RecordRepository = new RecordRepository();
 
         private IAudioMixerService AudioMixerService;
@@ -100,6 +103,7 @@ namespace D328.WPF.ViewModels
             PlaybackStopCommand = new DelegateCommand(PlaybackStopCommandExecute);
             ClearLinesAudioModeCommand = new DelegateCommand(ClearLinesAudioModeCommandExecute);
             AddLineCommand = new DelegateCommand(AddLineCommandExecute);
+            RemoveLineCommand = new DelegateCommand(RemoveLineCommandExecute);
         }
 
         private void SaveRecordCommandExecute()
@@ -181,6 +185,11 @@ namespace D328.WPF.ViewModels
         {
             var sortNumber = LineDomainService.CalcNewSortNumber(Lines.Select(x => x.ToDomainModel()));
             Lines.Add(new LineViewModel(Line.CreateNew(sortNumber: sortNumber)));
+        }
+
+        private void RemoveLineCommandExecute()
+        {
+            Lines.Remove(SelectedLine);
         }
     }
 }
