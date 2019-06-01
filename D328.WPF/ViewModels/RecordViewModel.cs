@@ -179,7 +179,7 @@ namespace D328.WPF.ViewModels
 
         private void AddLineCommandExecute()
         {
-            var sortNumber = Lines.Count < 1 ? 1 : Lines.Max(x => x.SortNumber) + 1;
+            var sortNumber = LineDomainService.CalcNewSortNumber(Lines.Select(x => x.ToDomainModel()));
             Lines.Add(new LineViewModel(Line.CreateNew(sortNumber: sortNumber)));
         }
     }

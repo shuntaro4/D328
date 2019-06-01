@@ -17,6 +17,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D328.Audio.Windows", "D328.Audio.Windows\D328.Audio.Windows.csproj", "{0DAEEA0F-21A8-414D-A8B6-6666D2F46762}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6DAEB849-7DE3-4FA9-B619-505EC278B56C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D328.Domain.Test", "D328.Domain.Test\D328.Domain.Test.csproj", "{5A435AA8-C4AD-4880-A8D4-83B4488C0BF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,13 +51,19 @@ Global
 		{0DAEEA0F-21A8-414D-A8B6-6666D2F46762}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DAEEA0F-21A8-414D-A8B6-6666D2F46762}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DAEEA0F-21A8-414D-A8B6-6666D2F46762}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A435AA8-C4AD-4880-A8D4-83B4488C0BF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A435AA8-C4AD-4880-A8D4-83B4488C0BF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A435AA8-C4AD-4880-A8D4-83B4488C0BF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A435AA8-C4AD-4880-A8D4-83B4488C0BF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{22460667-1FC5-4E97-AE8E-219247613804} = {6DAEB849-7DE3-4FA9-B619-505EC278B56C}
 		{A0880271-258C-4112-8B33-F0F6B6ED44F8} = {1CD72F30-EC78-4F6D-B33F-A6833B5F73FB}
 		{0DAEEA0F-21A8-414D-A8B6-6666D2F46762} = {1CD72F30-EC78-4F6D-B33F-A6833B5F73FB}
+		{5A435AA8-C4AD-4880-A8D4-83B4488C0BF3} = {6DAEB849-7DE3-4FA9-B619-505EC278B56C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EB026491-AF19-441A-BDC7-24FFD346C5E3}
