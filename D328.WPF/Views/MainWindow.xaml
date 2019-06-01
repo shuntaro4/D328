@@ -127,6 +127,7 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
                     <!--  Action New  -->
@@ -154,9 +155,35 @@
                         </Grid>
                     </Button>
 
-                    <!--  Action Save  -->
+                    <!--  Action Add Line  -->
                     <Button
                         Grid.Column="1"
+                        Margin="2.5,5,2.5,5"
+                        Padding="10"
+                        Command="{Binding SelectedRecord.AddLineCommand}"
+                        IsEnabled="{Binding SelectedRecord, Converter={StaticResource NullToBoolValueConverter}}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <iconPacks:PackIconFontAwesome
+                                Grid.Row="0"
+                                Width="30"
+                                Height="30"
+                                HorizontalAlignment="Center"
+                                Kind="PlusCircleSolid" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Margin="0,10,0,0"
+                                HorizontalAlignment="Center"
+                                Text="Line" />
+                        </Grid>
+                    </Button>
+
+                    <!--  Action Save  -->
+                    <Button
+                        Grid.Column="2"
                         Margin="2.5,5,2.5,5"
                         Padding="10"
                         Command="{Binding SelectedRecord.SaveRecordCommand}"
@@ -180,7 +207,7 @@
                         </Grid>
                     </Button>
 
-                    <Grid Grid.Column="2">
+                    <Grid Grid.Column="3">
                         <Grid.Style>
                             <Style TargetType="Grid">
                                 <Setter Property="Visibility" Value="Visible" />
