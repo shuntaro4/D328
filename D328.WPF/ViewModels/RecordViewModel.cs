@@ -60,6 +60,14 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _lines, value);
         }
 
+        private LineViewModel _selectedLine;
+
+        public LineViewModel SelectedLine
+        {
+            get => _selectedLine;
+            set => SetProperty(ref _selectedLine, value);
+        }
+
         public DelegateCommand SaveRecordCommand { get; }
 
         public DelegateCommand PlaybackStartCommand { get; }

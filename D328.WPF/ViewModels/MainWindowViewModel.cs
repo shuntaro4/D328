@@ -78,14 +78,6 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _selectedRecord, value);
         }
 
-        private LineViewModel _selectedLine;
-
-        public LineViewModel SelectedLine
-        {
-            get => _selectedLine;
-            set => SetProperty(ref _selectedLine, value);
-        }
-
         public DelegateCommand RecordingStartCommand { get; }
 
         public DelegateCommand RecordingStopCommand { get; }
@@ -154,17 +146,17 @@ namespace D328.WPF.ViewModels
 
         private void RecordingStartCommandExecute()
         {
-            SelectedLine.AudioMode = AudioMode.Recording;
+            SelectedRecord.SelectedLine.AudioMode = AudioMode.Recording;
 
             AudioRecorderService?.Start();
         }
 
         private void RecordingStopCommandExecute()
         {
-            SelectedLine.AudioMode = AudioMode.Normal;
+            SelectedRecord.SelectedLine.AudioMode = AudioMode.Normal;
 
             AudioRecorderService?.Stop();
-            SelectedLine.AudioPath = AudioRecorderService.GetAudioPath();
+            SelectedRecord.SelectedLine.AudioPath = AudioRecorderService.GetAudioPath();
 
             RecordingReadyCommandExecute();
         }
@@ -202,7 +194,7 @@ namespace D328.WPF.ViewModels
             var record = Record.CreateNew();
             record.Lines.Add(Line.CreateNew(sortNumber: 1));
             SelectedRecord = new RecordViewModel(record);
-            SelectedLine = SelectedRecord.Lines.FirstOrDefault();
+            SelectedRecord.SelectedLine = SelectedRecord.Lines.FirstOrDefault();
         }
     }
 }

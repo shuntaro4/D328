@@ -323,7 +323,7 @@
 
                 <!--  Line List  -->
                 <Grid Grid.Row="3">
-                    <ListBox ItemsSource="{Binding SelectedRecord.Lines}" SelectedValue="{Binding SelectedLine}">
+                    <ListBox ItemsSource="{Binding SelectedRecord.Lines}" SelectedValue="{Binding SelectedRecord.SelectedLine}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
                                 <i:InvokeCommandAction Command="{Binding RecordListSelectionChangedCommand}" />
