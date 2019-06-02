@@ -16,6 +16,10 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding CreateNewRecordCommand}" Gesture="Ctrl+N" />
+    </Window.InputBindings>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
