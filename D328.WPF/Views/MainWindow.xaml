@@ -18,6 +18,7 @@
 
     <Window.InputBindings>
         <KeyBinding Command="{Binding CreateNewRecordCommand}" Gesture="Ctrl+N" />
+        <KeyBinding Command="{Binding SelectedRecord.SaveRecordCommand}" Gesture="Ctrl+S" />
     </Window.InputBindings>
 
     <Grid>
