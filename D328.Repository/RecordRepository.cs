@@ -59,5 +59,14 @@ namespace D328.Repository
             var result = list.Select(x => x.ToDomainModel());
             return result;
         }
+
+        public void Remove(Record record)
+        {
+            db.Write(() =>
+            {
+                var target = db.Find<RecordData>(record.Id);
+                db.Remove(target);
+            });
+        }
     }
 }

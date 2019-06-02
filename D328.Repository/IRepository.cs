@@ -8,5 +8,7 @@ namespace D328.Repository
         void Save(Record record);
 
         IEnumerable<Record> FindAll();
+
+        void Remove(Record record);
     }
 }
