@@ -92,6 +92,7 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand LineListSelectionChangedCommand { get; }
 
+        public DelegateCommand<RecordViewModel> RemoveRecordCommand { get; }
 
         private IAudioDeviceService AudioDeviceService = new AudioDeviceService();
 
@@ -117,6 +118,7 @@ namespace D328.WPF.ViewModels
             RecordingStopCommand = new DelegateCommand(RecordingStopCommandExecute);
             WindowClosedCommand = new DelegateCommand(WindowClosedCommandExecute);
             RecordListSelectionChangedCommand = new DelegateCommand(RecordListSelectionChangedCommandExecute);
+            RemoveRecordCommand = new DelegateCommand<RecordViewModel>(RemoveRecordCommandExecute);
             CloseCommand = new DelegateCommand(CloseCommandExecute);
             CreateNewRecordCommand = new DelegateCommand(CreateNewRecordCommandExecute);
             LineListSelectionChangedCommand = new DelegateCommand(RecordListSelectionChangedCommandExecute);
@@ -175,7 +177,7 @@ namespace D328.WPF.ViewModels
             AudioPlayerService?.Dispose();
             AudioPlayerService = null;
 
-            SelectedRecord.ClearLinesAudioModeCommand.Execute();
+            SelectedRecord?.ClearLinesAudioModeCommand.Execute();
 
             SelectedRecord?.SubscriveEventOnSaveFinished((_, __) =>
             {
@@ -195,6 +197,16 @@ namespace D328.WPF.ViewModels
             record.Lines.Add(Line.CreateNew(sortNumber: 1));
             SelectedRecord = new RecordViewModel(record);
             SelectedRecord.SelectedLine = SelectedRecord.Lines.FirstOrDefault();
+        }
+
+        private void RemoveRecordCommandExecute(RecordViewModel recordViewModel)
+        {
+            RecordRepository.Remove(recordViewModel.ToDomainModel());
+
+            RecordList.Clear();
+            RecordList = new ObservableCollection<RecordViewModel>(RecordRepository.FindAll().Select(x => new RecordViewModel(x)));
+
+            SelectedRecord = null;
         }
     }
 }
