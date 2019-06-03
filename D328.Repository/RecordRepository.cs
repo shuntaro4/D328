@@ -64,8 +64,13 @@ namespace D328.Repository
         {
             db.Write(() =>
             {
-                var target = db.Find<RecordData>(record.Id);
-                db.Remove(target);
+                var recordData = db.Find<RecordData>(record.Id);
+                foreach (var line in record.Lines)
+                {
+                    var lineData = db.Find<LineData>(line.Id);
+                    db.Remove(lineData);
+                }
+                db.Remove(recordData);
             });
         }
     }
