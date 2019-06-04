@@ -181,8 +181,8 @@ namespace D328.WPF.ViewModels
 
             SelectedRecord?.SubscriveEventOnSaveFinished((_, __) =>
             {
-                RecordList.Clear();
                 RecordList = new ObservableCollection<RecordViewModel>(RecordRepository.FindAll().Select(x => new RecordViewModel(x)));
+                SelectedRecord = RecordList.FirstOrDefault();
             });
         }
 
