@@ -109,6 +109,10 @@ namespace D328.WPF.ViewModels
         private void SaveRecordCommandExecute()
         {
             var record = ToDomainModel();
+            AudioMixerService = new AudioMixerService(record);
+            AudioPath = AudioMixerService.MixLines();
+
+            record = ToDomainModel();
             RecordRepository.Save(record);
 
             OnSaveFinishedHandler(new EventArgs());
@@ -116,12 +120,6 @@ namespace D328.WPF.ViewModels
 
         private void PlaybackStartCommandExecute()
         {
-            // todo It is necessary to fix timing to mix audio.
-
-            var record = ToDomainModel();
-            AudioMixerService = new AudioMixerService(record);
-            AudioPath = AudioMixerService.MixLines();
-
             if (AudioPlayerService == null)
             {
                 AudioPlayerService = new AudioPlayerService(ToDomainModel());
