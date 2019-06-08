@@ -13,9 +13,9 @@ namespace D328.WPF.Test.Converter
         [Trait("AudioModeToStopButtonEnabledConverter", "Convert")]
         public void ConvertTrue1()
         {
-            var value = AudioMode.Normal;
+            object[] values = { AudioMode.Normal, @"Resources/test.txt" };
 
-            var actual = target.Convert(value, null, null, null) as bool?;
+            var actual = target.Convert(values, null, null, null) as bool?;
 
             Assert.False(actual);
         }
@@ -24,9 +24,9 @@ namespace D328.WPF.Test.Converter
         [Trait("AudioModeToStopButtonEnabledConverter", "Convert")]
         public void ConvertTrue2()
         {
-            var value = AudioMode.Recording;
+            object[] values = { AudioMode.Recording, @"Resources/test.txt" };
 
-            var actual = target.Convert(value, null, null, null) as bool?;
+            var actual = target.Convert(values, null, null, null) as bool?;
 
             Assert.False(actual);
         }
@@ -35,9 +35,9 @@ namespace D328.WPF.Test.Converter
         [Trait("AudioModeToStopButtonEnabledConverter", "Convert")]
         public void ConvertTrue3()
         {
-            var value = AudioMode.Pause;
+            object[] values = { AudioMode.Pause, @"Resources/test.txt" };
 
-            var actual = target.Convert(value, null, null, null) as bool?;
+            var actual = target.Convert(values, null, null, null) as bool?;
 
             Assert.True(actual);
         }
@@ -46,9 +46,9 @@ namespace D328.WPF.Test.Converter
         [Trait("AudioModeToStopButtonEnabledConverter", "Convert")]
         public void ConvertTrue4()
         {
-            var value = AudioMode.Playing;
+            object[] values = { AudioMode.Playing, @"Resources/test.txt" };
 
-            var actual = target.Convert(value, null, null, null) as bool?;
+            var actual = target.Convert(values, null, null, null) as bool?;
 
             Assert.True(actual);
         }
@@ -61,6 +61,51 @@ namespace D328.WPF.Test.Converter
 
             Assert.False(actual);
         }
+
+        [Fact(DisplayName = "異：Enable=true(AudioMode=Normal、AudioPath=\"\")")]
+        [Trait("AudioModeToStopButtonEnabledConverter", "Convert")]
+        public void ConvertFalse2()
+        {
+            object[] values = { AudioMode.Normal, "" };
+
+            var actual = target.Convert(values, null, null, null) as bool?;
+
+            Assert.False(actual);
+        }
+
+        [Fact(DisplayName = "異：Enable=false(AudioMode=Recording、AudioPath=\"\")")]
+        [Trait("AudioModeToStopButtonEnabledConverter", "Convert")]
+        public void ConvertFalse3()
+        {
+            object[] values = { AudioMode.Recording, "" };
+
+            var actual = target.Convert(values, null, null, null) as bool?;
+
+            Assert.False(actual);
+        }
+
+        [Fact(DisplayName = "異：Enable=false(AudioMode=Pause、AudioPath=\"\")")]
+        [Trait("AudioModeToStopButtonEnabledConverter", "Convert")]
+        public void ConvertFalse4()
+        {
+            object[] values = { AudioMode.Pause, "" };
+
+            var actual = target.Convert(values, null, null, null) as bool?;
+
+            Assert.False(actual);
+        }
+
+        [Fact(DisplayName = "異：Enable=false(AudioMode=Playing、AudioPath=\"\")")]
+        [Trait("AudioModeToStopButtonEnabledConverter", "Convert")]
+        public void ConvertFalse5()
+        {
+            object[] values = { AudioMode.Playing, "" };
+
+            var actual = target.Convert(values, null, null, null) as bool?;
+
+            Assert.False(actual);
+        }
+
 
         [Fact(DisplayName = "異：未実装")]
         [Trait("AudioModeToStopButtonEnabledConverter", "ConvertBack")]

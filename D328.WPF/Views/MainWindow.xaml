@@ -418,8 +418,14 @@
                                     <Button
                                         Grid.Column="5"
                                         Command="{Binding Path=PlaybackStopCommand}"
-                                        Content="{iconPacks:FontAwesome StopSolid}"
-                                        IsEnabled="{Binding AudioMode, Converter={StaticResource AudioModeToStopButtonEnabledConverter}, Mode=OneWay}" />
+                                        Content="{iconPacks:FontAwesome StopSolid}">
+                                        <Button.IsEnabled>
+                                            <MultiBinding Converter="{StaticResource AudioModeToStopButtonEnabledConverter}">
+                                                <Binding Mode="OneWay" Path="AudioMode" />
+                                                <Binding Mode="OneWay" Path="AudioPath" />
+                                            </MultiBinding>
+                                        </Button.IsEnabled>
+                                    </Button>
 
                                     <Button
                                         Grid.Column="7"
