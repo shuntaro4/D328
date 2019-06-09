@@ -1,6 +1,7 @@
 ﻿using D328.Application.Services;
 using D328.Audio.Windows;
 using D328.Domain.DomainService;
+using D328.Domain.Enum;
 using D328.Domain.Model;
 using D328.Repository;
 using Prism.Commands;
@@ -51,6 +52,13 @@ namespace D328.WPF.ViewModels
         {
             get => _totalTime;
             set => SetProperty(ref _totalTime, value);
+        }
+
+        private AudioMode _audioMode = AudioMode.Normal;
+        public AudioMode AudioMode
+        {
+            get => _audioMode;
+            set => SetProperty(ref _audioMode, value);
         }
 
         private ObservableCollection<LineViewModel> _lines = new ObservableCollection<LineViewModel>();
