@@ -187,24 +187,45 @@
                         Grid.Column="1"
                         Margin="2.5,5,2.5,5"
                         Padding="10"
-                        Command="{Binding SelectedRecord.AddLineCommand}"
+                        Command="{Binding RecordingCommand}"
                         IsEnabled="{Binding SelectedRecord, Converter={StaticResource NullToBoolValueConverter}}">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <iconPacks:PackIconFontAwesome
+                            <iconPacks:PackIconMaterial
                                 Grid.Row="0"
                                 Width="30"
                                 Height="30"
-                                HorizontalAlignment="Center"
-                                Kind="PlusCircleSolid" />
+                                HorizontalAlignment="Center">
+                                <iconPacks:PackIconMaterial.Style>
+                                    <Style TargetType="iconPacks:PackIconMaterial">
+                                        <Setter Property="Kind" Value="RecordRec" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SelectedRecord.AudioMode}" Value="Recording">
+                                                <Setter Property="Kind" Value="StopCircle" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </iconPacks:PackIconMaterial.Style>
+                            </iconPacks:PackIconMaterial>
                             <TextBlock
                                 Grid.Row="1"
                                 Margin="0,10,0,0"
-                                HorizontalAlignment="Center"
-                                Text="Line" />
+                                HorizontalAlignment="Center">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Text" Value="start" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SelectedRecord.AudioMode}" Value="Recording">
+                                                <Setter Property="Text" Value="REC" />
+                                                <Setter Property="Foreground" Value="Red" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
                         </Grid>
                     </Button>
 

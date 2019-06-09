@@ -78,9 +78,7 @@ namespace D328.WPF.ViewModels
             set => SetProperty(ref _selectedRecord, value);
         }
 
-        public DelegateCommand RecordingStartCommand { get; }
-
-        public DelegateCommand RecordingStopCommand { get; }
+        public DelegateCommand RecordingCommand { get; }
 
         public DelegateCommand WindowClosedCommand { get; }
 
@@ -114,8 +112,8 @@ namespace D328.WPF.ViewModels
 
             RecordList = new ObservableCollection<RecordViewModel>(RecordRepository.FindAll().Select(x => new RecordViewModel(x)));
 
-            RecordingStartCommand = new DelegateCommand(RecordingStartCommandExecute);
-            RecordingStopCommand = new DelegateCommand(RecordingStopCommandExecute);
+            RecordingCommand = new DelegateCommand(RecordingCommandExecute);
+
             WindowClosedCommand = new DelegateCommand(WindowClosedCommandExecute);
             RecordListSelectionChangedCommand = new DelegateCommand(RecordListSelectionChangedCommandExecute);
             RemoveRecordCommand = new DelegateCommand<RecordViewModel>(RemoveRecordCommandExecute);
@@ -146,6 +144,21 @@ namespace D328.WPF.ViewModels
             AudioRecorderService.Ready();
         }
 
+        private void RecordingCommandExecute()
+        {
+            if (SelectedRecord.AudioMode == AudioMode.Normal)
+            {
+                RecordingStartCommandExecute();
+                return;
+            }
+
+            if (SelectedRecord.AudioMode == AudioMode.Recording)
+            {
+                RecordingStopCommandExecute();
+                return;
+            }
+        }
+
         private void RecordingStartCommandExecute()
         {
             SelectedRecord.AudioMode = AudioMode.Recording;
@@ -158,7 +171,8 @@ namespace D328.WPF.ViewModels
             SelectedRecord.AudioMode = AudioMode.Normal;
 
             AudioRecorderService?.Stop();
-            SelectedRecord.SelectedLine.AudioPath = AudioRecorderService.GetAudioPath();
+            //
+            //SelectedRecord.SelectedLine.AudioPath = AudioRecorderService.GetAudioPath();
 
             RecordingReadyCommandExecute();
         }
