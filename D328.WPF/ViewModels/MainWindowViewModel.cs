@@ -1,6 +1,7 @@
 ﻿using D328.Application.Services;
 using D328.Audio.Windows;
 using D328.Domain;
+using D328.Domain.DomainService;
 using D328.Domain.Enum;
 using D328.Domain.Model;
 using D328.Repository;
@@ -171,8 +172,10 @@ namespace D328.WPF.ViewModels
             SelectedRecord.AudioMode = AudioMode.Normal;
 
             AudioRecorderService?.Stop();
-            //
-            //SelectedRecord.SelectedLine.AudioPath = AudioRecorderService.GetAudioPath();
+
+            var sortNumber = LineDomainService.CalcNewSortNumber(SelectedRecord.Lines.Select(x => x.ToDomainModel()));
+            SelectedRecord.Lines.Add(
+                new LineViewModel(Line.CreateNew(sortNumber: sortNumber, audioPath: AudioRecorderService.GetAudioPath())));
 
             RecordingReadyCommandExecute();
         }
