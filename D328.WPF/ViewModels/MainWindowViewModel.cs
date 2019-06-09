@@ -148,14 +148,14 @@ namespace D328.WPF.ViewModels
 
         private void RecordingStartCommandExecute()
         {
-            SelectedRecord.SelectedLine.AudioMode = AudioMode.Recording;
+            SelectedRecord.AudioMode = AudioMode.Recording;
 
             AudioRecorderService?.Start();
         }
 
         private void RecordingStopCommandExecute()
         {
-            SelectedRecord.SelectedLine.AudioMode = AudioMode.Normal;
+            SelectedRecord.AudioMode = AudioMode.Normal;
 
             AudioRecorderService?.Stop();
             SelectedRecord.SelectedLine.AudioPath = AudioRecorderService.GetAudioPath();
