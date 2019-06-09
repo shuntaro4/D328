@@ -1,6 +1,5 @@
 ﻿using D328.Application.Services;
 using D328.Audio.Windows;
-using D328.Domain.DomainService;
 using D328.Domain.Enum;
 using D328.Domain.Model;
 using D328.Repository;
@@ -87,8 +86,6 @@ namespace D328.WPF.ViewModels
 
         public DelegateCommand ClearLinesAudioModeCommand { get; }
 
-        public DelegateCommand AddLineCommand { get; }
-
         public DelegateCommand RemoveLineCommand { get; }
 
         private RecordRepository RecordRepository = new RecordRepository();
@@ -110,7 +107,6 @@ namespace D328.WPF.ViewModels
             PlaybackPauseCommand = new DelegateCommand(PlaybackPauseCommandExecute);
             PlaybackStopCommand = new DelegateCommand(PlaybackStopCommandExecute);
             ClearLinesAudioModeCommand = new DelegateCommand(ClearLinesAudioModeCommandExecute);
-            AddLineCommand = new DelegateCommand(AddLineCommandExecute);
             RemoveLineCommand = new DelegateCommand(RemoveLineCommandExecute);
         }
 
@@ -185,12 +181,6 @@ namespace D328.WPF.ViewModels
             {
                 line.ClearAudioCommand.Execute();
             }
-        }
-
-        private void AddLineCommandExecute()
-        {
-            var sortNumber = LineDomainService.CalcNewSortNumber(Lines.Select(x => x.ToDomainModel()));
-            Lines.Add(new LineViewModel(Line.CreateNew(sortNumber: sortNumber)));
         }
 
         private void RemoveLineCommandExecute()
