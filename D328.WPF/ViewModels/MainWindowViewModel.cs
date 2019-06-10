@@ -167,12 +167,14 @@ namespace D328.WPF.ViewModels
             SelectedRecord.AudioMode = AudioMode.Recording;
 
             AudioRecorderService?.Start();
+            SelectedRecord.PlaybackStartCommand.Execute();
         }
 
         private void RecordingStopCommandExecute()
         {
             SelectedRecord.AudioMode = AudioMode.Normal;
 
+            SelectedRecord.PlaybackStopCommand.Execute();
             AudioRecorderService?.Stop();
 
             var sortNumber = LineDomainService.CalcNewSortNumber(SelectedRecord.Lines.Select(x => x.ToDomainModel()));

@@ -94,6 +94,8 @@ namespace D328.WPF.ViewModels
 
         private IAudioPlayerService AudioPlayerService;
 
+        private IAudioFileService AudioFileService = new AudioFileService();
+
         private EventHandler _onSaveFinished;
 
         public RecordViewModel(Record record)
@@ -126,6 +128,12 @@ namespace D328.WPF.ViewModels
         {
             if (AudioPlayerService == null)
             {
+                var record = ToDomainModel();
+                AudioMixerService = new AudioMixerService(record);
+
+                AudioFileService.Delete(record.AudioPath);
+                AudioPath = AudioMixerService.MixLines();
+
                 AudioPlayerService = new AudioPlayerService(ToDomainModel());
                 AudioPlayerService.SubscriveEventOnCurrentTimeChanged((s, _) =>
                 {
@@ -149,6 +157,8 @@ namespace D328.WPF.ViewModels
         private void PlaybackStopCommandExecute()
         {
             AudioPlayerService?.Stop();
+            AudioPlayerService?.Dispose();
+            AudioPlayerService = null;
         }
 
         public Record ToDomainModel()
