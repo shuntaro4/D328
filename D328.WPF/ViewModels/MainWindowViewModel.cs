@@ -166,8 +166,8 @@ namespace D328.WPF.ViewModels
         {
             SelectedRecord.AudioMode = AudioMode.Recording;
 
-            AudioRecorderService?.Start();
             SelectedRecord.PlaybackStartCommand.Execute();
+            AudioRecorderService?.Start();
         }
 
         private void RecordingStopCommandExecute()
