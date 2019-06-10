@@ -70,7 +70,7 @@ namespace D328.Audio.Windows
             {
                 _waveStream.Position = 0;
             }
-            _timer.Stop();
+            _timer?.Stop();
             OnDataAvailableHandler(new EventArgs());
         }
 
