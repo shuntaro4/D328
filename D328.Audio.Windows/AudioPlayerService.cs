@@ -79,6 +79,8 @@ namespace D328.Audio.Windows
             Stop();
             _wavePlayer?.Dispose();
             _wavePlayer = null;
+            _waveStream?.Dispose();
+            _waveStream = null;
         }
 
         public TimeSpan GetTotalTime()
