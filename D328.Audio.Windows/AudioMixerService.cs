@@ -24,7 +24,11 @@ namespace D328.Audio.Windows
                 .Select(x => new AudioFileReader(x.AudioPath)).ToList();
 
             var mixer = new MixingSampleProvider(audioFiles);
-            var filePath = $"mix-{DateTime.Now.ToString("yyyy-MM-dd-HHmmss")}.wav";
+            var filePath = _record.AudioPath;
+            if (string.IsNullOrEmpty(filePath))
+            {
+                filePath = $"mix-{DateTime.Now.ToString("yyyy-MM-dd-HHmmss")}.wav";
+            }
             WaveFileWriter.CreateWaveFile16(filePath, mixer);
 
             foreach (var fileReader in audioFiles)
