@@ -101,6 +101,8 @@ namespace D328.WPF.ViewModels
 
         private IRecordRepository RecordRepository = new RecordRepository();
 
+        private IAudioFileService AudioFileService = new AudioFileService();
+
         public MainWindowViewModel()
         {
             var inputAudioDevices = AudioDeviceService.GetInputAudioDevices();
@@ -218,7 +220,14 @@ namespace D328.WPF.ViewModels
 
         private void RemoveRecordCommandExecute(RecordViewModel recordViewModel)
         {
-            RecordRepository.Remove(recordViewModel.ToDomainModel());
+            var record = recordViewModel.ToDomainModel();
+            RecordRepository.Remove(record);
+
+            AudioFileService.Delete(record.AudioPath);
+            foreach (var line in record.Lines)
+            {
+                AudioFileService.Delete(line.AudioPath);
+            }
 
             RecordList.Clear();
             RecordList = new ObservableCollection<RecordViewModel>(RecordRepository.FindAll().Select(x => new RecordViewModel(x)));
