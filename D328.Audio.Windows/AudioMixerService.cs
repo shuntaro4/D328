@@ -23,6 +23,11 @@ namespace D328.Audio.Windows
                 .Where(x => File.Exists(x.AudioPath))
                 .Select(x => new AudioFileReader(x.AudioPath)).ToList();
 
+            if (audioFiles.Count == 0)
+            {
+                return "";
+            }
+
             var mixer = new MixingSampleProvider(audioFiles);
             var filePath = _record.AudioPath;
             if (string.IsNullOrEmpty(filePath))
