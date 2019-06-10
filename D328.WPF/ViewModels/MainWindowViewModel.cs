@@ -213,9 +213,7 @@ namespace D328.WPF.ViewModels
         private void CreateNewRecordCommandExecute()
         {
             var record = Record.CreateNew();
-            record.Lines.Add(Line.CreateNew(sortNumber: 1));
             SelectedRecord = new RecordViewModel(record);
-            SelectedRecord.SelectedLine = SelectedRecord.Lines.FirstOrDefault();
         }
 
         private void RemoveRecordCommandExecute(RecordViewModel recordViewModel)
