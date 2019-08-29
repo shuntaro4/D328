@@ -31,7 +31,10 @@ namespace D328.Audio.UWP
 
         public AudioDevice GetSelectedOutputAudioDevice(ObservableCollection<AudioDevice> devices)
         {
-            throw new System.NotImplementedException();
+            var defaltDevice = DeviceInformation.FindAllAsync(DeviceClass.AudioRender).GetResults()
+                .Where(x => x.IsDefault)
+                .FirstOrDefault();
+            return devices.FirstOrDefault(x => x.Id == defaltDevice.Id);
         }
     }
 }
