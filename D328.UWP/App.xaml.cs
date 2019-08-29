@@ -1,4 +1,5 @@
-﻿using System;
+﻿using D328.UWP.Views;
+using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;

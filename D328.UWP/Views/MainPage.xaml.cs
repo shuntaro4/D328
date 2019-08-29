@@ -1,6 +1,6 @@
 ﻿using Windows.UI.Xaml.Controls;
 
-namespace D328.UWP
+namespace D328.UWP.Views
 {
     public sealed partial class MainPage : Page
     {
