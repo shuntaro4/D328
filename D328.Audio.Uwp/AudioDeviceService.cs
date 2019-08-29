@@ -17,7 +17,8 @@ namespace D328.Audio.UWP
 
         public List<AudioDevice> GetOutputAudioDevices()
         {
-            throw new System.NotImplementedException();
+            var devices = DeviceInformation.FindAllAsync(DeviceClass.AudioRender).GetResults();
+            return devices.Select(x => AudioDevice.CreateNewDevice(x.Id, x.Name)).ToList();
         }
 
         public AudioDevice GetSelectedInputAudioDevice(ObservableCollection<AudioDevice> devices)
