@@ -120,6 +120,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AudioDeviceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\D328.Audio.UWP.rd.xml" />
   </ItemGroup>
@@ -132,6 +133,10 @@
     <ProjectReference Include="..\D328.Application\D328.Application.csproj">
       <Project>{f35a7e8a-9983-44f8-bde6-f9c486a3b2da}</Project>
       <Name>D328.ApplicationService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\D328.Domain\D328.Domain.csproj">
+      <Project>{5da4ce6c-de76-4007-81b4-4d9251b99a7c}</Project>
+      <Name>D328.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
