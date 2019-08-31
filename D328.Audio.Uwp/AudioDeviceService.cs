@@ -1,37 +1,39 @@
 ﻿using D328.Application.Services;
 using D328.Domain;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.Devices.Enumeration;
 
 namespace D328.Audio.UWP
 {
-    public class AudioDeviceService : IAudioDeviceService
+    public class AudioDeviceService : IAudioDeviceServiceAsync
     {
-        public List<AudioDevice> GetInputAudioDevices()
+        public async Task<List<AudioDevice>> GetInputAudioDevicesAsync()
         {
-            var devices = DeviceInformation.FindAllAsync(DeviceClass.AudioCapture).GetResults();
+            var devices = await DeviceInformation.FindAllAsync(DeviceClass.AudioCapture);
             return devices.Select(x => AudioDevice.CreateNewDevice(x.Id, x.Name)).ToList();
         }
 
-        public List<AudioDevice> GetOutputAudioDevices()
+        public async Task<List<AudioDevice>> GetOutputAudioDevicesAsync()
         {
-            var devices = DeviceInformation.FindAllAsync(DeviceClass.AudioRender).GetResults();
+            var devices = await DeviceInformation.FindAllAsync(DeviceClass.AudioRender);
             return devices.Select(x => AudioDevice.CreateNewDevice(x.Id, x.Name)).ToList();
         }
 
-        public AudioDevice GetSelectedInputAudioDevice(ObservableCollection<AudioDevice> devices)
+        public async Task<AudioDevice> GetSelectedInputAudioDeviceAsync(ObservableCollection<AudioDevice> devices)
         {
-            var defaltDevice = DeviceInformation.FindAllAsync(DeviceClass.AudioCapture).GetResults()
+            var defaltDevice = (await DeviceInformation.FindAllAsync(DeviceClass.AudioCapture))
                 .Where(x => x.IsDefault)
                 .FirstOrDefault();
             return devices.FirstOrDefault(x => x.Id == defaltDevice.Id);
         }
 
-        public AudioDevice GetSelectedOutputAudioDevice(ObservableCollection<AudioDevice> devices)
+        public async Task<AudioDevice> GetSelectedOutputAudioDeviceAsync(ObservableCollection<AudioDevice> devices)
         {
-            var defaltDevice = DeviceInformation.FindAllAsync(DeviceClass.AudioRender).GetResults()
+            var defaltDevice = (await DeviceInformation.FindAllAsync(DeviceClass.AudioRender))
                 .Where(x => x.IsDefault)
                 .FirstOrDefault();
             return devices.FirstOrDefault(x => x.Id == defaltDevice.Id);
