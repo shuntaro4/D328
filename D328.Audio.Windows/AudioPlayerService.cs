@@ -98,9 +98,9 @@ namespace D328.Audio.Windows
             OnDataAvailableHandler(new EventArgs());
         }
 
-        public void SubscriveEventOnCurrentTimeChanged(EventHandler subscriveEvent)
+        public void SubscriveEventOnCurrentTimeChanged(EventHandler subscribeEvent)
         {
-            _onCurrentTimeChanged += subscriveEvent;
+            _onCurrentTimeChanged += subscribeEvent;
         }
 
         private void OnDataAvailableHandler(EventArgs e)
