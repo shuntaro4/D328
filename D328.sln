@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D328.Presentation", "D328.P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D328.MultiRecording", "D328.MultiRecording\D328.MultiRecording.csproj", "{DA25E16C-3FD3-41B6-AFE2-793CF965BA25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D328.DI", "D328.DI\D328.DI.csproj", "{1BA95F0B-681C-4ACB-931B-57CCAC71A3DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DA25E16C-3FD3-41B6-AFE2-793CF965BA25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA25E16C-3FD3-41B6-AFE2-793CF965BA25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA25E16C-3FD3-41B6-AFE2-793CF965BA25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA95F0B-681C-4ACB-931B-57CCAC71A3DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA95F0B-681C-4ACB-931B-57CCAC71A3DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA95F0B-681C-4ACB-931B-57CCAC71A3DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA95F0B-681C-4ACB-931B-57CCAC71A3DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
