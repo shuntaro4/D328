@@ -1,12 +1,26 @@
-﻿using System.Windows;
+﻿using D328.DI;
+using D328.MultiRecording.UseCase;
+using System.Windows;
 
 namespace D328.Presentation
 {
     public partial class MainWindow : Window
     {
+        private readonly IRecordingUseCase recordingUseCase = DIContainer.Instance.Resolve<IRecordingUseCase>();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private async void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            await recordingUseCase.StartAsync();
+        }
+
+        private async void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            var recording = await recordingUseCase.StopAsync();
         }
     }
 }

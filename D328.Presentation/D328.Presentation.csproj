@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\D328.DI\D328.DI.csproj" />
+  </ItemGroup>
+
 </Project>

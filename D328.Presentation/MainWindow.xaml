@@ -9,5 +9,10 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Grid />
+    <Grid>
+        <StackPanel>
+            <Button Name="StartButton" Click="StartButton_Click">Record Start</Button>
+            <Button Name="StopButton" Click="StopButton_Click">Record Stop</Button>
+        </StackPanel>
+    </Grid>
 </Window>
