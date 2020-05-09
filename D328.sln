@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D328.Presentation", "D328.Presentation\D328.Presentation.csproj", "{98FDCAD2-348F-44D5-8812-006CC824BD1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D328.MultiRecording", "D328.MultiRecording\D328.MultiRecording.csproj", "{DA25E16C-3FD3-41B6-AFE2-793CF965BA25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{98FDCAD2-348F-44D5-8812-006CC824BD1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98FDCAD2-348F-44D5-8812-006CC824BD1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98FDCAD2-348F-44D5-8812-006CC824BD1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA25E16C-3FD3-41B6-AFE2-793CF965BA25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA25E16C-3FD3-41B6-AFE2-793CF965BA25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA25E16C-3FD3-41B6-AFE2-793CF965BA25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA25E16C-3FD3-41B6-AFE2-793CF965BA25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
