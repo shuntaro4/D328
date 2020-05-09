@@ -18,6 +18,16 @@ namespace D328.MultiRecording.Domain
             Title = title ?? throw new ArgumentException();
         }
 
+        public void AddRecording(Recording recording)
+        {
+            recordings.Add(recording);
+        }
+
+        public void RemoveRecordingAt(int index)
+        {
+            recordings.RemoveAt(index);
+        }
+
         public static MultiRecording CreateNew(MultiRecordingTitle title)
         {
             var id = MultiRecordingId.CreateNew();
