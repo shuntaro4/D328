@@ -2,11 +2,11 @@
 
 namespace D328.MultiRecording.Domain
 {
-    public class Title
+    public class MultiRecordingTitle
     {
         public string Value { get; private set; }
 
-        public Title(string value)
+        public MultiRecordingTitle(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
