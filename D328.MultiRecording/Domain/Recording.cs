@@ -7,8 +7,7 @@ namespace D328.MultiRecording.Domain
         public RecordingId Id { get; private set; }
         public User User { get; private set; }
         public AudioFile AudioFile { get; private set; }
-        public IsMute IsMute { get; private set; }
-
+        public IsMute IsMute { get; set; }
 
         public Recording(RecordingId id, User user, AudioFile audioFile, IsMute isMute)
         {
