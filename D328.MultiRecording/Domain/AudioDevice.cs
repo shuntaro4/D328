@@ -14,6 +14,7 @@ namespace D328.MultiRecording.Domain
         {
             Id = deviceInformation.Id;
             Name = deviceInformation.Name;
+            Value = deviceInformation;
         }
     }
 }
