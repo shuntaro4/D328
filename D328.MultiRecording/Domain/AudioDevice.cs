@@ -8,12 +8,15 @@ namespace D328.MultiRecording.Domain
 
         public string Name { get; private set; }
 
+        public bool IsDefault { get; private set; }
+
         public DeviceInformation Value { get; private set; }
 
-        public AudioDevice(DeviceInformation deviceInformation)
+        public AudioDevice(DeviceInformation deviceInformation, bool isDefault = false)
         {
             Id = deviceInformation.Id;
             Name = deviceInformation.Name;
+            IsDefault = isDefault;
             Value = deviceInformation;
         }
     }

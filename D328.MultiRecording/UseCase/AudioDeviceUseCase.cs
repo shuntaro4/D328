@@ -10,12 +10,30 @@ namespace D328.MultiRecording.UseCase
     {
         public async Task<AudioDeviceCollection> GetInputAudioDevicesAsync()
         {
-            return new AudioDeviceCollection(await DeviceInformation.FindAllAsync(MediaDevice.GetAudioCaptureSelector()));
+            var result = new AudioDeviceCollection();
+
+            var deviceCollection = await DeviceInformation.FindAllAsync(MediaDevice.GetAudioCaptureSelector());
+            var defaultDevice = await DeviceInformation.CreateFromIdAsync(MediaDevice.GetDefaultAudioCaptureId(AudioDeviceRole.Default));
+            foreach (var device in deviceCollection)
+            {
+                result.Add(new AudioDevice(device, device.Id == defaultDevice.Id));
+            }
+
+            return result;
         }
 
         public async Task<AudioDeviceCollection> GetOutputAudioDevicesAsync()
         {
-            return new AudioDeviceCollection(await DeviceInformation.FindAllAsync(MediaDevice.GetAudioRenderSelector()));
+            var result = new AudioDeviceCollection();
+
+            var deviceCollection = await DeviceInformation.FindAllAsync(MediaDevice.GetAudioRenderSelector());
+            var defaultDevice = await DeviceInformation.CreateFromIdAsync(MediaDevice.GetDefaultAudioRenderId(AudioDeviceRole.Default));
+            foreach (var device in deviceCollection)
+            {
+                result.Add(new AudioDevice(device, device.Id == defaultDevice.Id));
+            }
+
+            return result;
         }
     }
 }
