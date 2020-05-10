@@ -4,6 +4,11 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <PackageId>D328</PackageId>
+    <Authors>shun aritomi</Authors>
+    <Product>D328</Product>
+    <Version>0.1.0</Version>
+    <AssemblyName>D328</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
