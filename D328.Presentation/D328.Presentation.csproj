@@ -9,6 +9,7 @@
     <Product>D328</Product>
     <Version>0.1.0</Version>
     <AssemblyName>D328</AssemblyName>
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
