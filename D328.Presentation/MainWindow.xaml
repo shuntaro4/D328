@@ -25,11 +25,13 @@
                 Name="InputAudioDeviceCombobox"
                 DisplayMemberPath="Name"
                 ItemsSource="{Binding InputAudioDevices}"
+                SelectedItem="{Binding InputAudioDevice.Value}"
                 SelectedValuePath="Value" />
             <ComboBox
                 Name="OutputAudioDeviceCombobox"
                 DisplayMemberPath="Name"
                 ItemsSource="{Binding OutputAudioDevices}"
+                SelectedItem="{Binding OutputAudioDevice.Value}"
                 SelectedValuePath="Value" />
         </StackPanel>
     </Grid>

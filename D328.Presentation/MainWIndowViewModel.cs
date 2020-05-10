@@ -3,14 +3,16 @@ using D328.MultiRecording.Domain;
 using D328.MultiRecording.UseCase;
 using D328.Presentation.Framework;
 using Reactive.Bindings;
+using System.Linq;
 
 namespace D328.Presentation
 {
     public class MainWIndowViewModel : ViewModelBase
     {
         public ReactiveCollection<AudioDevice> InputAudioDevices { get; private set; } = new ReactiveCollection<AudioDevice>();
-
+        public ReactiveProperty<AudioDevice> InputAudioDevice { get; private set; } = new ReactiveProperty<AudioDevice>();
         public ReactiveCollection<AudioDevice> OutputAudioDevices { get; private set; } = new ReactiveCollection<AudioDevice>();
+        public ReactiveProperty<AudioDevice> OutputAudioDevice { get; private set; } = new ReactiveProperty<AudioDevice>();
 
         public ReactiveCommand ContentRenderedCommand { get; } = new ReactiveCommand();
 
@@ -23,8 +25,13 @@ namespace D328.Presentation
 
         private async void ContentRenderedAction()
         {
-            InputAudioDevices.AddRangeOnScheduler(await audioDeviceUseCase.GetInputAudioDevicesAsync());
-            OutputAudioDevices.AddRangeOnScheduler(await audioDeviceUseCase.GetOutputAudioDevicesAsync());
+            var inputCollection = await audioDeviceUseCase.GetInputAudioDevicesAsync();
+            InputAudioDevices.AddRangeOnScheduler(inputCollection);
+            InputAudioDevice.Value = inputCollection.Where(x => x.IsDefault).FirstOrDefault();
+
+            var outputCollection = await audioDeviceUseCase.GetOutputAudioDevicesAsync();
+            OutputAudioDevices.AddRangeOnScheduler(outputCollection);
+            OutputAudioDevice.Value = outputCollection.Where(x => x.IsDefault).FirstOrDefault();
         }
     }
 }
