@@ -1,47 +1,29 @@
 ﻿using D328.MultiRecording.Domain;
-using System;
 using System.Threading.Tasks;
-using Windows.Media.Capture;
-using Windows.Media.MediaProperties;
 
 namespace D328.MultiRecording.UseCase
 {
     public class RecordingUseCase : IRecordingUseCase
     {
         private readonly IFileCreator fileCreator;
+        private readonly IRecorder recorder;
 
-        private MediaCapture mediaCapture;
-        private string audioFilePath;
-
-        public RecordingUseCase(IFileCreator fileCreator)
+        public RecordingUseCase(IFileCreator fileCreator, IRecorder recorder)
         {
             this.fileCreator = fileCreator;
+            this.recorder = recorder;
         }
 
         public async Task StartAsync()
         {
-            mediaCapture = new MediaCapture();
-
-            var settings = new MediaCaptureInitializationSettings
-            {
-                StreamingCaptureMode = StreamingCaptureMode.Audio
-            };
-            await mediaCapture.InitializeAsync(settings);
-
             var audioStorageFile = await fileCreator.CreateAudioFileAsync();
-            audioFilePath = audioStorageFile.Path;
-
-            await mediaCapture.StartRecordToStorageFileAsync(
-                MediaEncodingProfile.CreateMp3(AudioEncodingQuality.High),
-                audioStorageFile);
+            await recorder.StartAsync(audioStorageFile);
         }
 
         public async Task<Recording> StopAsync()
         {
-            await mediaCapture.StopRecordAsync();
-
-            var user = new User(new UserName("hoge"));
-            var audioFile = new AudioFile(audioFilePath);
+            var user = new User(new UserName("hoge")); // todo 仮
+            var audioFile = await recorder.StopAsync();
             return Recording.CreateNew(user, audioFile);
         }
     }
