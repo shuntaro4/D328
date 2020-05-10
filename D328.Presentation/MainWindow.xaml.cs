@@ -6,11 +6,16 @@ namespace D328.Presentation
 {
     public partial class MainWindow : Window
     {
+        private MainWIndowViewModel viewModel;
+
         private readonly IRecordingUseCase recordingUseCase = DIContainer.Instance.Resolve<IRecordingUseCase>();
 
         public MainWindow()
         {
             InitializeComponent();
+
+            viewModel = new MainWIndowViewModel();
+            DataContext = viewModel;
         }
 
         private async void StartButton_Click(object sender, RoutedEventArgs e)
