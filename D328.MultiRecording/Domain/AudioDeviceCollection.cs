@@ -10,9 +10,6 @@ namespace D328.MultiRecording.Domain
         public AudioDeviceCollection(IList<AudioDevice> list) : base(list) { }
 
         public AudioDeviceCollection(DeviceInformationCollection deviceInformationCollection)
-        {
-            var list = new List<AudioDevice>();
-            deviceInformationCollection.ToList().ForEach(x => list.Add(new AudioDevice(x)));
-        }
+            : this(deviceInformationCollection.Select(x => new AudioDevice(x)).ToList()) { }
     }
 }
