@@ -17,6 +17,7 @@ namespace D328.DI
 
             // MultiRecording
             serviceCollection.AddSingleton<IFileCreator, FileCreator>();
+            serviceCollection.AddSingleton<IRecorder, Recorder>();
             serviceCollection.AddSingleton<IRecordingUseCase, RecordingUseCase>();
 
             serviceProvider = serviceCollection.BuildServiceProvider();
