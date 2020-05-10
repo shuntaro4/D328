@@ -5,8 +5,7 @@ namespace D328.MultiRecording.Domain
 {
     public interface IRecorder
     {
-        Task StartAsync(StorageFile audioStorageFile);
-
+        Task StartAsync(AudioDevice inputAudioDevice, StorageFile audioStorageFile);
         Task<AudioFile> StopAsync();
     }
 }

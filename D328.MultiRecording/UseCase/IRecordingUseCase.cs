@@ -5,7 +5,7 @@ namespace D328.MultiRecording.UseCase
 {
     public interface IRecordingUseCase
     {
-        Task StartAsync();
+        Task StartAsync(AudioDevice inputAudioDevice);
         Task<Recording> StopAsync();
     }
 }

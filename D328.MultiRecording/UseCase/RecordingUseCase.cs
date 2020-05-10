@@ -14,10 +14,10 @@ namespace D328.MultiRecording.UseCase
             this.recorder = recorder;
         }
 
-        public async Task StartAsync()
+        public async Task StartAsync(AudioDevice inputAudioDevice)
         {
             var audioStorageFile = await fileCreator.CreateAudioFileAsync();
-            await recorder.StartAsync(audioStorageFile);
+            await recorder.StartAsync(inputAudioDevice, audioStorageFile);
         }
 
         public async Task<Recording> StopAsync()

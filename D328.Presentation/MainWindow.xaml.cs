@@ -1,4 +1,5 @@
 ﻿using D328.DI;
+using D328.MultiRecording.Domain;
 using D328.MultiRecording.UseCase;
 using System.Windows;
 
@@ -20,7 +21,13 @@ namespace D328.Presentation
 
         private async void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            await recordingUseCase.StartAsync();
+            var inputDevice = InputAudioDeviceCombobox.SelectedItem as AudioDevice;
+            if (inputDevice == null)
+            {
+                return;
+            }
+
+            await recordingUseCase.StartAsync(inputDevice);
         }
 
         private async void StopButton_Click(object sender, RoutedEventArgs e)
