@@ -19,6 +19,7 @@ namespace D328.DI
             serviceCollection.AddSingleton<IFileCreator, FileCreator>();
             serviceCollection.AddSingleton<IRecorder, Recorder>();
             serviceCollection.AddSingleton<IRecordingUseCase, RecordingUseCase>();
+            serviceCollection.AddSingleton<IAudioDeviceUseCase, AudioDeviceUseCase>();
 
             serviceProvider = serviceCollection.BuildServiceProvider();
         }
