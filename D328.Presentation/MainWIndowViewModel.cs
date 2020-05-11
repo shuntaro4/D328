@@ -13,6 +13,7 @@ namespace D328.Presentation
         public ReactiveProperty<AudioDevice> InputAudioDevice { get; private set; } = new ReactiveProperty<AudioDevice>();
         public ReactiveCollection<AudioDevice> OutputAudioDevices { get; private set; } = new ReactiveCollection<AudioDevice>();
         public ReactiveProperty<AudioDevice> OutputAudioDevice { get; private set; } = new ReactiveProperty<AudioDevice>();
+        public ReactiveProperty<bool> IsRecording { get; private set; } = new ReactiveProperty<bool>(false);
 
         public ReactiveCommand ContentRenderedCommand { get; } = new ReactiveCommand();
 

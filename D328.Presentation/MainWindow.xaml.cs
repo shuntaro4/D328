@@ -28,11 +28,13 @@ namespace D328.Presentation
             }
 
             await recordingUseCase.StartAsync(inputDevice);
+            viewModel.IsRecording.Value = true;
         }
 
         private async void StopButton_Click(object sender, RoutedEventArgs e)
         {
             var recording = await recordingUseCase.StopAsync();
+            viewModel.IsRecording.Value = false;
         }
     }
 }

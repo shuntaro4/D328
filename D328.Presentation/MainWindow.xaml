@@ -19,8 +19,18 @@
 
     <Grid>
         <StackPanel>
-            <Button Name="StartButton" Click="StartButton_Click">Record Start</Button>
-            <Button Name="StopButton" Click="StopButton_Click">Record Stop</Button>
+            <Button
+                Name="StartButton"
+                Click="StartButton_Click"
+                IsEnabled="{Binding IsRecording.Value, Converter={StaticResource InverseBooleanConverter}}">
+                Record Start
+            </Button>
+            <Button
+                Name="StopButton"
+                Click="StopButton_Click"
+                IsEnabled="{Binding IsRecording.Value}">
+                Record Stop
+            </Button>
             <ComboBox
                 Name="InputAudioDeviceCombobox"
                 DisplayMemberPath="Name"
