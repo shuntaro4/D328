@@ -7,11 +7,13 @@ namespace D328.MultiRecording.UseCase
     {
         private readonly IFileCreator fileCreator;
         private readonly IRecorder recorder;
+        private readonly IUserRepository userRepository;
 
-        public RecordingUseCase(IFileCreator fileCreator, IRecorder recorder)
+        public RecordingUseCase(IFileCreator fileCreator, IRecorder recorder, IUserRepository userRepository)
         {
             this.fileCreator = fileCreator;
             this.recorder = recorder;
+            this.userRepository = userRepository;
         }
 
         public async Task StartAsync(AudioDevice inputAudioDevice)
@@ -22,7 +24,7 @@ namespace D328.MultiRecording.UseCase
 
         public async Task<Recording> StopAsync()
         {
-            var user = new User(new UserName("hoge")); // todo 仮
+            var user = userRepository.GetCurrentUser();
             var audioFile = await recorder.StopAsync();
             return Recording.CreateNew(user, audioFile);
         }
