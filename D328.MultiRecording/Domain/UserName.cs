@@ -6,6 +6,8 @@ namespace D328.MultiRecording.Domain
     {
         public string Value { get; private set; }
 
+        public static readonly string DefaultValue = "NoName";
+
         public UserName(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -14,6 +16,11 @@ namespace D328.MultiRecording.Domain
             }
 
             Value = value;
+        }
+
+        public static UserName CreateDefault()
+        {
+            return new UserName(DefaultValue);
         }
     }
 }
