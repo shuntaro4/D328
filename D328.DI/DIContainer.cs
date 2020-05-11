@@ -1,5 +1,6 @@
 ﻿using D328.MultiRecording.Domain;
 using D328.MultiRecording.Infrastructure;
+using D328.MultiRecording.Infrastructure.Repository;
 using D328.MultiRecording.UseCase;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,6 +19,7 @@ namespace D328.DI
             // MultiRecording
             serviceCollection.AddSingleton<IFileCreator, FileCreator>();
             serviceCollection.AddSingleton<IRecorder, Recorder>();
+            serviceCollection.AddSingleton<IUserRepository, UserRepository>();
             serviceCollection.AddSingleton<IRecordingUseCase, RecordingUseCase>();
             serviceCollection.AddSingleton<IAudioDeviceUseCase, AudioDeviceUseCase>();
 
